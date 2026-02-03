@@ -11,8 +11,12 @@
     {
       "source": "rhetoric",
       "target": "hùng biện",
-      "type": "concept",
-      "note": "nghệ thuật thuyết phục"
+      "type": "concept"
+    },
+    {
+      "source": "art of persuasion",
+      "target": "nghệ thuật thuyết phục",
+      "type": "concept"
     },
     {
       "source": "Dartmouth College",
@@ -32,222 +36,132 @@
     {
       "source": "Washington",
       "target": "Washington",
-      "type": "person"
+      "type": "place"
+    },
+    {
+      "source": "ancient oratory",
+      "target": "diễn thuyết cổ đại",
+      "type": "concept"
+    },
+    {
+      "source": "hypnosis",
+      "target": "thôi miên",
+      "type": "concept"
+    },
+    {
+      "source": "Manchurian Candidate",
+      "target": "Manchurian Candidate",
+      "type": "concept"
+    },
+    {
+      "source": "Webster’s",
+      "target": "Webster",
+      "type": "organization"
     },
     {
       "source": "low self-monitor",
       "target": "người tự giám sát thấp",
       "type": "concept",
-      "note": "Term used by marketers for a consumer type"
+      "note": "Consumer classification referring to individuals with low awareness of their social image."
     },
     {
       "source": "syncrisis",
       "target": "syncrisis",
       "type": "concept",
-      "note": "Greek for 'alternative judgment'; reframes an argument by redefining it"
-    },
-    {
-      "source": "The Matrix",
-      "target": "Ma Trận",
-      "type": "concept",
-      "note": "Analogy for the system that drives social lives"
+      "note": "Greek for 'alternative judgment'; a rhetorical figure that reframes an argument by redefining it."
     },
     {
       "source": "commonplace",
-      "target": "điều quen thuộc",
+      "target": "luận đề chung",
       "type": "concept",
-      "note": "A shared attitude that is a building block of persuasion"
+      "note": "A shared attitude or belief that forms a building block of persuasion."
     },
     {
       "source": "United Fraternity",
       "target": "United Fraternity",
-      "type": "organization",
-      "note": "Debating society at Dartmouth College"
+      "type": "organization"
     },
     {
       "source": "Alpha Delta",
       "target": "Alpha Delta",
-      "type": "organization",
-      "note": "Later name for the United Fraternity"
+      "type": "organization"
     },
     {
       "source": "antithesis",
       "target": "phản đề",
       "type": "concept",
-      "note": "Meaning 'opposing idea'; a figure of speech"
+      "note": "Meaning 'opposing idea'; a rhetorical device involving a juxtaposition of contrasting thoughts."
     },
     {
       "source": "Id",
-      "target": "Cái Ấy",
+      "target": "nó",
       "type": "concept",
-      "note": "Part of the unconscious mind"
+      "note": "In Freudian psychology, the instinctual, unconscious part of the psyche."
     },
     {
       "source": "Ego",
-      "target": "Cái Tôi",
+      "target": "cái tôi",
       "type": "concept",
-      "note": "Part of the unconscious mind"
+      "note": "In Freudian psychology, the part of the psyche that mediates between the Id, the Superego, and reality."
     },
     {
       "source": "Superego",
-      "target": "Cái Siêu Tôi",
+      "target": "siêu tôi",
       "type": "concept",
-      "note": "Part of the unconscious mind"
+      "note": "In Freudian psychology, the moralistic part of the psyche that internalizes societal and parental standards."
     },
     {
       "source": "Persuasive Elect",
-      "target": "Đoàn Người Được Tuyển Chọn Về Thuyết Phục",
+      "target": "Đoàn Lựa Chọn Thuyết Phục",
       "type": "concept",
-      "note": "A term for those who understand persuasion"
+      "note": "A designation for individuals who have mastered persuasive techniques."
     },
     {
       "source": "dirimens copulatio",
       "target": "dirimens copulatio",
       "type": "concept",
-      "note": "Latin for 'a joining that interrupts'; a rhetorical tactic"
+      "note": "Latin for 'a joining that interrupts'; a rhetorical tactic of amplification, similar to 'But wait, there’s more'."
     },
     {
       "source": "amplification",
       "target": "khuếch đại",
-      "type": "concept",
-      "note": "A rhetorical tactic that turns up the volume"
+      "type": "concept"
     },
     {
       "source": "enthymeme",
       "target": "enthymeme",
       "type": "concept",
-      "note": "A bundle of logic"
-    },
-    {
-      "source": "invention",
-      "target": "phát minh",
-      "type": "concept",
-      "note": "Step in Cicero's method for constructing a speech"
-    },
-    {
-      "source": "arrangement",
-      "target": "sắp xếp",
-      "type": "concept",
-      "note": "Step in Cicero's method for constructing a speech"
-    },
-    {
-      "source": "style",
-      "target": "phong cách",
-      "type": "concept",
-      "note": "Step in Cicero's method for constructing a speech"
-    },
-    {
-      "source": "memory",
-      "target": "trí nhớ",
-      "type": "concept",
-      "note": "Step in Cicero's method for constructing a speech"
-    },
-    {
-      "source": "delivery",
-      "target": "thuyết trình",
-      "type": "concept",
-      "note": "Step in Cicero's method for constructing a speech"
+      "note": "A rhetorical syllogism that omits one premise or conclusion, relying on the audience's knowledge."
     },
     {
       "source": "argumentum a fortiori",
       "target": "lập luận a fortiori",
       "type": "concept",
-      "note": "Argument from strength"
+      "note": "Latin for 'argument from strength'; inferring that if something is true in a stronger case, it is also true in a weaker one."
     },
     {
       "source": "artifact",
       "target": "hiện vật",
       "type": "concept",
-      "note": "Euphemism for a mistake"
+      "note": "An unforeseen error or flaw in an experiment or process."
     },
     {
-      "source": "Frederick Kaufman",
-      "target": "Frederick Kaufman",
-      "type": "person"
-    },
-    {
-      "source": "Harper’s Magazine",
-      "target": "Tạp chí Harper",
-      "type": "organization"
-    },
-    {
-      "source": "Food Network",
-      "target": "Food Network",
-      "type": "organization"
-    },
-    {
-      "source": "RACHAEL RAY",
-      "target": "RACHAEL RAY",
-      "type": "person"
-    },
-    {
-      "source": "EMERIL LAGASSE",
-      "target": "EMERIL LAGASSE",
-      "type": "person"
-    },
-    {
-      "source": "Temple of Aphrodite",
-      "target": "Đền thờ Aphrodite",
-      "type": "organization"
-    },
-    {
-      "source": "Sharon Stone",
-      "target": "Sharon Stone",
-      "type": "person"
-    },
-    {
-      "source": "Basic Instinct",
-      "target": "Bản Năng Gốc",
+      "source": "seduction",
+      "target": "sự quyến rũ",
       "type": "concept",
-      "note": "Movie title"
-    },
-    {
-      "source": "P. T. Barnum",
-      "target": "P. T. Barnum",
-      "type": "person"
-    },
-    {
-      "source": "Tom Thumb",
-      "target": "Tom Thumb",
-      "type": "person"
-    },
-    {
-      "source": "Saint Augustine",
-      "target": "Thánh Augustine",
-      "type": "person"
-    },
-    {
-      "source": "Britney Spears",
-      "target": "Britney Spears",
-      "type": "person"
-    },
-    {
-      "source": "Chanticleer fallacy",
-      "target": "ngụy biện Chanticleer",
-      "type": "concept",
-      "note": "The rooster who thought his crowing made the sun come up"
-    },
-    {
-      "source": "Figarospeech.com",
-      "target": "Figarospeech.com",
-      "type": "organization",
-      "note": "Website devoted to figures of speech"
-    },
-    {
-      "source": "John F. Kennedy",
-      "target": "John F. Kennedy",
-      "type": "person"
-    },
-    {
-      "source": "Peace Corps",
-      "target": "Peace Corps",
-      "type": "organization"
+      "note": "A form of persuasion that appeals to emotion and desire, often indirectly."
     },
     {
       "source": "chiasmus",
       "target": "chiasmus",
       "type": "concept",
-      "note": "A figure of speech that repeats a phrase with its mirror image"
+      "note": "A rhetorical device where a phrase or grammatical construction is repeated in reverse order."
+    },
+    {
+      "source": "Chanticleer fallacy",
+      "target": "ngụy biện Chanticleer",
+      "type": "concept",
+      "note": "A fallacy where correlation is mistaken for causation, named after a rooster who believed his crowing caused the sun to rise."
     },
     {
       "source": "Cicero",
@@ -270,8 +184,13 @@
       "type": "organization"
     },
     {
-      "source": "Plato’s Republic",
-      "target": "Cộng hòa của Plato",
+      "source": "Plato",
+      "target": "Plato",
+      "type": "person"
+    },
+    {
+      "source": "Republic",
+      "target": "Cộng hòa",
       "type": "concept"
     },
     {
@@ -280,38 +199,43 @@
       "type": "person"
     },
     {
+      "source": "POW!!!",
+      "target": "BÙM!!!",
+      "type": "concept"
+    },
+    {
       "source": "Lampoon’s Republic",
       "target": "Cộng hòa của Lampoon",
       "type": "concept"
     },
     {
-      "source": "Pugnacious Romans",
-      "target": "Người La Mã hiếu chiến",
-      "type": "person"
-    },
-    {
-      "source": "John Gottman",
-      "target": "John Gottman",
+      "source": "Gottman",
+      "target": "Gottman",
       "type": "person"
     },
     {
       "source": "love lab",
       "target": "phòng thí nghiệm tình yêu",
-      "type": "concept"
-    },
-    {
-      "source": "University of Washington",
-      "target": "Đại học Washington",
       "type": "organization"
     },
     {
-      "source": "rhetoricians",
-      "target": "nhà hùng biện",
+      "source": "Washington",
+      "target": "Washington",
       "type": "person"
     },
     {
-      "source": "leadership branding coaches",
-      "target": "huấn luyện viên xây dựng thương hiệu lãnh đạo",
+      "source": "Howard Dean",
+      "target": "Howard Dean",
+      "type": "person"
+    },
+    {
+      "source": "Dick Cheney",
+      "target": "Dick Cheney",
+      "type": "person"
+    },
+    {
+      "source": "Pat Leahy",
+      "target": "Pat Leahy",
       "type": "person"
     },
     {
@@ -330,44 +254,9 @@
       "type": "person"
     },
     {
-      "source": "Howard Dean",
-      "target": "Howard Dean",
-      "type": "person"
-    },
-    {
       "source": "Yogi Berra",
       "target": "Yogi Berra",
       "type": "person"
-    },
-    {
-      "source": "demagogue",
-      "target": "kẻ mị dân",
-      "type": "person"
-    },
-    {
-      "source": "F. Lee Bailey",
-      "target": "F. Lee Bailey",
-      "type": "person"
-    },
-    {
-      "source": "Daniel Webster",
-      "target": "Daniel Webster",
-      "type": "person"
-    },
-    {
-      "source": "John Kerry",
-      "target": "John Kerry",
-      "type": "person"
-    },
-    {
-      "source": "President Bush",
-      "target": "Tổng thống Bush",
-      "type": "person"
-    },
-    {
-      "source": "eristic",
-      "target": "eristic",
-      "type": "concept"
     },
     {
       "source": "Aristophanes",
@@ -385,23 +274,8 @@
       "type": "person"
     },
     {
-      "source": "Frank Capra",
-      "target": "Frank Capra",
-      "type": "person"
-    },
-    {
-      "source": "Jimmy Stewart",
-      "target": "Jimmy Stewart",
-      "type": "person"
-    },
-    {
-      "source": "Donna Reed",
-      "target": "Donna Reed",
-      "type": "person"
-    },
-    {
       "source": "Saint Augustine",
-      "target": "Saint Augustine",
+      "target": "Thánh Augustine",
       "type": "person"
     },
     {
@@ -420,99 +294,310 @@
       "type": "person"
     },
     {
-      "source": "Rodale",
-      "target": "Rodale",
-      "type": "organization"
-    },
-    {
       "source": "The South Beach Diet",
       "target": "Chế độ ăn kiêng South Beach",
       "type": "concept"
     },
     {
-      "source": "Orphan Annie’s Law",
-      "target": "Quy luật của Cô bé mồ côi Annie",
+      "source": "Rodale",
+      "target": "Rodale",
+      "type": "organization"
+    },
+    {
+      "source": "Frank Capra",
+      "target": "Frank Capra",
+      "type": "person"
+    },
+    {
+      "source": "Jimmy Stewart",
+      "target": "Jimmy Stewart",
+      "type": "person"
+    },
+    {
+      "source": "Donna Reed",
+      "target": "Donna Reed",
+      "type": "person"
+    },
+    {
+      "source": "John Kerry",
+      "target": "John Kerry",
+      "type": "person"
+    },
+    {
+      "source": "George Washington",
+      "target": "George Washington",
+      "type": "person"
+    },
+    {
+      "source": "F. Lee Bailey",
+      "target": "F. Lee Bailey",
+      "type": "person"
+    },
+    {
+      "source": "John Quincy Adams",
+      "target": "John Quincy Adams",
+      "type": "person"
+    },
+    {
+      "source": "Webster’s",
+      "target": "Webster’s",
+      "type": "person"
+    },
+    {
+      "source": "Dartmouth College",
+      "target": "Dartmouth College",
+      "type": "organization"
+    },
+    {
+      "source": "Harvard College",
+      "target": "Harvard College",
+      "type": "organization"
+    },
+    {
+      "source": "United States senator",
+      "target": "Thượng nghị sĩ Hoa Kỳ",
       "type": "concept"
     },
     {
+      "source": "Washington",
+      "target": "Washington",
+      "type": "person"
+    },
+    {
+      "source": "ancient oratory",
+      "target": "hùng biện cổ đại",
+      "type": "concept"
+    },
+    {
+      "source": "hypnosis",
+      "target": "thôi miên",
+      "type": "concept"
+    },
+    {
+      "source": "Manchurian Candidate",
+      "target": "Ứng cử viên người Mãn Châu",
+      "type": "concept"
+    },
+    {
+      "source": "Webster’s",
+      "target": "Webster’s",
+      "type": "person"
+    },
+    {
+      "source": "low self-monitor",
+      "target": "người tự giám sát thấp",
+      "type": "concept"
+    },
+    {
+      "source": "syncrisis",
+      "target": "syncrisis",
+      "type": "concept"
+    },
+    {
+      "source": "commonplace",
+      "target": "điểm chung",
+      "type": "concept"
+    },
+    {
+      "source": "United Fraternity",
+      "target": "United Fraternity",
+      "type": "organization"
+    },
+    {
+      "source": "Alpha Delta",
+      "target": "Alpha Delta",
+      "type": "organization"
+    },
+    {
+      "source": "antithesis",
+      "target": "phản đề",
+      "type": "concept"
+    },
+    {
+      "source": "Id",
+      "target": "Id",
+      "type": "concept"
+    },
+    {
+      "source": "Ego",
+      "target": "Ego",
+      "type": "concept"
+    },
+    {
+      "source": "Superego",
+      "target": "Superego",
+      "type": "concept"
+    },
+    {
+      "source": "Persuasive Elect",
+      "target": "Người được bầu thuyết phục",
+      "type": "concept"
+    },
+    {
+      "source": "dirimens copulatio",
+      "target": "dirimens copulatio",
+      "type": "concept"
+    },
+    {
+      "source": "amplification",
+      "target": "khuếch đại",
+      "type": "concept"
+    },
+    {
+      "source": "enthymeme",
+      "target": "enthymeme",
+      "type": "concept"
+    },
+    {
+      "source": "argumentum a fortiori",
+      "target": "argumentum a fortiori",
+      "type": "concept"
+    },
+    {
+      "source": "artifact",
+      "target": "hiện vật",
+      "type": "concept"
+    },
+    {
+      "source": "seduction",
+      "target": "quyến rũ",
+      "type": "concept"
+    },
+    {
+      "source": "chiasmus",
+      "target": "chiasmus",
+      "type": "concept"
+    },
+    {
+      "source": "Chanticleer fallacy",
+      "target": "ngụy biện Chanticleer",
+      "type": "concept"
+    },
+    {
+      "source": "Orphan Annie’s Law",
+      "target": "Luật Orphan Annie",
+      "type": "concept",
+      "note": "A principle related to the uncertainty of future outcomes."
+    },
+    {
+      "source": "Aristotle",
+      "target": "Aristotle",
+      "type": "person"
+    },
+    {
       "source": "blame",
-      "target": "Đổ lỗi",
+      "target": "trách mắng",
       "type": "concept"
     },
     {
       "source": "values",
-      "target": "Giá trị",
+      "target": "giá trị",
       "type": "concept"
     },
     {
       "source": "choice",
-      "target": "Sự lựa chọn",
+      "target": "lựa chọn",
+      "type": "concept"
+    },
+    {
+      "source": "Who moved my cheese?",
+      "target": "Ai đã di chuyển miếng pho mát của tôi?",
+      "type": "slogan"
+    },
+    {
+      "source": "abortion",
+      "target": "phá thai",
+      "type": "concept"
+    },
+    {
+      "source": "Oaxaca",
+      "target": "Oaxaca",
       "type": "concept"
     },
     {
       "source": "dialectic",
-      "target": "Biện chứng",
+      "target": "biện chứng",
       "type": "concept"
     },
     {
-      "source": "forensic",
-      "target": "Luận tội",
+      "source": "Brad and Jen",
+      "target": "Brad và Jen",
+      "type": "person"
+    },
+    {
+      "source": "O.J. do it?",
+      "target": "O.J. có làm không?",
       "type": "concept"
     },
     {
-      "source": "demonstrative",
-      "target": "Trình diễn",
+      "source": "Free Bird",
+      "target": "Free Bird",
+      "type": "concept"
+    },
+    {
+      "source": "forensic rhetoric",
+      "target": "hùng biện pháp lý",
+      "type": "concept"
+    },
+    {
+      "source": "Law and Order",
+      "target": "Law and Order",
+      "type": "concept"
+    },
+    {
+      "source": "demonstrative rhetoric",
+      "target": "hùng biện trình diễn",
       "type": "concept"
     },
     {
       "source": "epideictic",
-      "target": "Tán dương",
-      "type": "concept",
-      "note": "Academic term for demonstrative rhetoric"
-    },
-    {
-      "source": "deliberative",
-      "target": "Thảo luận",
+      "target": "epideictic",
       "type": "concept"
     },
     {
-      "source": "Little Orphan Annie",
-      "target": "Cô bé mồ côi Annie",
+      "source": "deliberative rhetoric",
+      "target": "hùng biện thảo luận",
+      "type": "concept"
+    },
+    {
+      "source": "Terminator 2",
+      "target": "Kẻ hủy diệt 2",
+      "type": "concept"
+    },
+    {
+      "source": "Herman Melville Heinrichs",
+      "target": "Herman Melville Heinrichs",
       "type": "person"
     },
     {
-      "source": "Terimnator 2",
-      "target": "Kẻ hủy diệt 2",
-      "type": "concept",
-      "note": "Movie title"
+      "source": "George",
+      "target": "George",
+      "type": "person"
     },
     {
       "source": "Lawrence of Arabia",
       "target": "Lawrence xứ Ả Rập",
-      "type": "concept",
-      "note": "Movie title"
+      "type": "concept"
     },
     {
-      "source": "Annie's Pretty Sure Bet",
-      "target": "Cửa cược chắc chắn của Annie",
+      "source": "Little Orphan Annie",
+      "target": "Tiểu Orphan Annie",
+      "type": "person"
+    },
+    {
+      "source": "Tomorrowsong",
+      "target": "bài hát Tomorrowsong",
       "type": "concept"
     },
     {
       "source": "Burkina Faso",
       "target": "Burkina Faso",
-      "type": "concept",
-      "note": "Country"
+      "type": "concept"
     },
     {
       "source": "Ouagadougou",
       "target": "Ouagadougou",
-      "type": "concept",
-      "note": "City"
-    },
-    {
-      "source": "Ned Flanders",
-      "target": "Ned Flanders",
-      "type": "person"
+      "type": "concept"
     },
     {
       "source": "Moe",
@@ -520,10 +605,14 @@
       "type": "person"
     },
     {
+      "source": "Ned Flanders",
+      "target": "Ned Flanders",
+      "type": "person"
+    },
+    {
       "source": "Girl Versus Turkey",
-      "target": "Cô gái đấu với gà tây",
-      "type": "concept",
-      "note": "Anecdote title"
+      "target": "Cô gái đấu với Gà tây",
+      "type": "concept"
     },
     {
       "source": "Club Med",
@@ -531,53 +620,167 @@
       "type": "organization"
     },
     {
+      "source": "Uncle Randy",
+      "target": "Chú Randy",
+      "type": "person"
+    },
+    {
+      "source": "Argument Tool",
+      "target": "Công cụ tranh luận",
+      "type": "concept"
+    },
+    {
+      "source": "Argument's Rule Number One",
+      "target": "Quy tắc Tranh luận Số Một",
+      "type": "concept"
+    },
+    {
+      "source": "character, logic, emotion",
+      "target": "nhân cách, logic, cảm xúc",
+      "type": "concept",
+      "note": "Three core appeals in rhetoric"
+    },
+    {
+      "source": "art of agreeability",
+      "target": "nghệ thuật dễ chịu",
+      "type": "concept"
+    },
+    {
       "source": "rhetoric",
       "target": "nghệ thuật hùng biện",
       "type": "concept"
     },
     {
-      "source": "persuasion",
-      "target": "sự thuyết phục",
+      "source": "Saint Augustine",
+      "target": "Thánh Augustine",
+      "type": "person"
+    },
+    {
+      "source": "Aristotle",
+      "target": "Aristotle",
+      "type": "person"
+    },
+    {
+      "source": "argument by character",
+      "target": "lập luận bằng nhân cách",
+      "type": "concept"
+    },
+    {
+      "source": "argument by logic",
+      "target": "lập luận bằng logic",
+      "type": "concept"
+    },
+    {
+      "source": "argument by emotion",
+      "target": "lập luận bằng cảm xúc",
+      "type": "concept"
+    },
+    {
+      "source": "persuasive use of decorum",
+      "target": "sử dụng thuyết phục của phép tắc",
+      "type": "concept"
+    },
+    {
+      "source": "argument jujitsu",
+      "target": "nhu thuật lập luận",
+      "type": "concept"
+    },
+    {
+      "source": "tactical sympathy",
+      "target": "sự đồng cảm chiến thuật",
+      "type": "concept"
+    },
+    {
+      "source": "argument adept",
+      "target": "bậc thầy lập luận",
+      "type": "concept"
+    },
+    {
+      "source": "stern father act",
+      "target": "màn kịch ông bố nghiêm khắc",
+      "type": "concept"
+    },
+    {
+      "source": "hypophora",
+      "target": "câu hỏi tu từ và trả lời",
       "type": "concept"
     },
     {
       "source": "logos",
       "target": "logos",
       "type": "concept",
-      "note": "luận lý"
+      "note": "Greek term for argument by logic"
     },
     {
       "source": "ethos",
       "target": "ethos",
       "type": "concept",
-      "note": "uy tín cá nhân"
+      "note": "Greek term for argument by character"
     },
     {
       "source": "pathos",
       "target": "pathos",
       "type": "concept",
-      "note": "cảm xúc"
+      "note": "Greek term for argument by emotion"
     },
     {
-      "source": "hypophora",
-      "target": "hypophora",
-      "type": "concept",
-      "note": "đặt câu hỏi tu từ và trả lời ngay"
+      "source": "sympathy",
+      "target": "sự đồng cảm",
+      "type": "concept"
     },
     {
       "source": "concession",
-      "target": "nhượng bộ",
+      "target": "sự nhượng bộ",
+      "type": "concept"
+    },
+    {
+      "source": "Calvin and Hobbes",
+      "target": "Calvin và Hobbes",
+      "type": "concept"
+    },
+    {
+      "source": "homocidal bike",
+      "target": "xe đạp giết người",
+      "type": "concept"
+    },
+    {
+      "source": "The Compleat Angler",
+      "target": "The Compleat Angler",
+      "type": "concept"
+    },
+    {
+      "source": "Izaak Walton",
+      "target": "Izaak Walton",
+      "type": "person"
+    },
+    {
+      "source": "rhetorical sympathy",
+      "target": "sự đồng cảm hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "George H. W. Bush",
+      "target": "George H. W. Bush",
+      "type": "person"
+    },
+    {
+      "source": "Alice's Restaurant",
+      "target": "Alice's Restaurant",
+      "type": "concept"
+    },
+    {
+      "source": "Arlo Guthrie",
+      "target": "Arlo Guthrie",
+      "type": "person"
+    },
+    {
+      "source": "backfire",
+      "target": "phản tác dụng",
       "type": "concept"
     },
     {
       "source": "decorum",
-      "target": "sự phù hợp",
-      "type": "concept",
-      "note": "thái độ phù hợp với hoàn cảnh và đối tượng"
-    },
-    {
-      "source": "sympathy",
-      "target": "đồng cảm",
+      "target": "phép tắc",
       "type": "concept"
     },
     {
@@ -596,9 +799,9 @@
       "type": "person"
     },
     {
-      "source": "Emily Post",
-      "target": "Emily Post",
-      "type": "person"
+      "source": "How to Dress for Success",
+      "target": "How to Dress for Success",
+      "type": "concept"
     },
     {
       "source": "Martha Stewart",
@@ -617,7 +820,32 @@
     },
     {
       "source": "Gone with the Wind",
-      "target": "Cuốn Theo Chiều Gió",
+      "target": "Gone with the Wind",
+      "type": "concept"
+    },
+    {
+      "source": "political correctness",
+      "target": "political correctness",
+      "type": "concept"
+    },
+    {
+      "source": "Happy Holidays",
+      "target": "Happy Holidays",
+      "type": "concept"
+    },
+    {
+      "source": "Merry Christmas",
+      "target": "Merry Christmas",
+      "type": "concept"
+    },
+    {
+      "source": "people of color",
+      "target": "người da màu",
+      "type": "concept"
+    },
+    {
+      "source": "Iraq invasion",
+      "target": "cuộc xâm lược Iraq",
       "type": "concept"
     },
     {
@@ -626,39 +854,19 @@
       "type": "concept"
     },
     {
-      "source": "Detroit",
-      "target": "Detroit",
+      "source": "hip-hop artists",
+      "target": "nghệ sĩ hip-hop",
       "type": "person"
-    },
-    {
-      "source": "Cary Grant",
-      "target": "Cary Grant",
-      "type": "person"
-    },
-    {
-      "source": "Cicero",
-      "target": "Cicero",
-      "type": "person"
-    },
-    {
-      "source": "African-American",
-      "target": "Người Mỹ gốc Phi",
-      "type": "concept"
     },
     {
       "source": "Piss Off",
       "target": "Piss Off",
-      "type": "slogan"
+      "type": "concept"
     },
     {
-      "source": "John Gottman",
-      "target": "John Gottman",
-      "type": "person"
-    },
-    {
-      "source": "Dean Martin",
-      "target": "Dean Martin",
-      "type": "person"
+      "source": "Your Honor Student",
+      "target": "Your Honor Student",
+      "type": "concept"
     },
     {
       "source": "Hare Krishna",
@@ -666,19 +874,14 @@
       "type": "organization"
     },
     {
-      "source": "Washington",
-      "target": "Washington",
+      "source": "Dean Martin",
+      "target": "Dean Martin",
       "type": "person"
     },
     {
       "source": "aporia",
       "target": "aporia",
       "type": "concept"
-    },
-    {
-      "source": "Cicero",
-      "target": "Cicero",
-      "type": "person"
     },
     {
       "source": "Captain Kangaroo",
@@ -691,14 +894,29 @@
       "type": "person"
     },
     {
+      "source": "Style makes the man",
+      "target": "Phong cách làm nên người",
+      "type": "concept"
+    },
+    {
+      "source": "Style makes the occasion",
+      "target": "Phong cách làm nên dịp",
+      "type": "concept"
+    },
+    {
       "source": "comte de Buffon",
       "target": "comte de Buffon",
       "type": "person"
     },
     {
-      "source": "Afghanistan",
-      "target": "Afghanistan",
-      "type": "concept"
+      "source": "People for the Ethical Treatment of Animals",
+      "target": "People for the Ethical Treatment of Animals",
+      "type": "organization"
+    },
+    {
+      "source": "PETA",
+      "target": "PETA",
+      "type": "organization"
     },
     {
       "source": "Jimmy Carter",
@@ -706,39 +924,75 @@
       "type": "person"
     },
     {
-      "source": "Bob Packwood",
-      "target": "Bob Packwood",
+      "source": "President of the United States",
+      "target": "Tổng thống Hoa Kỳ",
+      "type": "person"
+    },
+    {
+      "source": "Senator Bob Packwood",
+      "target": "Thượng nghị sĩ Bob Packwood",
       "type": "person"
     },
     {
       "source": "Massachusetts",
       "target": "Massachusetts",
+      "type": "person"
+    },
+    {
+      "source": "political squabble",
+      "target": "tranh cãi chính trị",
       "type": "concept"
     },
     {
-      "source": "The Lincoln Gambit",
-      "target": "Đòn Cờ Lincoln",
+      "source": "civil war",
+      "target": "nội chiến",
+      "type": "concept"
+    },
+    {
+      "source": "Afghans",
+      "target": "người Afghanistan",
+      "type": "person"
+    },
+    {
+      "source": "Bob Keeshan",
+      "target": "Bob Keeshan",
+      "type": "person"
+    },
+    {
+      "source": "Captain Kangaroo’s Fashion Tip",
+      "target": "Lời khuyên thời trang của Captain Kangaroo",
+      "type": "concept"
+    },
+    {
+      "source": "the distinguished senator from the commonwealth of Massachusetts",
+      "target": "thượng nghị sĩ đáng kính từ khối thịnh vượng chung Massachusetts",
+      "type": "person"
+    },
+    {
+      "source": "Lincoln Gambit",
+      "target": "Lincoln Gambit",
       "type": "concept",
-      "note": "A rhetorical strategy involving character transformation for persuasion."
+      "note": "A rhetorical strategy named after Abraham Lincoln, focusing on character."
     },
     {
       "source": "argument by character",
-      "target": "luận điểm bằng tính cách",
+      "target": "lập luận theo tính cách",
       "type": "concept"
     },
     {
       "source": "ethos",
       "target": "ethos",
-      "type": "concept"
+      "type": "concept",
+      "note": "The characteristic spirit of a culture, era, or community as manifested in its beliefs and aspirations."
     },
     {
       "source": "Persuasive Elect",
-      "target": "Ứng Viên Thuyết Phục",
+      "target": "Persuasive Elect",
       "type": "concept"
     },
     {
       "source": "virtue",
-      "target": "phẩm hạnh",
+      "target": "đức hạnh",
       "type": "concept"
     },
     {
@@ -748,70 +1002,51 @@
     },
     {
       "source": "street smarts",
-      "target": "nhanh nhạy đường phố",
+      "target": "khôn vặt đường phố",
       "type": "concept"
     },
     {
       "source": "selflessness",
-      "target": "vô tư",
+      "target": "sự quên mình",
       "type": "concept"
     },
     {
       "source": "disinterest",
-      "target": "không vụ lợi",
+      "target": "sự thờ ơ",
       "type": "concept"
     },
     {
-      "source": "resume",
-      "target": "sơ yếu lý lịch",
+      "source": "persuasive virtue",
+      "target": "đức hạnh thuyết phục",
       "type": "concept"
     },
     {
-      "source": "rhetorically virtuous",
-      "target": "có phẩm hạnh hùng biện",
-      "type": "concept"
-    },
-    {
-      "source": "deliberative argument",
-      "target": "lập luận cân nhắc",
+      "source": "values",
+      "target": "giá trị",
       "type": "concept"
     },
     {
       "source": "litotes",
-      "target": "nhấn mạnh giảm nhẹ",
-      "type": "concept"
+      "target": "litotes",
+      "type": "concept",
+      "note": "Understatement for ironic effect."
     },
     {
       "source": "virtus",
       "target": "virtus",
       "type": "concept",
-      "note": "Latin for manliness, good sportsmanship, respect for values, nobility."
+      "note": "Roman term for manliness, good sportsmanship, respect for values, nobility."
     },
     {
       "source": "argument by the stick",
-      "target": "luận điểm bằng gậy",
+      "target": "lập luận bằng gậy",
+      "type": "concept"
+    },
+    {
+      "source": "affaire d'honneur",
+      "target": "affaire d'honneur",
       "type": "concept",
-      "note": "Rhetorical threat."
-    },
-    {
-      "source": "House of Representatives",
-      "target": "Hạ viện",
-      "type": "organization"
-    },
-    {
-      "source": "affair",
-      "target": "ngoại tình",
-      "type": "concept"
-    },
-    {
-      "source": "affaire d’honneur",
-      "target": "vấn đề danh dự",
-      "type": "concept"
-    },
-    {
-      "source": "relativism",
-      "target": "chủ nghĩa tương đối",
-      "type": "concept"
+      "note": "Matter of honor, often involving a duel or scandal."
     },
     {
       "source": "Atticus Finch",
@@ -820,99 +1055,33 @@
     },
     {
       "source": "To Kill a Mockingbird",
-      "target": "Giết Con Chim Nhại",
-      "type": "concept",
-      "note": "Novel title."
+      "target": "To Kill a Mockingbird",
+      "type": "concept"
     },
     {
-      "source": "pro bono",
-      "target": "miễn phí",
+      "source": "pro bono lawyering",
+      "target": "luật sư làm miễn phí",
       "type": "concept"
     },
     {
       "source": "rhetorical virtue",
-      "target": "phẩm hạnh hùng biện",
+      "target": "đức hạnh hùng biện",
       "type": "concept"
     },
     {
-      "source": "Lincoln",
-      "target": "Lincoln",
-      "type": "person"
-    },
-    {
-      "source": "N-word",
-      "target": "từ N",
-      "type": "concept"
-    },
-    {
-      "source": "ethos gambit",
-      "target": "chiến thuật ethos",
-      "type": "concept"
-    },
-    {
-      "source": "prejudiced person",
-      "target": "người thành kiến",
+      "source": "rhetorical ethos gambit",
+      "target": "mẹo ethos hùng biện",
       "type": "concept"
     },
     {
       "source": "decorum",
-      "target": "phép tắc",
+      "target": "phong thái",
       "type": "concept"
-    },
-    {
-      "source": "emancipation",
-      "target": "giải phóng nô lệ",
-      "type": "concept"
-    },
-    {
-      "source": "abolitionists",
-      "target": "những người bãi nô",
-      "type": "person"
-    },
-    {
-      "source": "Massachusetts",
-      "target": "Massachusetts",
-      "type": "location"
     },
     {
       "source": "Eddie Haskell Ploy",
-      "target": "Chiêu Thức Eddie Haskell",
+      "target": "Mẹo Eddie Haskell",
       "type": "concept"
-    },
-    {
-      "source": "bragging",
-      "target": "tự khoe khoang",
-      "type": "concept"
-    },
-    {
-      "source": "Job",
-      "target": "Gióp",
-      "type": "person"
-    },
-    {
-      "source": "Satan",
-      "target": "Satan",
-      "type": "person"
-    },
-    {
-      "source": "Jehovah",
-      "target": "Jehovah",
-      "type": "person"
-    },
-    {
-      "source": "Muhammad Ali",
-      "target": "Muhammad Ali",
-      "type": "person"
-    },
-    {
-      "source": "character references",
-      "target": "giấy giới thiệu tính cách",
-      "type": "concept"
-    },
-    {
-      "source": "John McCain",
-      "target": "John McCain",
-      "type": "person"
     },
     {
       "source": "tactical flaw",
@@ -920,74 +1089,33 @@
       "type": "concept"
     },
     {
-      "source": "Continental Congress",
-      "target": "Đại hội Lục địa",
-      "type": "organization"
-    },
-    {
-      "source": "George Washington",
-      "target": "George Washington",
-      "type": "person"
-    },
-    {
-      "source": "opinion switch",
-      "target": "chuyển đổi quan điểm",
+      "source": "argument by the stick",
+      "target": "lập luận bằng gậy",
       "type": "concept"
     },
     {
-      "source": "Department of Homeland Security",
-      "target": "Bộ An ninh Nội địa",
-      "type": "organization"
-    },
-    {
-      "source": "George W. Bush",
-      "target": "George W. Bush",
-      "type": "person"
+      "source": "opinion switch",
+      "target": "thay đổi quan điểm",
+      "type": "concept"
     },
     {
       "source": "Leave It to Beaver",
       "target": "Leave It to Beaver",
-      "type": "concept",
-      "note": "Television show title."
-    },
-    {
-      "source": "alchemist's tools",
-      "target": "công cụ giả kim thuật",
       "type": "concept"
     },
     {
-      "source": "agnostic art",
-      "target": "nghệ thuật không thiên vị",
+      "source": "rhetorical sacrifice fly",
+      "target": "hi sinh hùng biện",
       "type": "concept"
     },
     {
-      "source": "honor",
-      "target": "danh dự",
+      "source": "rhetorical values",
+      "target": "giá trị hùng biện",
       "type": "concept"
     },
     {
-      "source": "faith",
-      "target": "niềm tin",
-      "type": "concept"
-    },
-    {
-      "source": "steadfastness",
-      "target": "kiên định",
-      "type": "concept"
-    },
-    {
-      "source": "money",
-      "target": "tiền bạc",
-      "type": "concept"
-    },
-    {
-      "source": "toys",
-      "target": "đồ chơi",
-      "type": "concept"
-    },
-    {
-      "source": "trustworthiness",
-      "target": "sự đáng tin cậy",
+      "source": "character reference",
+      "target": "tham chiếu tính cách",
       "type": "concept"
     },
     {
@@ -997,7 +1125,7 @@
     },
     {
       "source": "practical wisdom",
-      "target": "sự khôn ngoan thực tế",
+      "target": "minh triết thực tiễn",
       "type": "concept"
     },
     {
@@ -1008,7 +1136,7 @@
     {
       "source": "Animal House",
       "target": "Animal House",
-      "type": "organization"
+      "type": "concept"
     },
     {
       "source": "Dean Wormer",
@@ -1021,13 +1149,33 @@
       "type": "person"
     },
     {
-      "source": "When the Germans bombed Pearl Harbor",
-      "target": "Khi người Đức ném bom Trân Châu Cảng",
+      "source": "rhetorical question",
+      "target": "câu hỏi tu từ",
       "type": "concept"
     },
     {
-      "source": "When the going gets tough…the tough get goin’",
-      "target": "Khi khó khăn đến… kẻ mạnh sẽ lên đường",
+      "source": "rousing call to action",
+      "target": "lời kêu gọi hành động sôi nổi",
+      "type": "concept"
+    },
+    {
+      "source": "virtue",
+      "target": "đức hạnh",
+      "type": "concept"
+    },
+    {
+      "source": "goodwill",
+      "target": "thiện chí",
+      "type": "concept"
+    },
+    {
+      "source": "likable knucklehead",
+      "target": "kẻ ngốc dễ mến",
+      "type": "concept"
+    },
+    {
+      "source": "appearance of knowing what to do",
+      "target": "vẻ bề ngoài biết cách làm",
       "type": "concept"
     },
     {
@@ -1036,9 +1184,14 @@
       "type": "person"
     },
     {
-      "source": "Marmalard",
-      "target": "Marmalard",
-      "type": "person"
+      "source": "futile and stupid gesture",
+      "target": "hành động vô ích và ngu ngốc",
+      "type": "concept"
+    },
+    {
+      "source": "wounded pride and injustice",
+      "target": "niềm kiêu hãnh bị tổn thương và sự bất công",
+      "type": "concept"
     },
     {
       "source": "homecoming parade",
@@ -1046,13 +1199,33 @@
       "type": "concept"
     },
     {
-      "source": "consensus",
-      "target": "sự đồng thuận",
+      "source": "successful consensus",
+      "target": "sự đồng thuận thành công",
+      "type": "concept"
+    },
+    {
+      "source": "U.S. senator",
+      "target": "thượng nghị sĩ Hoa Kỳ",
+      "type": "concept"
+    },
+    {
+      "source": "selfless goodwill",
+      "target": "thiện chí vị tha",
+      "type": "concept"
+    },
+    {
+      "source": "audience",
+      "target": "khán giả",
+      "type": "concept"
+    },
+    {
+      "source": "wiser character",
+      "target": "nhân vật khôn ngoan hơn",
       "type": "concept"
     },
     {
       "source": "wounded pride",
-      "target": "sự tổn thương về lòng kiêu hãnh",
+      "target": "niềm kiêu hãnh bị tổn thương",
       "type": "concept"
     },
     {
@@ -1061,8 +1234,298 @@
       "type": "concept"
     },
     {
+      "source": "wounded pride and injustice",
+      "target": "niềm kiêu hãnh bị tổn thương và sự bất công",
+      "type": "concept"
+    },
+    {
+      "source": "wiser character",
+      "target": "nhân vật khôn ngoan hơn",
+      "type": "concept"
+    },
+    {
+      "source": "appearance of knowing what to do",
+      "target": "vẻ bề ngoài biết cách làm",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "Apollo space program",
+      "target": "chương trình không gian Apollo",
+      "type": "concept"
+    },
+    {
+      "source": "Apollo 13",
+      "target": "Apollo 13",
+      "type": "concept"
+    },
+    {
+      "source": "carbon dioxide scrubbers",
+      "target": "bộ lọc khí carbon dioxide",
+      "type": "concept"
+    },
+    {
+      "source": "first-class tinkerers",
+      "target": "những người sửa chữa tài ba hạng nhất",
+      "type": "concept"
+    },
+    {
+      "source": "flexibly wise leadership",
+      "target": "sự lãnh đạo khôn ngoan linh hoạt",
+      "type": "concept"
+    },
+    {
+      "source": "Captain William Bligh",
+      "target": "Thuyền trưởng William Bligh",
+      "type": "person"
+    },
+    {
+      "source": "Bounty",
+      "target": "Bounty",
+      "type": "concept"
+    },
+    {
+      "source": "open boat",
+      "target": "thuyền mui trần",
+      "type": "concept"
+    },
+    {
+      "source": "nautical miles",
+      "target": "dặm hàng hải",
+      "type": "concept"
+    },
+    {
+      "source": "navigational skills",
+      "target": "kỹ năng hàng hải",
+      "type": "concept"
+    },
+    {
+      "source": "practical problem",
+      "target": "vấn đề thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "experience",
+      "target": "kinh nghiệm",
+      "type": "concept"
+    },
+    {
+      "source": "book learning",
+      "target": "kiến thức sách vở",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
+      "source": "Indiana Jones",
+      "target": "Indiana Jones",
+      "type": "person"
+    },
+    {
+      "source": "master swordsman",
+      "target": "kiếm sĩ bậc thầy",
+      "type": "person"
+    },
+    {
+      "source": "scimitar",
+      "target": "kiếm scimitar",
+      "type": "concept"
+    },
+    {
+      "source": "complex skill of a fencer",
+      "target": "kỹ năng phức tạp của một đấu kiếm",
+      "type": "concept"
+    },
+    {
+      "source": "carbon dioxide scrubbers",
+      "target": "bộ lọc khí carbon dioxide",
+      "type": "concept"
+    },
+    {
+      "source": "first-class tinkerers",
+      "target": "những người sửa chữa tài ba hạng nhất",
+      "type": "concept"
+    },
+    {
+      "source": "flexibly wise leadership",
+      "target": "sự lãnh đạo khôn ngoan linh hoạt",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
+      "source": "middle course",
+      "target": "con đường trung dung",
+      "type": "concept"
+    },
+    {
+      "source": "moderation",
+      "target": "sự điều độ",
+      "type": "concept"
+    },
+    {
+      "source": "school board",
+      "target": "hội đồng trường",
+      "type": "organization"
+    },
+    {
+      "source": "payoffs",
+      "target": "lợi ích",
+      "type": "concept"
+    },
+    {
+      "source": "doability",
+      "target": "khả năng thực hiện",
+      "type": "concept"
+    },
+    {
+      "source": "superiority",
+      "target": "sự vượt trội",
+      "type": "concept"
+    },
+    {
+      "source": "running mate",
+      "target": "bạn tranh cử",
+      "type": "person"
+    },
+    {
+      "source": "Agnew",
+      "target": "Agnew",
+      "type": "person"
+    },
+    {
+      "source": "Gore",
+      "target": "Gore",
+      "type": "person"
+    },
+    {
+      "source": "Cheney",
+      "target": "Cheney",
+      "type": "person"
+    },
+    {
+      "source": "cruel and inhumane treatment",
+      "target": "đối xử tàn bạo và vô nhân đạo",
+      "type": "concept"
+    },
+    {
+      "source": "suspected terrorists",
+      "target": "những kẻ tình nghi khủng bố",
+      "type": "person"
+    },
+    {
+      "source": "Iraq war",
+      "target": "cuộc chiến Iraq",
+      "type": "concept"
+    },
+    {
+      "source": "good parent–bad parent",
+      "target": "bố mẹ tốt - bố mẹ xấu",
+      "type": "concept"
+    },
+    {
+      "source": "Machiavelli",
+      "target": "Machiavelli",
+      "type": "person"
+    },
+    {
+      "source": "inconsistency",
+      "target": "sự không nhất quán",
+      "type": "concept"
+    },
+    {
+      "source": "leadership tool",
+      "target": "công cụ lãnh đạo",
+      "type": "concept"
+    },
+    {
+      "source": "ruler’s subjects",
+      "target": "thuộc hạ của người cai trị",
+      "type": "concept"
+    },
+    {
+      "source": "moving parts",
+      "target": "bộ phận chuyển động",
+      "type": "concept"
+    },
+    {
+      "source": "book learning",
+      "target": "kiến thức sách vở",
+      "type": "concept"
+    },
+    {
+      "source": "practical experience",
+      "target": "kinh nghiệm thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "knowledge",
+      "target": "kiến thức",
+      "type": "concept"
+    },
+    {
+      "source": "know-how",
+      "target": "bí quyết",
+      "type": "concept"
+    },
+    {
+      "source": "Aristotle",
+      "target": "Aristotle",
+      "type": "person"
+    },
+    {
+      "source": "ethos",
+      "target": "ethos",
+      "type": "concept"
+    },
+    {
       "source": "phronesis",
       "target": "phronesis",
+      "type": "concept"
+    },
+    {
+      "source": "John Adams",
+      "target": "John Adams",
+      "type": "person"
+    },
+    {
+      "source": "Herbert Hoover",
+      "target": "Herbert Hoover",
+      "type": "person"
+    },
+    {
+      "source": "Jimmy Carter",
+      "target": "Jimmy Carter",
+      "type": "person"
+    },
+    {
+      "source": "IQ",
+      "target": "IQ",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
       "type": "concept"
     },
     {
@@ -1086,9 +1549,954 @@
       "type": "person"
     },
     {
+      "source": "John Belushi",
+      "target": "John Belushi",
+      "type": "person"
+    },
+    {
+      "source": "Howard Dean",
+      "target": "Howard Dean",
+      "type": "person"
+    },
+    {
+      "source": "Dick Cheney",
+      "target": "Dick Cheney",
+      "type": "person"
+    },
+    {
+      "source": "Pat Leahy",
+      "target": "Pat Leahy",
+      "type": "person"
+    },
+    {
+      "source": "George Foreman",
+      "target": "George Foreman",
+      "type": "person"
+    },
+    {
+      "source": "Homer Simpson",
+      "target": "Homer Simpson",
+      "type": "person"
+    },
+    {
+      "source": "Mariah Carey",
+      "target": "Mariah Carey",
+      "type": "person"
+    },
+    {
+      "source": "Yogi Berra",
+      "target": "Yogi Berra",
+      "type": "person"
+    },
+    {
+      "source": "Aristophanes",
+      "target": "Aristophanes",
+      "type": "person"
+    },
+    {
+      "source": "Lord Nelson",
+      "target": "Lord Nelson",
+      "type": "person"
+    },
+    {
+      "source": "Marcus Tullius Cicero",
+      "target": "Marcus Tullius Cicero",
+      "type": "person"
+    },
+    {
+      "source": "Saint Augustine",
+      "target": "Saint Augustine",
+      "type": "person"
+    },
+    {
+      "source": "Henry Kissinger",
+      "target": "Henry Kissinger",
+      "type": "person"
+    },
+    {
+      "source": "Nixon",
+      "target": "Nixon",
+      "type": "person"
+    },
+    {
+      "source": "Dorothy Junior",
+      "target": "Dorothy Junior",
+      "type": "person"
+    },
+    {
+      "source": "The South Beach Diet",
+      "target": "The South Beach Diet",
+      "type": "concept"
+    },
+    {
+      "source": "Rodale",
+      "target": "Rodale",
+      "type": "organization"
+    },
+    {
+      "source": "Frank Capra",
+      "target": "Frank Capra",
+      "type": "person"
+    },
+    {
+      "source": "Jimmy Stewart",
+      "target": "Jimmy Stewart",
+      "type": "person"
+    },
+    {
+      "source": "Donna Reed",
+      "target": "Donna Reed",
+      "type": "person"
+    },
+    {
+      "source": "John Kerry",
+      "target": "John Kerry",
+      "type": "person"
+    },
+    {
+      "source": "George Washington",
+      "target": "George Washington",
+      "type": "person"
+    },
+    {
+      "source": "F. Lee Bailey",
+      "target": "F. Lee Bailey",
+      "type": "person"
+    },
+    {
+      "source": "John Quincy Adams",
+      "target": "John Quincy Adams",
+      "type": "person"
+    },
+    {
+      "source": "Webster’s",
+      "target": "Webster’s",
+      "type": "concept"
+    },
+    {
+      "source": "Dartmouth College",
+      "target": "Đại học Dartmouth",
+      "type": "organization"
+    },
+    {
+      "source": "Harvard College",
+      "target": "Đại học Harvard",
+      "type": "organization"
+    },
+    {
+      "source": "United States senator",
+      "target": "thượng nghị sĩ Hoa Kỳ",
+      "type": "concept"
+    },
+    {
+      "source": "Washington",
+      "target": "Washington",
+      "type": "person"
+    },
+    {
+      "source": "ancient oratory",
+      "target": "hùng biện cổ đại",
+      "type": "concept"
+    },
+    {
+      "source": "hypnosis",
+      "target": "thôi miên",
+      "type": "concept"
+    },
+    {
+      "source": "Manchurian Candidate",
+      "target": "Manchurian Candidate",
+      "type": "concept"
+    },
+    {
+      "source": "low self-monitor",
+      "target": "người tự theo dõi thấp",
+      "type": "concept"
+    },
+    {
+      "source": "syncrisis",
+      "target": "syncrisis",
+      "type": "concept"
+    },
+    {
+      "source": "commonplace",
+      "target": "điểm chung",
+      "type": "concept"
+    },
+    {
+      "source": "United Fraternity",
+      "target": "United Fraternity",
+      "type": "organization"
+    },
+    {
+      "source": "Alpha Delta",
+      "target": "Alpha Delta",
+      "type": "organization"
+    },
+    {
+      "source": "antithesis",
+      "target": "phản đề",
+      "type": "concept"
+    },
+    {
+      "source": "Id",
+      "target": "Id",
+      "type": "concept"
+    },
+    {
+      "source": "Ego",
+      "target": "Ego",
+      "type": "concept"
+    },
+    {
+      "source": "Superego",
+      "target": "Superego",
+      "type": "concept"
+    },
+    {
+      "source": "Persuasive Elect",
+      "target": "Persuasive Elect",
+      "type": "concept"
+    },
+    {
+      "source": "dirimens copulatio",
+      "target": "dirimens copulatio",
+      "type": "concept"
+    },
+    {
+      "source": "amplification",
+      "target": "sự khuếch đại",
+      "type": "concept"
+    },
+    {
+      "source": "enthymeme",
+      "target": "enthymeme",
+      "type": "concept"
+    },
+    {
+      "source": "argumentum a fortiori",
+      "target": "argumentum a fortiori",
+      "type": "concept"
+    },
+    {
+      "source": "artifact",
+      "target": "hiện vật",
+      "type": "concept"
+    },
+    {
+      "source": "seduction",
+      "target": "sự quyến rũ",
+      "type": "concept"
+    },
+    {
+      "source": "chiasmus",
+      "target": "chiasmus",
+      "type": "concept"
+    },
+    {
+      "source": "Chanticleer fallacy",
+      "target": "ngụy biện Chanticleer",
+      "type": "concept"
+    },
+    {
+      "source": "Cicero",
+      "target": "Cicero",
+      "type": "person"
+    },
+    {
+      "source": "Aphrodite",
+      "target": "Aphrodite",
+      "type": "person"
+    },
+    {
+      "source": "Homer",
+      "target": "Homer",
+      "type": "person"
+    },
+    {
+      "source": "National Lampoon",
+      "target": "National Lampoon",
+      "type": "organization"
+    },
+    {
+      "source": "Plato",
+      "target": "Plato",
+      "type": "person"
+    },
+    {
+      "source": "Republic",
+      "target": "Republic",
+      "type": "concept"
+    },
+    {
+      "source": "Socrates",
+      "target": "Socrates",
+      "type": "person"
+    },
+    {
+      "source": "POW!!!",
+      "target": "POW!!!",
+      "type": "concept"
+    },
+    {
+      "source": "Lampoon’s Republic",
+      "target": "Lampoon’s Republic",
+      "type": "concept"
+    },
+    {
+      "source": "Gottman",
+      "target": "Gottman",
+      "type": "person"
+    },
+    {
+      "source": "love lab",
+      "target": "phòng thí nghiệm tình yêu",
+      "type": "concept"
+    },
+    {
+      "source": "George",
+      "target": "George",
+      "type": "person"
+    },
+    {
+      "source": "Lawrence of Arabia",
+      "target": "Lawrence of Arabia",
+      "type": "person"
+    },
+    {
+      "source": "Little Orphan Annie",
+      "target": "Little Orphan Annie",
+      "type": "person"
+    },
+    {
+      "source": "Tomorrowsong",
+      "target": "Tomorrowsong",
+      "type": "concept"
+    },
+    {
+      "source": "Burkina Faso",
+      "target": "Burkina Faso",
+      "type": "concept"
+    },
+    {
+      "source": "Ouagadougou",
+      "target": "Ouagadougou",
+      "type": "concept"
+    },
+    {
+      "source": "Moe",
+      "target": "Moe",
+      "type": "person"
+    },
+    {
+      "source": "Ned Flanders",
+      "target": "Ned Flanders",
+      "type": "person"
+    },
+    {
+      "source": "Girl Versus Turkey",
+      "target": "Girl Versus Turkey",
+      "type": "concept"
+    },
+    {
+      "source": "Club Med",
+      "target": "Club Med",
+      "type": "organization"
+    },
+    {
+      "source": "Uncle Randy",
+      "target": "Chú Randy",
+      "type": "person"
+    },
+    {
+      "source": "Argument Tool",
+      "target": "Công cụ Lập luận",
+      "type": "concept"
+    },
+    {
+      "source": "Argument's Rule Number One",
+      "target": "Quy tắc Lập luận số Một",
+      "type": "concept"
+    },
+    {
+      "source": "character, logic, emotion",
+      "target": "nhân cách, logic, cảm xúc",
+      "type": "concept"
+    },
+    {
+      "source": "art of agreeability",
+      "target": "nghệ thuật dễ chịu",
+      "type": "concept"
+    },
+    {
+      "source": "argument by character",
+      "target": "lập luận bằng nhân cách",
+      "type": "concept"
+    },
+    {
+      "source": "argument by logic",
+      "target": "lập luận bằng logic",
+      "type": "concept"
+    },
+    {
+      "source": "argument by emotion",
+      "target": "lập luận bằng cảm xúc",
+      "type": "concept"
+    },
+    {
+      "source": "persuasive use of decorum",
+      "target": "sử dụng sự trang trọng mang tính thuyết phục",
+      "type": "concept"
+    },
+    {
+      "source": "argument jujitsu",
+      "target": "jujitsu lập luận",
+      "type": "concept"
+    },
+    {
+      "source": "tactical sympathy",
+      "target": "sự đồng cảm chiến thuật",
+      "type": "concept"
+    },
+    {
+      "source": "argument adept",
+      "target": "người thành thạo lập luận",
+      "type": "concept"
+    },
+    {
+      "source": "stern father act",
+      "target": "màn kịch bố nghiêm khắc",
+      "type": "concept"
+    },
+    {
+      "source": "hypophora",
+      "target": "hypophora",
+      "type": "concept"
+    },
+    {
+      "source": "logos",
+      "target": "logos",
+      "type": "concept"
+    },
+    {
+      "source": "ethos",
+      "target": "ethos",
+      "type": "concept"
+    },
+    {
+      "source": "pathos",
+      "target": "pathos",
+      "type": "concept"
+    },
+    {
+      "source": "sympathy",
+      "target": "sự đồng cảm",
+      "type": "concept"
+    },
+    {
+      "source": "concession",
+      "target": "sự nhượng bộ",
+      "type": "concept"
+    },
+    {
+      "source": "Calvin and Hobbes",
+      "target": "Calvin và Hobbes",
+      "type": "concept"
+    },
+    {
+      "source": "homocidal bike",
+      "target": "xe đạp giết người",
+      "type": "concept"
+    },
+    {
+      "source": "The Compleat Angler",
+      "target": "The Compleat Angler",
+      "type": "concept"
+    },
+    {
+      "source": "Izaak Walton",
+      "target": "Izaak Walton",
+      "type": "person"
+    },
+    {
+      "source": "rhetorical sympathy",
+      "target": "sự đồng cảm tu từ",
+      "type": "concept"
+    },
+    {
+      "source": "George H. W. Bush",
+      "target": "George H. W. Bush",
+      "type": "person"
+    },
+    {
+      "source": "Alice's Restaurant",
+      "target": "Nhà hàng của Alice",
+      "type": "concept"
+    },
+    {
+      "source": "Arlo Guthrie",
+      "target": "Arlo Guthrie",
+      "type": "person"
+    },
+    {
+      "source": "backfire",
+      "target": "phản tác dụng",
+      "type": "concept"
+    },
+    {
+      "source": "decorum",
+      "target": "sự trang trọng",
+      "type": "concept"
+    },
+    {
+      "source": "Eminem",
+      "target": "Eminem",
+      "type": "person"
+    },
+    {
+      "source": "Emily Post",
+      "target": "Emily Post",
+      "type": "person"
+    },
+    {
+      "source": "Miss Manners",
+      "target": "Miss Manners",
+      "type": "person"
+    },
+    {
+      "source": "How to Dress for Success",
+      "target": "Cách ăn mặc để thành công",
+      "type": "concept"
+    },
+    {
+      "source": "Martha Stewart",
+      "target": "Martha Stewart",
+      "type": "person"
+    },
+    {
+      "source": "The One-Minute Manager",
+      "target": "The One-Minute Manager",
+      "type": "concept"
+    },
+    {
+      "source": "Kenneth Burke",
+      "target": "Kenneth Burke",
+      "type": "person"
+    },
+    {
+      "source": "Gone with the Wind",
+      "target": "Cuốn theo chiều gió",
+      "type": "concept"
+    },
+    {
+      "source": "political correctness",
+      "target": "sự đúng đắn về chính trị",
+      "type": "concept"
+    },
+    {
+      "source": "Happy Holidays",
+      "target": "Chúc mừng các ngày lễ",
+      "type": "concept"
+    },
+    {
+      "source": "Merry Christmas",
+      "target": "Chúc mừng Giáng sinh",
+      "type": "concept"
+    },
+    {
+      "source": "people of color",
+      "target": "người da màu",
+      "type": "concept"
+    },
+    {
+      "source": "Iraq invasion",
+      "target": "cuộc xâm lược Iraq",
+      "type": "concept"
+    },
+    {
+      "source": "8 Mile",
+      "target": "8 Mile",
+      "type": "concept"
+    },
+    {
+      "source": "hip-hop artists",
+      "target": "nghệ sĩ hip-hop",
+      "type": "person"
+    },
+    {
+      "source": "Piss Off",
+      "target": "Biến đi",
+      "type": "concept"
+    },
+    {
+      "source": "Your Honor Student",
+      "target": "Sinh viên danh dự của bạn",
+      "type": "concept"
+    },
+    {
+      "source": "Hare Krishna",
+      "target": "Hare Krishna",
+      "type": "organization"
+    },
+    {
+      "source": "Dean Martin",
+      "target": "Dean Martin",
+      "type": "person"
+    },
+    {
+      "source": "aporia",
+      "target": "aporia",
+      "type": "concept"
+    },
+    {
+      "source": "Captain Kangaroo",
+      "target": "Captain Kangaroo",
+      "type": "person"
+    },
+    {
+      "source": "Bob Keeshan",
+      "target": "Bob Keeshan",
+      "type": "person"
+    },
+    {
+      "source": "Style makes the man",
+      "target": "Phong cách làm nên người đàn ông",
+      "type": "concept"
+    },
+    {
+      "source": "Style makes the occasion",
+      "target": "Phong cách làm nên dịp",
+      "type": "concept"
+    },
+    {
+      "source": "comte de Buffon",
+      "target": "comte de Buffon",
+      "type": "person"
+    },
+    {
+      "source": "People for the Ethical Treatment of Animals",
+      "target": "Người vì đối xử có đạo đức với động vật",
+      "type": "organization"
+    },
+    {
+      "source": "PETA",
+      "target": "PETA",
+      "type": "organization"
+    },
+    {
+      "source": "Jimmy Carter",
+      "target": "Jimmy Carter",
+      "type": "person"
+    },
+    {
+      "source": "President of the United States",
+      "target": "Tổng thống Hợp chúng quốc Hoa Kỳ",
+      "type": "concept"
+    },
+    {
+      "source": "Senator Bob Packwood",
+      "target": "Thượng nghị sĩ Bob Packwood",
+      "type": "person"
+    },
+    {
+      "source": "Massachusetts",
+      "target": "Massachusetts",
+      "type": "concept"
+    },
+    {
+      "source": "political squabble",
+      "target": "bất hòa chính trị",
+      "type": "concept"
+    },
+    {
+      "source": "civil war",
+      "target": "nội chiến",
+      "type": "concept"
+    },
+    {
+      "source": "Afghans",
+      "target": "Người Afghanistan",
+      "type": "person"
+    },
+    {
+      "source": "Captain Kangaroo’s Fashion Tip",
+      "target": "Lời khuyên thời trang của Captain Kangaroo",
+      "type": "concept"
+    },
+    {
+      "source": "the distinguished senator from the commonwealth of Massachusetts",
+      "target": "thượng nghị sĩ đáng kính từ khối thịnh vượng chung Massachusetts",
+      "type": "concept"
+    },
+    {
+      "source": "Lincoln Gambit",
+      "target": "Lincoln Gambit",
+      "type": "concept"
+    },
+    {
+      "source": "virtue",
+      "target": "đức hạnh",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "selflessness",
+      "target": "sự vô tư",
+      "type": "concept"
+    },
+    {
+      "source": "disinterest",
+      "target": "sự thờ ơ",
+      "type": "concept"
+    },
+    {
+      "source": "persuasive virtue",
+      "target": "đức hạnh thuyết phục",
+      "type": "concept"
+    },
+    {
+      "source": "values",
+      "target": "giá trị",
+      "type": "concept"
+    },
+    {
+      "source": "litotes",
+      "target": "litotes",
+      "type": "concept"
+    },
+    {
+      "source": "virtus",
+      "target": "virtus",
+      "type": "concept"
+    },
+    {
+      "source": "argument by the stick",
+      "target": "lập luận bằng gậy",
+      "type": "concept"
+    },
+    {
+      "source": "affaire d'honneur",
+      "target": "affaire d'honneur",
+      "type": "concept"
+    },
+    {
+      "source": "Atticus Finch",
+      "target": "Atticus Finch",
+      "type": "person"
+    },
+    {
+      "source": "To Kill a Mockingbird",
+      "target": "Giết con chim nhại",
+      "type": "concept"
+    },
+    {
+      "source": "pro bono lawyering",
+      "target": "luật sư pro bono",
+      "type": "concept"
+    },
+    {
+      "source": "rhetorical virtue",
+      "target": "đức hạnh hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "rhetorical ethos gambit",
+      "target": "bài bạc ethos hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "Eddie Haskell Ploy",
+      "target": "Thủ đoạn Eddie Haskell",
+      "type": "concept"
+    },
+    {
+      "source": "tactical flaw",
+      "target": "sai lầm chiến thuật",
+      "type": "concept"
+    },
+    {
+      "source": "opinion switch",
+      "target": "thay đổi quan điểm",
+      "type": "concept"
+    },
+    {
+      "source": "Leave It to Beaver",
+      "target": "Leave It to Beaver",
+      "type": "concept"
+    },
+    {
+      "source": "rhetorical sacrifice fly",
+      "target": "bóng hy sinh hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "rhetorical values",
+      "target": "giá trị hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "character reference",
+      "target": "giấy giới thiệu nhân vật",
+      "type": "concept"
+    },
+    {
+      "source": "The Belushi Paradigm",
+      "target": "Mô hình Belushi",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
+      "source": "streetwise rhetorical knowledge",
+      "target": "kiến thức hùng biện đường phố",
+      "type": "concept"
+    },
+    {
+      "source": "Animal House",
+      "target": "Animal House",
+      "type": "concept"
+    },
+    {
+      "source": "Dean Wormer",
+      "target": "Dean Wormer",
+      "type": "person"
+    },
+    {
+      "source": "Bluto",
+      "target": "Bluto",
+      "type": "person"
+    },
+    {
+      "source": "rhetorical question",
+      "target": "câu hỏi tu từ",
+      "type": "concept"
+    },
+    {
+      "source": "rousing call to action",
+      "target": "lời kêu gọi hành động sôi nổi",
+      "type": "concept"
+    },
+    {
+      "source": "virtue",
+      "target": "đức hạnh",
+      "type": "concept"
+    },
+    {
+      "source": "goodwill",
+      "target": "thiện chí",
+      "type": "concept"
+    },
+    {
+      "source": "likable knucklehead",
+      "target": "kẻ ngốc dễ mến",
+      "type": "concept"
+    },
+    {
+      "source": "appearance of knowing what to do",
+      "target": "vẻ bề ngoài biết cách làm",
+      "type": "concept"
+    },
+    {
+      "source": "Otter",
+      "target": "Otter",
+      "type": "person"
+    },
+    {
+      "source": "futile and stupid gesture",
+      "target": "hành động vô ích và ngu ngốc",
+      "type": "concept"
+    },
+    {
+      "source": "wounded pride and injustice",
+      "target": "niềm kiêu hãnh bị tổn thương và sự bất công",
+      "type": "concept"
+    },
+    {
+      "source": "homecoming parade",
+      "target": "lễ diễu hành chào mừng",
+      "type": "concept"
+    },
+    {
+      "source": "successful consensus",
+      "target": "sự đồng thuận thành công",
+      "type": "concept"
+    },
+    {
+      "source": "U.S. senator",
+      "target": "thượng nghị sĩ Hoa Kỳ",
+      "type": "concept"
+    },
+    {
+      "source": "selfless goodwill",
+      "target": "thiện chí vị tha",
+      "type": "concept"
+    },
+    {
+      "source": "audience",
+      "target": "khán giả",
+      "type": "concept"
+    },
+    {
+      "source": "wiser character",
+      "target": "nhân vật khôn ngoan hơn",
+      "type": "concept"
+    },
+    {
+      "source": "wounded pride",
+      "target": "niềm kiêu hãnh bị tổn thương",
+      "type": "concept"
+    },
+    {
+      "source": "injustice",
+      "target": "sự bất công",
+      "type": "concept"
+    },
+    {
+      "source": "wounded pride and injustice",
+      "target": "niềm kiêu hãnh bị tổn thương và sự bất công",
+      "type": "concept"
+    },
+    {
+      "source": "wiser character",
+      "target": "nhân vật khôn ngoan hơn",
+      "type": "concept"
+    },
+    {
+      "source": "appearance of knowing what to do",
+      "target": "vẻ bề ngoài biết cách làm",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
+      "type": "concept"
+    },
+    {
       "source": "Apollo space program",
       "target": "chương trình không gian Apollo",
-      "type": "organization"
+      "type": "concept"
     },
     {
       "source": "Apollo 13",
@@ -1097,12 +2505,12 @@
     },
     {
       "source": "carbon dioxide scrubbers",
-      "target": "thiết bị lọc khí carbon dioxide",
+      "target": "bộ lọc khí carbon dioxide",
       "type": "concept"
     },
     {
       "source": "first-class tinkerers",
-      "target": "thợ sửa chữa hạng nhất",
+      "target": "những người sửa chữa tài ba hạng nhất",
       "type": "concept"
     },
     {
@@ -1118,21 +2526,51 @@
     {
       "source": "Bounty",
       "target": "Bounty",
-      "type": "organization"
+      "type": "concept"
     },
     {
-      "source": "Captain Bligh the navigator",
-      "target": "Thuyền trưởng Bligh người đi biển",
-      "type": "person"
+      "source": "open boat",
+      "target": "thuyền mui trần",
+      "type": "concept"
     },
     {
-      "source": "Captain Bligh the martinet",
-      "target": "Thuyền trưởng Bligh người độc đoán",
-      "type": "person"
+      "source": "nautical miles",
+      "target": "dặm hàng hải",
+      "type": "concept"
+    },
+    {
+      "source": "navigational skills",
+      "target": "kỹ năng hàng hải",
+      "type": "concept"
+    },
+    {
+      "source": "practical problem",
+      "target": "vấn đề thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "experience",
+      "target": "kinh nghiệm",
+      "type": "concept"
+    },
+    {
+      "source": "book learning",
+      "target": "kiến thức sách vở",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
     },
     {
       "source": "Indiana Jones",
       "target": "Indiana Jones",
+      "type": "person"
+    },
+    {
+      "source": "master swordsman",
+      "target": "kiếm sĩ bậc thầy",
       "type": "person"
     },
     {
@@ -1141,9 +2579,44 @@
       "type": "concept"
     },
     {
+      "source": "complex skill of a fencer",
+      "target": "kỹ năng phức tạp của một đấu kiếm",
+      "type": "concept"
+    },
+    {
+      "source": "carbon dioxide scrubbers",
+      "target": "bộ lọc khí carbon dioxide",
+      "type": "concept"
+    },
+    {
+      "source": "first-class tinkerers",
+      "target": "những người sửa chữa tài ba hạng nhất",
+      "type": "concept"
+    },
+    {
+      "source": "flexibly wise leadership",
+      "target": "sự lãnh đạo khôn ngoan linh hoạt",
+      "type": "concept"
+    },
+    {
+      "source": "practical wisdom",
+      "target": "minh triết thực tiễn",
+      "type": "concept"
+    },
+    {
       "source": "middle course",
       "target": "con đường trung dung",
       "type": "concept"
+    },
+    {
+      "source": "moderation",
+      "target": "sự điều độ",
+      "type": "concept"
+    },
+    {
+      "source": "school board",
+      "target": "hội đồng trường",
+      "type": "organization"
     },
     {
       "source": "payoffs",
@@ -1152,17 +2625,42 @@
     },
     {
       "source": "doability",
-      "target": "tính khả thi",
+      "target": "khả năng thực hiện",
       "type": "concept"
     },
     {
       "source": "superiority",
-      "target": "tính vượt trội",
+      "target": "sự vượt trội",
       "type": "concept"
     },
     {
-      "source": " Cheney",
+      "source": "running mate",
+      "target": "bạn tranh cử",
+      "type": "person"
+    },
+    {
+      "source": "Agnew",
+      "target": "Agnew",
+      "type": "person"
+    },
+    {
+      "source": "Gore",
+      "target": "Gore",
+      "type": "person"
+    },
+    {
+      "source": "Cheney",
       "target": "Cheney",
+      "type": "person"
+    },
+    {
+      "source": "cruel and inhumane treatment",
+      "target": "đối xử tàn bạo và vô nhân đạo",
+      "type": "concept"
+    },
+    {
+      "source": "suspected terrorists",
+      "target": "những kẻ tình nghi khủng bố",
       "type": "person"
     },
     {
@@ -1176,14 +2674,24 @@
       "type": "concept"
     },
     {
-      "source": "Hobgoblin of little minds",
-      "target": "ác mộng của những tâm trí nhỏ bé",
-      "type": "concept"
-    },
-    {
       "source": "Machiavelli",
       "target": "Machiavelli",
       "type": "person"
+    },
+    {
+      "source": "inconsistency",
+      "target": "sự không nhất quán",
+      "type": "concept"
+    },
+    {
+      "source": "leadership tool",
+      "target": "công cụ lãnh đạo",
+      "type": "concept"
+    },
+    {
+      "source": "ruler’s subjects",
+      "target": "thuộc hạ của người cai trị",
+      "type": "concept"
     },
     {
       "source": "moving parts",
@@ -1196,108 +2704,39 @@
       "type": "concept"
     },
     {
+      "source": "practical experience",
+      "target": "kinh nghiệm thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "knowledge",
+      "target": "kiến thức",
+      "type": "concept"
+    },
+    {
       "source": "know-how",
       "target": "bí quyết",
       "type": "concept"
     },
     {
-      "source": "disinterested goodwill",
-      "target": "thiện chí không vụ lợi",
-      "type": "concept"
-    },
-    {
-      "source": "disinterested",
-      "target": "không vụ lợi",
-      "type": "concept"
-    },
-    {
-      "source": "Libertas",
-      "target": "Libertas",
-      "type": "concept",
-      "note": "Latin term, likely intended as a specific concept or historical reference."
-    },
-    {
-      "source": "frankness",
-      "target": "thẳng thắn",
-      "type": "concept"
-    },
-    {
-      "source": "The Federalist",
-      "target": "The Federalist",
-      "type": "organization",
-      "note": "Title of a series of essays."
-    },
-    {
-      "source": "Alexander Hamilton",
-      "target": "Alexander Hamilton",
+      "source": "Aristotle",
+      "target": "Aristotle",
       "type": "person"
     },
     {
-      "source": "James Madison",
-      "target": "James Madison",
+      "source": "ethos",
+      "target": "ethos",
+      "type": "concept"
+    },
+    {
+      "source": "phronesis",
+      "target": "phronesis",
+      "type": "concept"
+    },
+    {
+      "source": "John Adams",
+      "target": "John Adams",
       "type": "person"
-    },
-    {
-      "source": "John Jay",
-      "target": "John Jay",
-      "type": "person"
-    },
-    {
-      "source": "Constitution",
-      "target": "Hiến pháp",
-      "type": "concept"
-    },
-    {
-      "source": "Convention",
-      "target": "Đại hội",
-      "type": "concept"
-    },
-    {
-      "source": "The Reluctant Conclusion",
-      "target": "Kết luận miễn cưỡng",
-      "type": "concept"
-    },
-    {
-      "source": "capital punishment",
-      "target": "án tử hình",
-      "type": "concept"
-    },
-    {
-      "source": "DNA testing",
-      "target": "xét nghiệm DNA",
-      "type": "concept"
-    },
-    {
-      "source": "brussels sprouts",
-      "target": "cải Brussels",
-      "type": "concept"
-    },
-    {
-      "source": "Bluto",
-      "target": "Bluto",
-      "type": "person",
-      "note": "Character name"
-    },
-    {
-      "source": "Jimmy Carter",
-      "target": "Jimmy Carter",
-      "type": "person"
-    },
-    {
-      "source": "national malaise",
-      "target": "suy thoái tinh thần dân tộc",
-      "type": "concept"
-    },
-    {
-      "source": "Richard Nixon",
-      "target": "Richard Nixon",
-      "type": "person"
-    },
-    {
-      "source": "Watergate",
-      "target": "Watergate",
-      "type": "concept",
-      "note": "Refers to the Watergate scandal."
     },
     {
       "source": "Herbert Hoover",
@@ -1305,15 +2744,438 @@
       "type": "person"
     },
     {
-      "source": "Marie Antoinette",
-      "target": "Marie Antoinette",
+      "source": "Jimmy Carter",
+      "target": "Jimmy Carter",
       "type": "person"
     },
     {
-      "source": "Hamlet",
-      "target": "Hamlet",
+      "source": "IQ",
+      "target": "IQ",
+      "type": "concept"
+    },
+    {
+      "source": "street smarts",
+      "target": "sự khôn ngoan thực tế",
+      "type": "concept"
+    },
+    {
+      "source": "Edison",
+      "target": "Edison",
+      "type": "person"
+    },
+    {
+      "source": "Einstein",
+      "target": "Einstein",
+      "type": "person"
+    },
+    {
+      "source": "Han Solo",
+      "target": "Han Solo",
+      "type": "person"
+    },
+    {
+      "source": "Yoda",
+      "target": "Yoda",
+      "type": "person"
+    },
+    {
+      "source": "John Belushi",
+      "target": "John Belushi",
+      "type": "person"
+    },
+    {
+      "source": "Howard Dean",
+      "target": "Howard Dean",
+      "type": "person"
+    },
+    {
+      "source": "Dick Cheney",
+      "target": "Dick Cheney",
+      "type": "person"
+    },
+    {
+      "source": "Pat Leahy",
+      "target": "Pat Leahy",
+      "type": "person"
+    },
+    {
+      "source": "George Foreman",
+      "target": "George Foreman",
+      "type": "person"
+    },
+    {
+      "source": "Homer Simpson",
+      "target": "Homer Simpson",
+      "type": "person"
+    },
+    {
+      "source": "Mariah Carey",
+      "target": "Mariah Carey",
+      "type": "person"
+    },
+    {
+      "source": "Yogi Berra",
+      "target": "Yogi Berra",
+      "type": "person"
+    },
+    {
+      "source": "Aristophanes",
+      "target": "Aristophanes",
+      "type": "person"
+    },
+    {
+      "source": "Lord Nelson",
+      "target": "Lord Nelson",
+      "type": "person"
+    },
+    {
+      "source": "Marcus Tullius Cicero",
+      "target": "Marcus Tullius Cicero",
+      "type": "person"
+    },
+    {
+      "source": "Saint Augustine",
+      "target": "Saint Augustine",
+      "type": "person"
+    },
+    {
+      "source": "Henry Kissinger",
+      "target": "Henry Kissinger",
+      "type": "person"
+    },
+    {
+      "source": "Nixon",
+      "target": "Nixon",
+      "type": "person"
+    },
+    {
+      "source": "Dorothy Junior",
+      "target": "Dorothy Junior",
+      "type": "person"
+    },
+    {
+      "source": "The South Beach Diet",
+      "target": "The South Beach Diet",
+      "type": "concept"
+    },
+    {
+      "source": "Rodale",
+      "target": "Rodale",
+      "type": "organization"
+    },
+    {
+      "source": "Frank Capra",
+      "target": "Frank Capra",
+      "type": "person"
+    },
+    {
+      "source": "Jimmy Stewart",
+      "target": "Jimmy Stewart",
+      "type": "person"
+    },
+    {
+      "source": "Donna Reed",
+      "target": "Donna Reed",
+      "type": "person"
+    },
+    {
+      "source": "John Kerry",
+      "target": "John Kerry",
+      "type": "person"
+    },
+    {
+      "source": "George Washington",
+      "target": "George Washington",
+      "type": "person"
+    },
+    {
+      "source": "F. Lee Bailey",
+      "target": "F. Lee Bailey",
+      "type": "person"
+    },
+    {
+      "source": "John Quincy Adams",
+      "target": "John Quincy Adams",
+      "type": "person"
+    },
+    {
+      "source": "Webster’s",
+      "target": "Webster’s",
+      "type": "concept"
+    },
+    {
+      "source": "Dartmouth College",
+      "target": "Đại học Dartmouth",
+      "type": "organization"
+    },
+    {
+      "source": "Harvard College",
+      "target": "Đại học Harvard",
+      "type": "organization"
+    },
+    {
+      "source": "United States senator",
+      "target": "thượng nghị sĩ Hoa Kỳ",
+      "type": "concept"
+    },
+    {
+      "source": "Washington",
+      "target": "Washington",
+      "type": "person"
+    },
+    {
+      "source": "ancient oratory",
+      "target": "hùng biện cổ đại",
+      "type": "concept"
+    },
+    {
+      "source": "hypnosis",
+      "target": "thôi miên",
+      "type": "concept"
+    },
+    {
+      "source": "Manchurian Candidate",
+      "target": "Manchurian Candidate",
+      "type": "concept"
+    },
+    {
+      "source": "low self-monitor",
+      "target": "người tự theo dõi thấp",
+      "type": "concept"
+    },
+    {
+      "source": "syncrisis",
+      "target": "syncrisis",
+      "type": "concept"
+    },
+    {
+      "source": "commonplace",
+      "target": "điểm chung",
+      "type": "concept"
+    },
+    {
+      "source": "United Fraternity",
+      "target": "United Fraternity",
+      "type": "organization"
+    },
+    {
+      "source": "Alpha Delta",
+      "target": "Alpha Delta",
+      "type": "organization"
+    },
+    {
+      "source": "antithesis",
+      "target": "phản đề",
+      "type": "concept"
+    },
+    {
+      "source": "Id",
+      "target": "Id",
+      "type": "concept"
+    },
+    {
+      "source": "Ego",
+      "target": "Ego",
+      "type": "concept"
+    },
+    {
+      "source": "Superego",
+      "target": "Superego",
+      "type": "concept"
+    },
+    {
+      "source": "Persuasive Elect",
+      "target": "Persuasive Elect",
+      "type": "concept"
+    },
+    {
+      "source": "dirimens copulatio",
+      "target": "dirimens copulatio",
+      "type": "concept"
+    },
+    {
+      "source": "amplification",
+      "target": "sự khuếch đại",
+      "type": "concept"
+    },
+    {
+      "source": "enthymeme",
+      "target": "enthymeme",
+      "type": "concept"
+    },
+    {
+      "source": "argumentum a fortiori",
+      "target": "argumentum a fortiori",
+      "type": "concept"
+    },
+    {
+      "source": "artifact",
+      "target": "hiện vật",
+      "type": "concept"
+    },
+    {
+      "source": "seduction",
+      "target": "sự quyến rũ",
+      "type": "concept"
+    },
+    {
+      "source": "chiasmus",
+      "target": "chiasmus",
+      "type": "concept"
+    },
+    {
+      "source": "Chanticleer fallacy",
+      "target": "ngụy biện Chanticleer",
+      "type": "concept"
+    },
+    {
+      "source": "Orphan Annie’s Law",
+      "target": "Luật Orphan Annie",
+      "type": "concept"
+    },
+    {
+      "source": "blame",
+      "target": "trách móc",
+      "type": "concept"
+    },
+    {
+      "source": "values",
+      "target": "giá trị",
+      "type": "concept"
+    },
+    {
+      "source": "choice",
+      "target": "lựa chọn",
+      "type": "concept"
+    },
+    {
+      "source": "Who moved my cheese?",
+      "target": "Ai đã lấy phô mai của tôi?",
+      "type": "concept"
+    },
+    {
+      "source": "abortion",
+      "target": "phá thai",
+      "type": "concept"
+    },
+    {
+      "source": "Oaxaca",
+      "target": "Oaxaca",
+      "type": "concept"
+    },
+    {
+      "source": "dialectic",
+      "target": "biện chứng",
+      "type": "concept"
+    },
+    {
+      "source": "Brad and Jen",
+      "target": "Brad và Jen",
+      "type": "person"
+    },
+    {
+      "source": "O.J. do it?",
+      "target": "O.J. làm được chứ?",
+      "type": "concept"
+    },
+    {
+      "source": "Free Bird",
+      "target": "Free Bird",
+      "type": "concept"
+    },
+    {
+      "source": "forensic rhetoric",
+      "target": "hùng biện tư pháp",
+      "type": "concept"
+    },
+    {
+      "source": "Law and Order",
+      "target": "Law and Order",
+      "type": "concept"
+    },
+    {
+      "source": "demonstrative rhetoric",
+      "target": "hùng biện trình diễn",
+      "type": "concept"
+    },
+    {
+      "source": "epideictic",
+      "target": "epideictic",
+      "type": "concept"
+    },
+    {
+      "source": "deliberative rhetoric",
+      "target": "hùng biện bàn luận",
+      "type": "concept"
+    },
+    {
+      "source": "Terminator 2",
+      "target": "Kẻ hủy diệt 2",
+      "type": "concept"
+    },
+    {
+      "source": "Herman Melville Heinrichs",
+      "target": "Herman Melville Heinrichs",
+      "type": "person"
+    },
+    {
+      "source": "disinterested goodwill",
+      "target": "thiện chí vô tư",
+      "type": "concept",
+      "note": "A rhetorical concept by Aristotle related to ethos."
+    },
+    {
+      "source": "benevolent persuader",
+      "target": "người thuyết phục nhân ái",
+      "type": "concept",
+      "note": "An individual who uses benevolent strategies in persuasion."
+    },
+    {
+      "source": "The Federalist",
+      "target": "The Federalist",
+      "type": "organization",
+      "note": "A series of essays arguing for the ratification of the United States Constitution."
+    },
+    {
+      "source": "Libertas",
+      "target": "Libertas",
+      "type": "concept",
+      "note": "Latin word for freedom and frankness."
+    },
+    {
+      "source": "The Reluctant Conclusion",
+      "target": "Kết luận miễn cưỡng",
+      "type": "concept",
+      "note": "A rhetorical tactic where a conclusion is presented as unavoidable despite personal desires."
+    },
+    {
+      "source": "Dubitatio",
+      "target": "Dubitatio",
+      "type": "concept",
+      "note": "A rhetorical technique of feigning doubt or uncertainty."
+    },
+    {
+      "source": "Cooper Union",
+      "target": "Cooper Union",
+      "type": "organization"
+    },
+    {
+      "source": "Bushisms",
+      "target": "lỗi Bush",
+      "type": "concept",
+      "note": "Mistakes or peculiar phrases attributed to George W. Bush."
+    },
+    {
+      "source": "Blue-staters",
+      "target": "Cư dân bang Xanh",
       "type": "person",
-      "note": "Character name"
+      "note": "A colloquial term for people from states that tend to vote for the Democratic Party."
+    },
+    {
+      "source": "red-staters",
+      "target": "Cư dân bang Đỏ",
+      "type": "person",
+      "note": "A colloquial term for people from states that tend to vote for the Republican Party."
     },
     {
       "source": "Quintilian",
@@ -1324,17 +3186,7 @@
       "source": "Dubitatio",
       "target": "Dubitatio",
       "type": "concept",
-      "note": "Latin term, specific rhetorical device."
-    },
-    {
-      "source": "Abraham Lincoln",
-      "target": "Abraham Lincoln",
-      "type": "person"
-    },
-    {
-      "source": "Cooper Union",
-      "target": "Cooper Union",
-      "type": "organization"
+      "note": "The Roman term for feigning doubt."
     },
     {
       "source": "Harold Holzer",
@@ -1342,109 +3194,115 @@
       "type": "person"
     },
     {
-      "source": "George W. Bush",
-      "target": "George W. Bush",
-      "type": "person"
-    },
-    {
-      "source": "MIT",
-      "target": "MIT",
-      "type": "organization"
-    },
-    {
       "source": "Dubitatio",
       "target": "Dubitatio",
-      "type": "concept"
+      "type": "concept",
+      "note": "The rhetorical tactic of expressing doubt."
     },
     {
-      "source": "Bushisms",
-      "target": "Bushisms",
+      "source": "Bush",
+      "target": "Bush",
+      "type": "person",
+      "note": "Referring to George W. Bush, known for 'Bushisms'."
+    },
+    {
+      "source": "Lincoln’s country-bumpkin image",
+      "target": "hình ảnh nông dân của Lincoln",
       "type": "concept",
-      "note": "Refers to characteristic speech patterns of George W. Bush."
+      "note": "The public persona of Abraham Lincoln as a simple, unsophisticated man."
+    },
+    {
+      "source": "Quintilian’s dubious theory",
+      "target": "lý thuyết nghi vấn của Quintilian",
+      "type": "concept",
+      "note": "Quintilian's idea that feigned doubt can enhance credibility."
+    },
+    {
+      "source": "Greek",
+      "target": "Hy Lạp",
+      "type": "concept",
+      "note": "Referring to the language and culture of ancient Greece."
     },
     {
       "source": "Asian",
-      "target": "châu Á",
+      "target": "Á châu",
       "type": "concept",
-      "note": "Used as a pejorative for certain language styles."
+      "note": "Used here to describe a perceived style of speech contrasted with 'pure' Greek."
     },
     {
-      "source": "Athens",
-      "target": "Athens",
+      "source": "pure Greek",
+      "target": "tiếng Hy Lạp thuần khiết",
       "type": "concept"
     },
     {
-      "source": "The reluctant conclusion",
-      "target": "Kết luận miễn cưỡng",
+      "source": "pathos",
+      "target": "pathos",
       "type": "concept"
+    },
+    {
+      "source": "disinterest",
+      "target": "vô tư",
+      "type": "concept",
+      "note": "The appearance of having only the audience's best interests at heart."
     },
     {
       "source": "The personal sacrifice",
       "target": "Sự hy sinh cá nhân",
-      "type": "concept"
-    },
-    {
-      "source": "Dubitatio",
-      "target": "Dubitatio",
-      "type": "concept"
-    },
-    {
-      "source": "The Aquinas Maneuver",
-      "target": "Thủ thuật Aquinas",
       "type": "concept",
-      "note": "Named after Thomas Aquinas, refers to a persuasive tactic focusing on emotions."
+      "note": "A rhetorical tool where the speaker claims to suffer for the audience's benefit."
+    },
+    {
+      "source": "Aquinas Maneuver",
+      "target": "Đòn Đánh Aquinas",
+      "type": "concept",
+      "note": "A rhetorical technique for controlling the emotional tone of an audience."
     },
     {
       "source": "Oratour",
-      "target": "Nhà hùng biện",
+      "target": "Hùng Biện Gia",
       "type": "person",
-      "note": "Archaic term for an orator or public speaker."
+      "note": "A speaker skilled in oratory."
     },
     {
       "source": "Dorothy Junior",
-      "target": "Dorothy con",
+      "target": "Dorothy Con",
       "type": "person",
-      "note": "Specific identifier for the narrator's daughter."
+      "note": "The author's daughter."
     },
     {
       "source": "pathos",
       "target": "pathos",
       "type": "concept",
-      "note": "The appeal to emotion in rhetoric."
+      "note": "The quality of evoking pity or sadness; an appeal to emotion."
     },
     {
       "source": "pathology",
-      "target": "bệnh lý học",
+      "target": "bệnh học",
       "type": "concept",
       "note": "The study of the causes and effects of diseases."
     },
     {
       "source": "pathetic",
-      "target": "bi ai",
+      "target": "thảm hại",
       "type": "concept",
-      "note": "Referring to evoking pity or sadness, in a rhetorical context."
+      "note": "Evoking pity or sadness."
     },
     {
-      "source": "Sophists",
-      "target": "phái Ngụy biện",
-      "type": "organization",
+      "source": "sophists",
+      "target": "bọn ngụy biện",
+      "type": "person",
       "note": "Ancient Greek teachers of rhetoric and philosophy."
     },
     {
       "source": "limbic system",
-      "target": "hệ thống limbic",
+      "target": "hệ viền",
       "type": "concept"
     },
     {
-      "source": "Protagoras",
-      "target": "Protagoras",
-      "type": "person"
-    },
-    {
       "source": "Stoics",
-      "target": "phái Khắc kỷ",
-      "type": "organization",
-      "note": "Ancient Greek school of philosophy emphasizing virtue, reason, and self-control."
+      "target": "phái Khắc Kỷ",
+      "type": "concept",
+      "note": "A school of Hellenistic philosophy which flourished in late 3rd century BC Athens and later."
     },
     {
       "source": "arrhythmia",
@@ -1454,526 +3312,99 @@
     {
       "source": "electrochemical storm",
       "target": "cơn bão điện hóa",
-      "type": "concept",
-      "note": "Figurative description of intense biological activity."
+      "type": "concept"
     },
     {
-      "source": "Boy Scouts",
-      "target": "Hướng đạo sinh",
-      "type": "organization"
+      "source": "Protagoras",
+      "target": "Protagoras",
+      "type": "person"
     },
     {
-      "source": "Good Will Hunting",
-      "target": "Good Will Hunting",
+      "source": "The Federalist",
+      "target": "Liên Bang",
       "type": "concept",
-      "note": "Film title."
+      "note": "A pseudonym used by authors of The Federalist Papers."
     },
     {
       "source": "Ruthless People",
-      "target": "Ruthless People",
-      "type": "concept",
-      "note": "Film title."
+      "target": "Những Kẻ Tàn Nhẫn",
+      "type": "organization",
+      "note": "A movie title."
+    },
+    {
+      "source": "small college",
+      "target": "trường đại học nhỏ",
+      "type": "concept"
     },
     {
       "source": "peroration",
       "target": "kết luận",
       "type": "concept",
-      "note": "The concluding part of a speech or discourse."
+      "note": "The concluding part of a speech, typically a summation."
     },
     {
       "source": "Bambi eyes",
-      "target": "đôi mắt nai",
+      "target": "mắt nai",
       "type": "concept",
-      "note": "Figurative description for large, innocent-looking eyes."
+      "note": "A pleading, wide-eyed look."
     },
     {
       "source": "Yosemite Sam",
       "target": "Yosemite Sam",
       "type": "person",
-      "note": "Cartoon character known for temper."
+      "note": "A cartoon character known for his temper."
     },
     {
-      "source": "The Simpsons",
-      "target": "The Simpsons",
-      "type": "concept",
-      "note": "Television show title."
-    },
-    {
-      "source": "B. T. Barlow",
-      "target": "B. T. Barlow",
-      "type": "person"
-    },
-    {
-      "source": "Mayor Quimby",
-      "target": "Thị trưởng Quimby",
-      "type": "person"
-    },
-    {
-      "source": "Captain White",
-      "target": "Thuyền trưởng White",
-      "type": "person",
-      "note": "Specific individual in a historical case."
-    },
-    {
-      "source": "O. J. Simpson case",
-      "target": "vụ án O. J. Simpson",
-      "type": "concept",
-      "note": "Famous legal case."
-    },
-    {
-      "source": "In Cold Blood",
-      "target": "In Cold Blood",
-      "type": "concept",
-      "note": "Book title."
-    },
-    {
-      "source": "The Federalist",
-      "target": "The Federalist",
-      "type": "concept",
-      "note": "Collection of essays advocating for the U.S. Constitution."
-    },
-    {
-      "source": "Supreme Court",
-      "target": "Tòa án Tối cao",
-      "type": "organization"
-    },
-    {
-      "source": "Chief Justice John Marshall",
-      "target": "Chánh án John Marshall",
-      "type": "person"
+      "source": "argument by the stick",
+      "target": "lập luận bằng roi",
+      "type": "concept"
     },
     {
       "source": "Patriot Act",
       "target": "Đạo luật Yêu nước",
-      "type": "system",
-      "note": "U.S. legislation enacted after 9/11."
+      "type": "concept"
     },
     {
-      "source": "Ivy League",
-      "target": "Ivy League",
-      "type": "organization",
-      "note": "Association of eight prestigious U.S. universities."
+      "source": "win-one-for-the-Gipper",
+      "target": "chiến thắng vì Gipper",
+      "type": "concept",
+      "note": "A phrase signifying loyalty and a collective effort towards victory, often associated with sports or team spirit."
     },
     {
-      "source": "Middlebury College",
-      "target": "Middlebury College",
-      "type": "organization"
+      "source": "snow bowl",
+      "target": "bát tuyết",
+      "type": "concept"
     },
     {
       "source": "keeping up with the Joneses",
       "target": "bắt kịp nhà Jones",
       "type": "concept",
-      "note": "Idiom for social competition and emulation."
+      "note": "A desire to emulate the possessions or social status of one's neighbors."
     },
     {
-      "source": "The Three Stooges",
-      "target": "The Three Stooges",
-      "type": "person",
-      "note": "Comedy act."
-    },
-    {
-      "source": "World Trade Center",
-      "target": "Trung tâm Thương mại Thế giới",
-      "type": "organization"
-    },
-    {
-      "source": "Roman",
-      "target": "La Mã",
+      "source": "emulation",
+      "target": "bắt chước",
       "type": "concept"
     },
     {
-      "source": "Demosthenes",
-      "target": "Demosthenes",
+      "source": "role model",
+      "target": "hình mẫu",
       "type": "person"
     },
     {
-      "source": "Hitler",
-      "target": "Hitler",
-      "type": "person"
+      "source": "World Trade Center attack",
+      "target": "vụ tấn công Trung tâm Thương mại Thế giới",
+      "type": "concept"
     },
     {
-      "source": "The Scientist’s Lie",
-      "target": "Lời nói dối của nhà khoa học",
-      "type": "concept",
-      "note": "Title of a section focusing on a specific rhetorical tactic used by scientists."
+      "source": "laugh track",
+      "target": "tiếng cười lồng ghép",
+      "type": "concept"
     },
     {
-      "source": "argument-squeamish",
-      "target": "nhạy cảm với tranh luận",
-      "type": "concept",
-      "note": "Describes individuals uncomfortable with argumentation."
-    },
-    {
-      "source": "rhetorical device",
-      "target": "biện pháp tu từ",
-      "type": "concept",
-      "note": "An established technique in rhetoric."
-    },
-    {
-      "source": "passive voice",
-      "target": "thể bị động",
-      "type": "concept",
-      "note": "A grammatical construction used for rhetorical effect."
-    },
-    {
-      "source": "act of God",
-      "target": "sự kiện bất khả kháng",
-      "type": "concept",
-      "note": "A term used to describe events beyond human control, often used by insurers."
-    },
-    {
-      "source": "political subterfuge",
-      "target": "thủ đoạn chính trị",
-      "type": "concept",
-      "note": "A deceptive tactic used in politics."
-    },
-    {
-      "source": "intelligent design",
-      "target": "thiết kế thông minh",
-      "type": "concept",
-      "note": "A concept positing that certain features of the universe and living things are best explained by an intelligent cause, not an undirected process such as natural selection."
-    },
-    {
-      "source": "Designer in Chief",
-      "target": "Đấng Thiết Kế Tối Cao",
-      "type": "person",
-      "note": "Refers to a divine creator in the context of intelligent design."
-    },
-    {
-      "source": "pathos trick",
-      "target": "thủ thuật pathos",
-      "type": "concept",
-      "note": "A tactic utilizing pathos (emotional appeal)."
-    },
-    {
-      "source": "backfire",
-      "target": "phản tác dụng",
-      "type": "concept",
-      "note": "A rhetorical technique where one exaggerates a perceived flaw or criticism to gain an advantage."
-    },
-    {
-      "source": "This Is Spinal Tap",
-      "target": "This Is Spinal Tap",
-      "type": "organization",
-      "note": "Title of a mockumentary film, used here as a reference."
-    },
-    {
-      "source": "backfire defense",
-      "target": "phòng thủ phản tác dụng",
-      "type": "concept",
-      "note": "Using the backfire technique as a defensive strategy."
-    },
-    {
-      "source": "mea culpa",
-      "target": "mea culpa",
-      "type": "concept",
-      "note": "Latin for 'through my fault,' an admission of guilt or error."
-    },
-    {
-      "source": "Mount Saint Helens",
-      "target": "Núi St. Helens",
-      "type": "concept",
-      "note": "A volcano."
-    },
-    {
-      "source": "Dixy Lee Ray",
-      "target": "Dixy Lee Ray",
-      "type": "person",
-      "note": "Former governor of Washington state."
-    },
-    {
-      "source": "humor",
-      "target": "sự hài hước",
-      "type": "concept",
-      "note": "A rhetorical tool for managing emotions."
-    },
-    {
-      "source": "Jokes (Der Witz)",
-      "target": "Jokes (Der Witz)",
-      "type": "concept",
-      "note": "Title of a book by Sigmund Freud."
-    },
-    {
-      "source": "Urbane humor",
-      "target": "hài hước tao nhã",
-      "type": "concept",
-      "note": "A type of humor relying on wit and educated wordplay."
-    },
-    {
-      "source": "PECCAVI",
-      "target": "PECCAVI",
-      "type": "concept",
-      "note": "Latin for 'I have sinned,' used in a telegram."
-    },
-    {
-      "source": "Trans-america",
-      "target": "Trans-america",
-      "type": "concept",
-      "note": "Title of a movie, used as a conversational prompt."
-    },
-    {
-      "source": "neologism",
-      "target": "từ ngữ mới",
-      "type": "concept",
-      "note": "An invented word or phrase."
-    },
-    {
-      "source": "eristicrats",
-      "target": "eristicrats",
-      "type": "concept",
-      "note": "An invented term combining 'eristic' (argumentative) and 'aristocrats.'"
-    },
-    {
-      "source": "Wit",
-      "target": "sự dí dỏm",
-      "type": "concept",
-      "note": "A form of humor based on situational irony or clever observation."
-    },
-    {
-      "source": "An Teach Ban",
-      "target": "An Teach Ban",
-      "type": "concept",
-      "note": "Gaelic for 'The White House.'"
-    },
-    {
-      "source": "I.R.A.",
-      "target": "IRA",
-      "type": "organization",
-      "note": "Irish Republican Army."
-    },
-    {
-      "source": "Facetious humor",
-      "target": "hài hước lếu láo",
-      "type": "concept",
-      "note": "Humor intended purely for laughter."
-    },
-    {
-      "source": "White House Correspondents Dinner",
-      "target": "Bữa tối của Phóng viên Nhà Trắng",
-      "type": "organization",
-      "note": "An annual event attended by the President of the United States and the White House press corps."
-    },
-    {
-      "source": "Banter",
-      "target": "trò đùa cợt",
-      "type": "concept",
-      "note": "Humor involving clever insults and witty comebacks."
-    },
-    {
-      "source": "snaps",
-      "target": "snaps",
-      "type": "concept",
-      "note": "A game of competitive insults."
-    },
-    {
-      "source": "concession",
-      "target": "sự nhượng bộ",
-      "type": "concept",
-      "note": "A rhetorical tactic of agreeing with an opponent's point to then use it against them."
-    },
-    {
-      "source": "Winston Churchill",
-      "target": "Winston Churchill",
-      "type": "person",
-      "note": "British Prime Minister."
-    },
-    {
-      "source": "rhetorical jujitsu",
-      "target": "nhu thuật hùng biện",
-      "type": "concept",
-      "note": "Using rhetorical techniques in a way similar to martial arts, redirecting an opponent's arguments."
-    },
-    {
-      "source": "snail mail",
-      "target": "thư tay",
-      "type": "concept",
-      "note": "Traditional postal mail."
-    },
-    {
-      "source": "Cold War joke",
-      "target": "truyện cười thời Chiến tranh Lạnh",
-      "type": "concept",
-      "note": "A joke originating from the geopolitical tension between the US and the Soviet Union."
-    },
-    {
-      "source": "The Belushi Paradigm",
-      "target": "Mô hình Belushi",
-      "type": "concept",
-      "note": "A rhetorical or behavioral model named after John Belushi."
-    },
-    {
-      "source": "Hobgoblin of little minds",
-      "target": "ác mộng của những tâm trí nhỏ bé",
-      "type": "concept",
-      "note": "A concept implying that minor inconsistencies or details can be overlooked."
-    },
-    {
-      "source": "Libertas",
-      "target": "Libertas",
-      "type": "concept",
-      "note": "Latin for 'liberty,' used here possibly as a concept related to freedom of speech or thought."
-    },
-    {
-      "source": "The Federalist",
-      "target": "The Federalist",
-      "type": "organization",
-      "note": "A collection of essays advocating for the ratification of the United States Constitution."
-    },
-    {
-      "source": "The Reluctant Conclusion",
-      "target": "Kết luận miễn cưỡng",
-      "type": "concept",
-      "note": "Title of a section or argument."
-    },
-    {
-      "source": "national malaise",
-      "target": "sự uể oải quốc gia",
-      "type": "concept",
-      "note": "A term used to describe a perceived widespread feeling of apathy or dissatisfaction within a nation."
-    },
-    {
-      "source": "Bushisms",
-      "target": "Bushisms",
-      "type": "concept",
-      "note": "Unusual or memorable statements made by George W. Bush."
-    },
-    {
-      "source": "The reluctant conclusion",
-      "target": "Kết luận miễn cưỡng",
-      "type": "concept",
-      "note": "Title of a section or argument."
-    },
-    {
-      "source": "The personal sacrifice",
-      "target": "Sự hy sinh cá nhân",
-      "type": "concept",
-      "note": "Title of a section or argument."
-    },
-    {
-      "source": "The Aquinas Maneuver",
-      "target": "Chiến thuật Aquinas",
-      "type": "concept",
-      "note": "A rhetorical strategy attributed to Thomas Aquinas."
-    },
-    {
-      "source": "Oratour",
-      "target": "Oratour",
-      "type": "person",
-      "note": "A term for a skilled orator."
-    },
-    {
-      "source": "limbic system",
-      "target": "hệ thống limbic",
-      "type": "concept",
-      "note": "The part of the brain responsible for emotion."
-    },
-    {
-      "source": "electrochemical storm",
-      "target": "cơn bão điện hóa",
-      "type": "concept",
-      "note": "A metaphor for intense emotional states."
-    },
-    {
-      "source": "Ruthless People",
-      "target": "Ruthless People",
-      "type": "organization",
-      "note": "Title of a film, used as a reference."
-    },
-    {
-      "source": "peroration",
-      "target": "phần kết luận",
-      "type": "concept",
-      "note": "The concluding part of a speech or discourse."
-    },
-    {
-      "source": "Bambi eyes",
-      "target": "đôi mắt nai",
-      "type": "concept",
-      "note": "A look of wide-eyed innocence, often used to evoke sympathy."
-    },
-    {
-      "source": "Yosemite Sam",
-      "target": "Yosemite Sam",
-      "type": "person",
-      "note": "A cartoon character."
-    },
-    {
-      "source": "The Simpsons",
-      "target": "The Simpsons",
-      "type": "organization",
-      "note": "Title of a television show."
-    },
-    {
-      "source": "B. T. Barlow",
-      "target": "B. T. Barlow",
-      "type": "person",
-      "note": "A character in The Simpsons."
-    },
-    {
-      "source": "Mayor Quimby",
-      "target": "Thị trưởng Quimby",
-      "type": "person",
-      "note": "A character in The Simpsons."
-    },
-    {
-      "source": "Captain White",
-      "target": "Thuyền trưởng White",
-      "type": "person",
-      "note": "A character in the text."
-    },
-    {
-      "source": "O. J. Simpson case",
-      "target": "vụ án O. J. Simpson",
-      "type": "concept",
-      "note": "A highly publicized legal case."
-    },
-    {
-      "source": "In Cold Blood",
-      "target": "In Cold Blood",
-      "type": "organization",
-      "note": "Title of a book and film."
-    },
-    {
-      "source": "Chief Justice John Marshall",
-      "target": "Chánh án John Marshall",
-      "type": "person",
-      "note": "A historical Chief Justice of the United States."
-    },
-    {
-      "source": "Patriot Act",
-      "target": "Đạo luật Patriot",
-      "type": "system",
-      "note": "Legislation passed in the United States after the September 11 attacks."
-    },
-    {
-      "source": "Ivy League",
-      "target": "Ivy League",
-      "type": "organization",
-      "note": "A group of prestigious universities in the Northeastern United States."
-    },
-    {
-      "source": "Middlebury College",
-      "target": "Middlebury College",
-      "type": "organization",
-      "note": "A university."
-    },
-    {
-      "source": "keeping up with the Joneses",
-      "target": "cố gắng theo kịp nhà Jones",
-      "type": "concept",
-      "note": "A common idiom referring to social competition."
-    },
-    {
-      "source": "The Three Stooges",
-      "target": "The Three Stooges",
-      "type": "organization",
-      "note": "A comedy act."
-    },
-    {
-      "source": "World Trade Center",
-      "target": "Trung tâm Thương mại Thế giới",
-      "type": "organization",
-      "note": "A complex of buildings in New York City."
+      "source": "unannounced emotion",
+      "target": "cảm xúc không báo trước",
+      "type": "concept"
     },
     {
       "source": "Demosthenes",
@@ -1982,96 +3413,175 @@
       "note": "An ancient Greek orator."
     },
     {
-      "source": "Isocrates",
-      "target": "Isocrates",
+      "source": "passive voice",
+      "target": "ngôi bị động",
+      "type": "concept"
+    },
+    {
+      "source": "intelligent design",
+      "target": "thiết kế thông minh",
+      "type": "concept"
+    },
+    {
+      "source": "Designer in Chief",
+      "target": "Đấng Thiết Kế Tối Cao",
+      "type": "concept"
+    },
+    {
+      "source": "backfire",
+      "target": "phản tác dụng",
+      "type": "concept"
+    },
+    {
+      "source": "This Is Spinal Tap",
+      "target": "This Is Spinal Tap",
+      "type": "organization"
+    },
+    {
+      "source": "Urbane humor",
+      "target": "hài hước tao nhã",
+      "type": "concept"
+    },
+    {
+      "source": "PECCAVI",
+      "target": "PECCAVI",
+      "type": "concept"
+    },
+    {
+      "source": "eristicrats",
+      "target": "eristicrats",
+      "type": "concept"
+    },
+    {
+      "source": "Wit",
+      "target": "sự dí dỏm",
+      "type": "concept"
+    },
+    {
+      "source": "An Teach Ban",
+      "target": "An Teach Ban",
+      "type": "concept"
+    },
+    {
+      "source": "Facetious humor",
+      "target": "hài hước bông đùa",
+      "type": "concept"
+    },
+    {
+      "source": "yuck scribes",
+      "target": "người viết truyện cười",
       "type": "person"
+    },
+    {
+      "source": "Banter",
+      "target": "tán tỉnh",
+      "type": "concept"
+    },
+    {
+      "source": "game of snaps",
+      "target": "trò chơi snaps",
+      "type": "concept"
+    },
+    {
+      "source": "concession",
+      "target": "sự nhượng bộ",
+      "type": "concept"
+    },
+    {
+      "source": "rhetorical jujitsu",
+      "target": "nhu thuật hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "Winston Churchill",
+      "target": "Winston Churchill",
+      "type": "person"
+    },
+    {
+      "source": "Cold War joke",
+      "target": "truyện cười Chiến tranh Lạnh",
+      "type": "concept"
     },
     {
       "source": "advantageous",
       "target": "có lợi",
       "type": "concept",
-      "note": "Refers to an outcome beneficial to the audience."
+      "note": "Used in the context of what benefits the audience."
+    },
+    {
+      "source": "statecraft",
+      "target": "nghệ thuật cai trị",
+      "type": "concept",
+      "note": "The art of governing a country."
+    },
+    {
+      "source": "logicos",
+      "target": "lập luận",
+      "type": "concept",
+      "note": "Appears as a misspelling of 'logos' but refers to logical argument."
     },
     {
       "source": "babbling",
-      "target": "lặp lại",
+      "target": "lải nhải",
       "type": "concept",
-      "note": "A rhetorical mistake where an arguer repeats themselves."
+      "note": "Aristotle's term for an arguer's tendency to repeat themselves."
     },
     {
       "source": "commonplace",
-      "target": "luận điểm chung",
-      "type": "concept",
-      "note": "A viewpoint or belief held in common by an audience."
-    },
-    {
-      "source": "logos",
-      "target": "logos",
+      "target": "điểm chung",
       "type": "concept"
     },
     {
+      "source": "topic",
+      "target": "luận điểm",
+      "type": "concept",
+      "note": "Derived from the Greek word 'topos'."
+    },
+    {
       "source": "commonplaces",
-      "target": "luận điểm chung",
+      "target": "những điểm chung",
       "type": "concept"
     },
     {
       "source": "Heinrichs commonplace",
-      "target": "luận điểm chung của Heinrichs",
+      "target": "điểm chung của nhà Heinrichs",
       "type": "concept"
     },
     {
       "source": "commonplace label",
-      "target": "nhãn luận điểm chung",
-      "type": "concept"
-    },
-    {
-      "source": "No Child Left Behind",
-      "target": "Không Để Đứa Trẻ Nào Bị Bỏ Lại Phía Sau",
-      "type": "slogan"
-    },
-    {
-      "source": "Operation Iraqi Freedom",
-      "target": "Chiến dịch Tự do Iraq",
-      "type": "concept"
-    },
-    {
-      "source": "Clear Skies",
-      "target": "Bầu trời trong xanh",
-      "type": "slogan"
-    },
-    {
-      "source": "Healthy Forests Initiative",
-      "target": "Sáng kiến Rừng khỏe mạnh",
-      "type": "concept"
-    },
-    {
-      "source": "Culture of Life",
-      "target": "Nền văn hóa Sự sống",
-      "type": "concept"
-    },
-    {
-      "source": "Marriage Protection",
-      "target": "Bảo vệ Hôn nhân",
+      "target": "nhãn hiệu điểm chung",
       "type": "concept"
     },
     {
       "source": "Pro Life",
-      "target": "Ủng hộ Sự sống",
-      "type": "concept"
+      "target": "ủng hộ sự sống",
+      "type": "concept",
+      "note": "Political slogan associated with the anti-abortion movement."
     },
     {
       "source": "Pro Choice",
-      "target": "Ủng hộ Lựa chọn",
+      "target": "ủng hộ sự lựa chọn",
+      "type": "concept",
+      "note": "Political slogan associated with abortion rights."
+    },
+    {
+      "source": "Culture of Life",
+      "target": "văn hóa sự sống",
       "type": "concept"
     },
     {
       "source": "Culture of Freedom",
-      "target": "Nền văn hóa Tự do",
+      "target": "văn hóa tự do",
+      "type": "concept"
+    },
+    {
+      "source": "Marriage Protection",
+      "target": "bảo vệ hôn nhân",
       "type": "concept"
     },
     {
       "source": "Family Protection",
-      "target": "Bảo vệ Gia đình",
+      "target": "bảo vệ gia đình",
       "type": "concept"
     },
     {
@@ -2090,185 +3600,383 @@
       "type": "concept"
     },
     {
+      "source": "River City",
+      "target": "Thành phố River",
+      "type": "concept",
+      "note": "Refers to the setting of 'The Music Man'."
+    },
+    {
       "source": "The Music Man",
       "target": "The Music Man",
-      "type": "person"
-    },
-    {
-      "source": "trouble in River City",
-      "target": "rắc rối ở River City",
-      "type": "slogan"
-    },
-    {
-      "source": "the rejection",
-      "target": "sự từ chối",
       "type": "concept",
-      "note": "When an audience rejects an argument, often using a commonplace."
+      "note": "Title of a musical."
     },
     {
       "source": "anadiplosis",
-      "target": "anadiplosis",
-      "type": "concept"
-    },
-    {
-      "source": "commonplace books",
-      "target": "sổ ghi chép luận điểm",
-      "type": "concept"
-    },
-    {
-      "source": "Don’t switch horses in midstream",
-      "target": "Đừng đổi ngựa giữa dòng",
-      "type": "maxim"
-    },
-    {
-      "source": "Americans have a right to privacy in their own home",
-      "target": "Người Mỹ có quyền riêng tư trong nhà của mình",
-      "type": "maxim"
-    },
-    {
-      "source": "We’re at war",
-      "target": "Chúng ta đang có chiến tranh",
-      "type": "maxim"
-    },
-    {
-      "source": "It’s your thing",
-      "target": "Đó là việc của bạn",
-      "type": "maxim"
-    },
-    {
-      "source": "It’s about values",
-      "target": "Đó là về các giá trị",
-      "type": "maxim"
-    },
-    {
-      "source": "value-driven management",
-      "target": "quản lý dựa trên giá trị",
-      "type": "concept"
-    },
-    {
-      "source": "employee-empowered management",
-      "target": "quản lý trao quyền cho nhân viên",
-      "type": "concept"
-    },
-    {
-      "source": "The Advantageous",
-      "target": "Lợi thế",
+      "target": "vòng lặp ngữ nghĩa",
       "type": "concept",
-      "note": "The primary topic of deliberative argument."
+      "note": "Rhetorical device where the last word of a clause begins the next clause."
     },
     {
-      "source": "The Commonplace",
-      "target": "Luận điểm chung",
+      "source": "The Federalist",
+      "target": "The Federalist",
+      "type": "organization"
+    },
+    {
+      "source": "Libertas",
+      "target": "Tự do",
+      "type": "concept"
+    },
+    {
+      "source": "The Reluctant Conclusion",
+      "target": "Kết Luận Miễn Cưỡng",
       "type": "concept",
-      "note": "The starting point of an argument, representing audience belief."
+      "note": "A title or phrase used in an argument context."
+    },
+    {
+      "source": "Dubitatio",
+      "target": "Dubitatio",
+      "type": "concept",
+      "note": "A rhetorical term related to doubt or hesitation."
+    },
+    {
+      "source": "Cooper Union",
+      "target": "Cooper Union",
+      "type": "organization"
+    },
+    {
+      "source": "Bushisms",
+      "target": "Bushisms",
+      "type": "concept",
+      "note": "Peculiar phrases or statements attributed to George W. Bush."
+    },
+    {
+      "source": "Blue-staters",
+      "target": "những người theo phe Xanh",
+      "type": "concept",
+      "note": "Refers to voters in states that tend to vote Democratic."
+    },
+    {
+      "source": "red-staters",
+      "target": "những người theo phe Đỏ",
+      "type": "concept",
+      "note": "Refers to voters in states that tend to vote Republican."
+    },
+    {
+      "source": "Quintilian",
+      "target": "Quintilian",
+      "type": "person"
+    },
+    {
+      "source": "Lincoln’s country-bumpkin image",
+      "target": "hình ảnh nông dân của Lincoln",
+      "type": "concept"
+    },
+    {
+      "source": "Quintilian’s dubious theory",
+      "target": "lý thuyết đáng ngờ của Quintilian",
+      "type": "concept"
+    },
+    {
+      "source": "pure Greek",
+      "target": "Hy Lạp thuần túy",
+      "type": "concept"
+    },
+    {
+      "source": "Aquinas Maneuver",
+      "target": "Thao Tác Aquinas",
+      "type": "concept"
+    },
+    {
+      "source": "Oratour",
+      "target": "Oratour",
+      "type": "concept",
+      "note": "Likely a stylized term for orator."
+    },
+    {
+      "source": "limbic system",
+      "target": "hệ thống limbic",
+      "type": "concept"
+    },
+    {
+      "source": "Stoics",
+      "target": "khắc kỷ",
+      "type": "concept"
+    },
+    {
+      "source": "arrhythmia",
+      "target": "loạn nhịp tim",
+      "type": "concept"
+    },
+    {
+      "source": "electrochemical storm",
+      "target": "cơn bão điện hóa",
+      "type": "concept"
+    },
+    {
+      "source": "Protagoras",
+      "target": "Protagoras",
+      "type": "person"
+    },
+    {
+      "source": "Ruthless People",
+      "target": "Ruthless People",
+      "type": "concept",
+      "note": "Title of a film."
+    },
+    {
+      "source": "small college",
+      "target": "trường đại học nhỏ",
+      "type": "concept"
+    },
+    {
+      "source": "peroration",
+      "target": "kết luận",
+      "type": "concept"
+    },
+    {
+      "source": "Bambi eyes",
+      "target": "đôi mắt nai Bambi",
+      "type": "concept",
+      "note": "Refers to large, innocent-looking eyes."
+    },
+    {
+      "source": "Yosemite Sam",
+      "target": "Yosemite Sam",
+      "type": "person"
+    },
+    {
+      "source": "win-one-for-the-Gipper",
+      "target": "chiến thắng vì Gipper",
+      "type": "concept",
+      "note": "A motivational phrase originating from a film."
+    },
+    {
+      "source": "snow bowl",
+      "target": "bát tuyết",
+      "type": "concept"
+    },
+    {
+      "source": "keeping up with the Joneses",
+      "target": "bắt kịp nhà Jones",
+      "type": "concept"
+    },
+    {
+      "source": "emulation",
+      "target": "bắt chước",
+      "type": "concept"
+    },
+    {
+      "source": "World Trade Center attack",
+      "target": "vụ tấn công Trung tâm Thương mại Thế giới",
+      "type": "concept"
+    },
+    {
+      "source": "laugh track",
+      "target": "tiếng cười dàn dựng",
+      "type": "concept"
+    },
+    {
+      "source": "unannounced emotion",
+      "target": "cảm xúc không báo trước",
+      "type": "concept"
+    },
+    {
+      "source": "Demosthenes",
+      "target": "Demosthenes",
+      "type": "person"
+    },
+    {
+      "source": "passive voice",
+      "target": "thể bị động",
+      "type": "concept"
+    },
+    {
+      "source": "intelligent design",
+      "target": "thiết kế thông minh",
+      "type": "concept"
+    },
+    {
+      "source": "Designer in Chief",
+      "target": "Thiết Kế Trưởng",
+      "type": "concept"
+    },
+    {
+      "source": "This Is Spinal Tap",
+      "target": "This Is Spinal Tap",
+      "type": "concept",
+      "note": "Title of a film."
+    },
+    {
+      "source": "Urbane humor",
+      "target": "hài hước tinh tế",
+      "type": "concept"
+    },
+    {
+      "source": "PECCAVI",
+      "target": "PECCAVI",
+      "type": "concept",
+      "note": "Latin for 'I have sinned.'"
+    },
+    {
+      "source": "eristicrats",
+      "target": "những người theo chủ nghĩa tranh cãi",
+      "type": "concept"
+    },
+    {
+      "source": "Wit",
+      "target": "Trí tuệ",
+      "type": "concept"
+    },
+    {
+      "source": "An Teach Ban",
+      "target": "An Teach Ban",
+      "type": "concept",
+      "note": "Possibly a place name or title."
+    },
+    {
+      "source": "Facetious humor",
+      "target": "hài hước bông đùa",
+      "type": "concept"
+    },
+    {
+      "source": "yuck scribes",
+      "target": "những người viết truyện cười",
+      "type": "concept"
+    },
+    {
+      "source": "Banter",
+      "target": "Tán gẫu",
+      "type": "concept"
+    },
+    {
+      "source": "game of snaps",
+      "target": "trò chơi giật móng tay",
+      "type": "concept",
+      "note": "Likely a specific game or activity."
+    },
+    {
+      "source": "rhetorical jujitsu",
+      "target": "nhu thuật hùng biện",
+      "type": "concept"
+    },
+    {
+      "source": "Winston Churchill",
+      "target": "Winston Churchill",
+      "type": "person"
+    },
+    {
+      "source": "Cold War joke",
+      "target": "truyện cười Chiến tranh Lạnh",
+      "type": "concept"
     },
     {
       "source": "unrequested fission surplus",
-      "target": "thặng dư phân hạch không được yêu cầu",
+      "target": "thặng dư phân hạch không mong muốn",
       "type": "concept",
-      "note": "Alternative to 'meltdown'"
-    },
-    {
-      "source": "persuasive strategy of definition",
-      "target": "chiến lược thuyết phục của định nghĩa",
-      "type": "concept",
-      "note": "Core rhetorical technique discussed"
+      "note": "Alternative phrasing for 'meltdown' in a nuclear context."
     },
     {
       "source": "stance",
-      "target": "lập trường",
+      "target": "thế đứng",
       "type": "concept",
-      "note": "Overall strategy for argumentation"
+      "note": "Rhetorical strategy for taking a position in an argument."
     },
     {
       "source": "status theory",
-      "target": "lý thuyết địa vị",
+      "target": "lý thuyết về thế",
       "type": "concept",
-      "note": "Technical name for 'stance'"
-    },
-    {
-      "source": "redefine the terms",
-      "target": "tái định nghĩa các thuật ngữ",
-      "type": "concept",
-      "note": "Key tactic within definition"
+      "note": "The technical term for 'stance' in rhetoric, derived from Latin 'status'."
     },
     {
       "source": "quality defense",
-      "target": "phòng thủ chất lượng",
+      "target": "phòng thủ về chất lượng",
       "type": "concept",
-      "note": "Argumentative fallback strategy"
+      "note": "Arguing that an offense is less important than it appears."
     },
     {
-      "source": "relevance",
-      "target": "sự liên quan",
+      "source": "redefinition",
+      "target": "định nghĩa lại",
       "type": "concept",
-      "note": "Final fallback strategy in status theory"
+      "note": "Changing the meaning or connotation of a term."
     },
     {
-      "source": "redefine the connotation",
-      "target": "tái định nghĩa ý nghĩa liên tưởng",
+      "source": "connotation",
+      "target": "hàm ý",
       "type": "concept",
-      "note": "Shifting emotional/associative meaning of a word"
+      "note": "The unconscious thoughts or feelings a term evokes."
     },
     {
-      "source": "labeling",
-      "target": "gán nhãn",
+      "source": "fending off labeling",
+      "target": "chống lại việc dán nhãn",
       "type": "concept",
-      "note": "Attaching a pejorative term to a person or concept"
+      "note": "Defending against the rhetorical practice of attaching a pejorative term."
     },
     {
       "source": "definition jujitsu",
       "target": "nhu thuật định nghĩa",
       "type": "concept",
-      "note": "Using an opponent's term to attack"
+      "note": "Accepting an opponent's term and using it to your advantage."
     },
     {
       "source": "definition judo",
       "target": "judo định nghĩa",
       "type": "concept",
-      "note": "Using contrasting terms to make opponents look bad"
+      "note": "Using contrasting terms to make opponents look bad."
     },
     {
       "source": "framing",
-      "target": "định khung",
+      "target": "đóng khung",
       "type": "concept",
-      "note": "Defining an entire issue"
+      "note": "Defining an issue in the broadest context, similar to defining an issue."
     },
     {
       "source": "commonplace words",
       "target": "từ ngữ phổ biến",
       "type": "concept",
-      "note": "Key words forming commonplaces"
+      "note": "Key words that form commonplaces and carry emotional weight."
     },
     {
       "source": "metastasis",
-      "target": "chuyển đổi",
+      "target": "chuyển thể",
       "type": "concept",
-      "note": "Technique of skipping over an awkward subject"
+      "note": "A rhetorical figure that skips over an awkward subject."
     },
     {
-      "source": "framing consultant",
-      "target": "cố vấn định khung",
-      "type": "person",
-      "note": "Professional specializing in issue definition"
+      "source": "periphrasis",
+      "target": "ngoại lệ",
+      "type": "concept",
+      "note": "Swapping a description for a name, also known as circumlocution."
+    },
+    {
+      "source": "definition judo",
+      "target": "judo định nghĩa",
+      "type": "concept",
+      "note": "Using contrasting terms that make opponents look bad."
+    },
+    {
+      "source": "framing",
+      "target": "đóng khung",
+      "type": "concept",
+      "note": "The process of defining an issue in a way that appeals to a broad audience."
+    },
+    {
+      "source": "bumper sticker phase",
+      "target": "giai đoạn khẩu hiệu",
+      "type": "concept",
+      "note": "The initial stage of an argument where broad, appealing commonplaces are used."
     },
     {
       "source": "culture of life",
-      "target": "văn hóa của sự sống",
+      "target": "văn hóa sự sống",
       "type": "concept",
-      "note": "Political slogan for pro-life movement"
+      "note": "A label used by the pro-life movement."
     },
     {
-      "source": "morning after pill",
-      "target": "thuốc tránh thai khẩn cấp",
+      "source": "anadiplosis",
+      "target": "lặp ý",
       "type": "concept",
-      "note": "Specific term related to reproductive rights debate"
-    },
-    {
-      "source": "term changing",
-      "target": "thay đổi thuật ngữ",
-      "type": "concept",
-      "note": "A specific labeling technique"
+      "note": "A rhetorical device where the last word of one clause becomes the first word of the next."
     }
   ]
 }

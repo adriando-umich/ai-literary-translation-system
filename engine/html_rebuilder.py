@@ -1,5 +1,4 @@
 # engine/html_rebuilder.py
-from bs4 import BeautifulSoup
 from utils.logger import log
 
 
@@ -18,25 +17,26 @@ def rebuild_html_blocks(html_nodes: list, translated_blocks: list[str]) -> None:
         )
 
     # --- REBUILD --- (Đã kéo khối for ra ngoài lề, ngang hàng với lệnh IF phía trên)
-    for idx, (tag, vi_text) in enumerate(
+    for idx, (en_tag, vi_text) in enumerate(
             zip(html_nodes, translated_blocks), start=1
     ):
         if not vi_text or not vi_text.strip():
-            raise RuntimeError(f"HTML_REBUILDER ERROR: empty VI block at index {idx}")
+            raise RuntimeError(
+                f"HTML_REBUILDER ERROR: empty VI block at index {idx}"
+            )
 
-        en_text = tag.get_text(strip=True)
+        soup = en_tag.soup
+        if soup is None:
+            raise RuntimeError(
+                "HTML_REBUILDER ERROR: en_tag is detached from soup"
+            )
 
-        # CHỈNH SỬA TẠI ĐÂY:
-        tag.name = "div"
-        tag.clear()
+        vi_div = soup.new_tag("div")
+        vi_div["class"] = "bi-vi"
+        vi_div.string = vi_text
 
-        # Cấu trúc mới
-        html_fragment = f"""
-<div class="bi-en">{en_text}</div>
-<div class="bi-vi">{vi_text}</div>
-"""
-        fragment = BeautifulSoup(html_fragment, "html.parser")
-        tag.append(fragment)
-        # (Đã xóa bỏ đoạn code lặp dư thừa ở đây)
+        # ZERO-TOUCH: chỉ insert, KHÔNG đụng EN
+        en_tag.insert_after(vi_div)
+
 
     log("HTML_REBUILDER: done")

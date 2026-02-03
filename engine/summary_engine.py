@@ -75,6 +75,11 @@ UPDATE GUIDELINES
 - OPEN_QUESTIONS:
   - Remove questions clearly answered
   - Add new unresolved questions
+  
+CRITICAL FORMAT RULE (ABSOLUTE):
+- You MUST output ALL sections below, even if there are NO changes.
+- If a section has no updates, REPEAT the content from CURRENT SUMMARY verbatim.
+- NEVER omit any section header.
 
 OUTPUT FORMAT (STRICT, TEXT ONLY, SAME STRUCTURE):
 
