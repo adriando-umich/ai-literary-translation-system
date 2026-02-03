@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 .env
 *.epub
+# Runtime narrative state
+state/*.json
+
+# Optional: logs / outputs
+logs/
+output/
