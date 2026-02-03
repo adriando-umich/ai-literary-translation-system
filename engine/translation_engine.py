@@ -12,6 +12,7 @@ from utils.logger import log
 from openai import OpenAI
 import time
 import json
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
 
 # =========================================================
@@ -84,11 +85,20 @@ class TranslationEngine:
             try:
                 log(f"CALL API attempt {attempt} | model={model}")
 
-                # SỬA LẠI ĐOẠN NÀY CHO ĐÚNG CHUẨN OPENAI SDK
+                # SỬA LẠI: Thêm cấu hình tắt bộ lọc qua extra_body
                 resp = self.client.chat.completions.create(
                     model=model,
-                    messages=[{"role": "user", "content": prompt}],  # Cấu trúc bắt buộc
+                    messages=[{"role": "user", "content": prompt}],
                     timeout=self.timeout_sec,
+                    # Đoạn quan trọng nhất để bypass bộ lọc nội dung của Google:
+                    extra_body={
+                        "safety_settings": [
+                            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+                        ]
+                    }
                 )
 
                 # THÊM ĐOẠN DEBUG NÀY:
