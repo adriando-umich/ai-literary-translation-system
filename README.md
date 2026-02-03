@@ -1,4 +1,4 @@
-AI LITERARY TRANSLATION SYSTEM (EN ↔ VI)
+AI LITERARY TRANSLATION SYSTEM (EN -> VI)
 ======================================
 
 WHAT IS THIS?
