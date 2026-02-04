@@ -11,14 +11,22 @@ import os
 import time
 import json
 import re
-import random  # <--- THÊM: Để tính thời gian chờ ngẫu nhiên (Jitter)
+import random
 from typing import Optional, Dict, List
 from utils.logger import log
 
 # === THAY ĐỔI: Dùng thư viện Google GenAI gốc để chỉnh Safety Settings ===
 from google import genai
 from google.genai import types
-from google.genai import errors  # <--- THÊM: Để bắt lỗi API chính xác
+from google.genai import errors
+
+# =========================================================
+# CONSTANTS FOR DYNAMIC CHUNKING
+# =========================================================
+EXPANSION_RATIO = 1.8  # Tiếng Việt dài hơn tiếng Anh ~1.8 lần
+SAFETY_BUFFER = 0.9  # Chỉ dùng 90% dung lượng Output cho phép
+HARD_LIMIT_BLOCKS = 40  # Không bao giờ gửi quá 40 đoạn/lần
+CHARS_PER_TOKEN = 3.5  # Ước lượng bảo thủ (trung bình là 4)
 
 
 # =========================================================
@@ -65,15 +73,12 @@ class TranslationEngine:
         Lý do: Để tắt bộ lọc nội dung (BLOCK_NONE) tránh lỗi PROHIBITED_CONTENT
         """
         # 1. Cấu hình Model (Logic Fallback)
-        # Model chính ưu tiên dùng (Rẻ/Nhanh)
         self.model_primary = "gemini-2.5-flash-lite"
-        # Model fallback nếu model chính lỗi (Ổn định)
         self.model_fallback = "gemini-2.0-flash"
-
-        # Cập nhật Glossary cũng ưu tiên Lite
         self.model_glossary = "gemini-2.5-flash-lite"
+
         self.max_retries = 5
-        self.timeout_sec = 120  # Timeout xử lý logic retry
+        self.timeout_sec = 120
 
         # 2. Lấy API Key
         api_key = os.getenv("GOOGLE_API_KEY")
@@ -82,6 +87,98 @@ class TranslationEngine:
 
         # 3. Tạo Client Google (Native)
         self.client = genai.Client(api_key=api_key)
+
+        # 4. Cache limit cho từng model (Tránh gọi API get_model liên tục)
+        self._limit_cache = {}
+
+    # =========================================================
+    # NEW: DYNAMIC CHUNKING & TOKEN LOGIC
+    # =========================================================
+    def _get_model_limit(self, model_name: str) -> int:
+        """Lấy Output Token Limit của model (Lazy load + Cache)"""
+        if model_name in self._limit_cache:
+            return self._limit_cache[model_name]
+
+        try:
+            # SDK mới: client.models.get(model='models/...')
+            full_name = model_name if "models/" in model_name else f"models/{model_name}"
+            model_info = self.client.models.get(model=full_name)
+
+            # Lấy output limit
+            limit = model_info.output_token_limit
+            self._limit_cache[model_name] = limit
+            log(f"ℹ️ Model Config [{model_name}]: Output Limit = {limit}")
+            return limit
+        except Exception as e:
+            log(f"⚠️ Không lấy được limit model {model_name}: {e}. Dùng default 8192.")
+            # Fallback an toàn nếu API lỗi
+            default_limit = 8192
+            self._limit_cache[model_name] = default_limit
+            return default_limit
+
+    def calculate_optimal_chunk_size(
+            self,
+            remaining_blocks: list[str],
+            static_context_len: int
+    ) -> int:
+        """
+        Tính số block tối đa gửi đi được.
+        Logic: Ước lượng cục bộ -> Nếu > 80% ngưỡng -> Gọi API đếm thật.
+        """
+        # 1. Lấy limit của model PRIMARY
+        raw_limit = self._get_model_limit(self.model_primary)
+        safe_limit = int(raw_limit * SAFETY_BUFFER)
+
+        # Input nền (Prompt hệ thống + Summary...)
+        base_input_est = int(static_context_len / CHARS_PER_TOKEN)
+
+        current_est_tokens = 0
+        blocks_to_take = 0
+        accumulated_text = ""
+
+        for block in remaining_blocks:
+            # A. Tính nhẩm (Local Estimate)
+            block_len = len(block)
+            block_est = int(block_len / CHARS_PER_TOKEN)
+
+            # Dự phóng Output Token = (Input đã có + Block mới) * Hệ số nở
+            projected_output = (current_est_tokens + block_est) * EXPANSION_RATIO
+
+            # B. Checkpoint: Nếu ước lượng vượt quá 80% giới hạn -> Check kỹ bằng API
+            if projected_output > (safe_limit * 0.8):
+                try:
+                    # Gọi API count_tokens (Chính xác tuyệt đối)
+                    test_content = accumulated_text + "\n" + block
+
+                    # SDK mới: client.models.count_tokens
+                    resp = self.client.models.count_tokens(
+                        model=self.model_primary,
+                        contents=test_content
+                    )
+                    real_input = resp.total_tokens
+
+                    # Tính output dự kiến dựa trên số thật
+                    real_projected_output = real_input * EXPANSION_RATIO
+
+                    if real_projected_output > safe_limit:
+                        log(f"🛑 CUT CHUNK (API check): Output {real_projected_output:.0f} > {safe_limit}")
+                        break
+                except Exception as e:
+                    # Nếu API lỗi, tin vào ước lượng và dừng cho an toàn
+                    log(f"⚠️ Count tokens error: {e}")
+                    if projected_output > safe_limit:
+                        break
+
+            # C. Hard Limit (Số block tối đa để AI không bị loạn)
+            if blocks_to_take >= HARD_LIMIT_BLOCKS:
+                break
+
+            # D. Chấp nhận block
+            current_est_tokens += block_est
+            accumulated_text += "\n" + block
+            blocks_to_take += 1
+
+        return max(1, blocks_to_take)
 
     # =========================================================
     # LOW-LEVEL API CALL (REPLACED OPENAI WITH GEMINI NATIVE)

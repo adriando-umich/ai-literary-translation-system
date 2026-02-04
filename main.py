@@ -25,16 +25,14 @@ import ebooklib
 from bs4 import BeautifulSoup
 from typing import List
 import json
+import asyncio  # Import asyncio rõ ràng
 
 INPUT_EPUB = "input.epub"
 OUTPUT_EPUB = "output_bilingual.epub"
 
-MAX_BLOCKS_PER_CHUNK = 30
-INTRA_CONTEXT_CHUNKS = 5
-
-
-def split_into_chunks(blocks: List[str], max_blocks: int) -> List[List[str]]:
-    return [blocks[i:i + max_blocks] for i in range(0, len(blocks), max_blocks)]
+# Lưu ý: MAX_BLOCKS_PER_CHUNK cũ không còn dùng để chia chunk,
+# nhưng giữ lại hằng số INTRA_CONTEXT_BLOCKS để lấy ngữ cảnh.
+INTRA_CONTEXT_BLOCKS = 200
 
 
 def build_glossary_rules(*, base_glossary: dict, delta_terms: list) -> str:
@@ -48,10 +46,10 @@ def build_glossary_rules(*, base_glossary: dict, delta_terms: list) -> str:
         return ""
 
     return (
-        "GLOSSARY RULES (HARD CONSTRAINT):\n"
-        "- Every source term MUST be translated EXACTLY as specified.\n"
-        "- Do NOT paraphrase or localize glossary terms.\n\n"
-        "Glossary:\n" + "\n".join(entries)
+            "GLOSSARY RULES (HARD CONSTRAINT):\n"
+            "- Every source term MUST be translated EXACTLY as specified.\n"
+            "- Do NOT paraphrase or localize glossary terms.\n\n"
+            "Glossary:\n" + "\n".join(entries)
     )
 
 
@@ -108,7 +106,7 @@ async def run():
 
         # ---------- GLOSSARY DELTA ----------
         if is_narrative:
-            # 1. Gọi API (Lưu ý: Nếu file translation_engine.py dùng 'async def' thì thêm 'await' vào đầu dòng dưới)
+            # 1. Gọi API
             ai_text = engine._call_openai(
                 prompt=glossary_engine.build_delta_prompt(
                     current_glossary=glossary,
@@ -117,21 +115,18 @@ async def run():
                 model=engine.model_glossary,
             )
 
-            # 2. Parse kết quả (Engine mới sẽ tự cứu dữ liệu nếu lỗi)
+            # 2. Parse kết quả
             raw_terms = glossary_engine.parse_delta(ai_text)
 
-            # 3. KHỬ TRÙNG HỆ THỐNG (Global Deduplication) - QUAN TRỌNG
-            # Tạo danh sách các từ đã có trong từ điển tổng (dùng set để tra cứu nhanh)
+            # 3. KHỬ TRÙNG HỆ THỐNG
             existing_sources = {e["source"].lower() for e in glossary.get("entries", [])}
-
-            # Chỉ lấy những từ mà source chưa từng xuất hiện
             unique_terms = []
             for term in raw_terms:
                 if term["source"].lower() not in existing_sources:
                     unique_terms.append(term)
 
             if len(raw_terms) > len(unique_terms):
-                log(f"⚠️ GLOSSARY: Đã lọc bỏ {len(raw_terms) - len(unique_terms)} từ trùng lặp với các chương trước.")
+                log(f"⚠️ GLOSSARY: Đã lọc bỏ {len(raw_terms) - len(unique_terms)} từ trùng lặp.")
 
             # 4. Nạp vào state
             in_state.add_glossary_terms(unique_terms)
@@ -143,30 +138,61 @@ async def run():
             ) if is_narrative else ""
         )
 
-        # ---------- TRANSLATION ----------
+        # ---------- TRANSLATION (DYNAMIC CHUNKING UPDATE) ----------
         vi_blocks: List[str] = []
-        chunks = split_into_chunks(en_blocks, MAX_BLOCKS_PER_CHUNK)
-        total_chunks = len(chunks)  # 👈 BẮT BUỘC
 
-        # Tạo nhanh chuỗi quy tắc đại từ từ list characters đang có
-        char_rules = "\n".join([f"- {c['name']}: {c['vi_pronoun']['default']}" for c in characters])
+        # 1. Chuẩn bị Context String để tính token nền (Static Context)
+        # Tạo chuỗi rules đại từ
+        char_rules_str = "\n".join([f"- {c['name']}: {c['vi_pronoun']['default']}" for c in characters])
+        summary_json_str = json.dumps(summary, ensure_ascii=False)
+        chars_json_str = json.dumps(characters, ensure_ascii=False) if characters else ""
 
-        for i, chunk in enumerate(chunks, start=1):  # 👈 BẮT BUỘC
-            vi_chunk = engine.translate_chunk(
-                en_blocks=chunk,
-                glossary_rules=glossary_rules,
-                # Nhét char_rules vào đầu summary để AI dịch ưu tiên đọc trước
-                summary=f"CHARACTER PRONOUNS:\n{char_rules}\n\nSTORY SUMMARY:\n{json.dumps(summary, ensure_ascii=False)}",
-                characters=json.dumps(characters, ensure_ascii=False) if characters else "",
-                intra_chapter_context=in_state.get_last_chunks(
-                    INTRA_CONTEXT_CHUNKS * MAX_BLOCKS_PER_CHUNK
-                ),
-                is_narrative=is_narrative,
-                chunk_index=i,  # ✅ 1-based
-                total_chunks=total_chunks,  # ✅
+        # Ước lượng tổng độ dài của phần Prompt cố định (System prompt + Glossary + Summary...)
+        # Engine sẽ dùng con số này để biết "còn bao nhiêu chỗ trống" cho text cần dịch.
+        static_context_str = (
+                glossary_rules +
+                f"\n{char_rules_str}\n" +
+                summary_json_str +
+                chars_json_str +
+                "You are a professional literary translator..."  # System Prompt Buffer
+        )
+        static_len = len(static_context_str)
+
+        # 2. Vòng lặp cắt chunk động (Dynamic Loop)
+        current_idx = 0
+        chunk_counter = 1
+        total_blocks_count = len(en_blocks)
+
+        while current_idx < total_blocks_count:
+            remaining_blocks = en_blocks[current_idx:]
+
+            # -> GỌI ENGINE: Tính toán xem nên lấy bao nhiêu block dựa trên token limit
+            num_blocks_to_take = engine.calculate_optimal_chunk_size(
+                remaining_blocks=remaining_blocks,
+                static_context_len=static_len
             )
+
+            current_chunk = remaining_blocks[:num_blocks_to_take]
+
+            # GỌI ENGINE: Dịch chunk
+            vi_chunk = engine.translate_chunk(
+                en_blocks=current_chunk,
+                glossary_rules=glossary_rules,
+                # Ghép char_rules vào summary để AI chú ý hơn
+                summary=f"CHARACTER PRONOUNS:\n{char_rules_str}\n\nSTORY SUMMARY:\n{summary_json_str}",
+                characters=chars_json_str,
+                intra_chapter_context=in_state.get_last_chunks(INTRA_CONTEXT_BLOCKS),
+                is_narrative=is_narrative,
+                chunk_index=chunk_counter,
+                total_chunks=999,  # Dynamic chunking nên không biết chính xác tổng số chunk, để 999
+            )
+
             vi_blocks.extend(vi_chunk)
             in_state.add_translated_chunk(vi_chunk)
+
+            # Cập nhật index
+            current_idx += num_blocks_to_take
+            chunk_counter += 1
 
         if len(vi_blocks) != len(en_blocks):
             raise RuntimeError("BLOCK COUNT MISMATCH")
@@ -184,10 +210,7 @@ async def run():
         if is_narrative:
             log(f"EDITOR START chapter {idx}")
 
-            # Merge từ mới của chương này vào bản copy của glossary tổng
             full_glossary_for_editor = glossary.copy()
-
-            # Dùng .get() để an toàn hơn, tránh lỗi KeyError
             if in_state.glossary_delta:
                 for term in in_state.glossary_delta:
                     src = term.get('source')
@@ -198,7 +221,7 @@ async def run():
             vi_blocks = await editor_engine.edit_chapter(
                 original_blocks=en_blocks,
                 draft_vi_blocks=vi_blocks,
-                glossary=full_glossary_for_editor  # Nên truyền glossary mới của chương này hoặc glossary tổng
+                glossary=full_glossary_for_editor
             )
             log(f"EDITOR DONE chapter {idx}")
 
@@ -209,18 +232,15 @@ async def run():
         # ---------- COMMIT ----------
         if is_narrative:
             state_manager.commit_chapter(in_state)
-
-            # Cập nhật lại biến local cho vòng lặp sau
             glossary = state_manager.load_glossary()
             summary = state_manager.load_summary()
             characters = state_manager.load_characters()
 
         mark_done(idx)
 
-    write_epub(OUTPUT_EPUB, book)  # ĐƯỜNG DẪN TRƯỚC, BOOK SAU  # Đưa đường dẫn file lên trước, đối tượng book ra sau
+    write_epub(OUTPUT_EPUB, book)
     log("PIPELINE DONE")
 
 
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(run())
