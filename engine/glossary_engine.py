@@ -3,6 +3,7 @@
 from utils.json_utils import extract_json # Đảm bảo đã import hàm này
 from utils.logger import log
 import json
+import re
 
 
 GLOSSARY_DELTA_PROMPT = """
@@ -21,7 +22,7 @@ VOICE:
 
 MISSION:
 - Analyze a NARRATIVE CHAPTER to identify NEW glossary terms
-- Ensure long-term translation consistency
+- Dịch sang tiếng ViệtEnsure long-term translation consistency
 - Append NEW entries only to an existing glossary
 - Avoid polluting the glossary with noise
 
@@ -32,8 +33,10 @@ YOU ARE GIVEN:
 ### EXTRACTION RULES:
 1. **Include ONLY**:
    - Proper Nouns: Character names, specific locations, and organizations.
-   - Fictional Technology & Sci-Fi concepts (e.g., "Mechanical Hound", "Seashells").
+   - Nếu phát hiện mình đang lặp lại cùng một nội dung, hãy DỪNG LẠI ngay lập tức và đóng mảng JSON bằng dấu `]`.
+   - Fictional Technology & Sci-Fi concepts
    - Symbolic or world-specific objects unique to this book's setting.
+   - Ưu tiên chất lượng hơn số lượng.
 
 2. **Strictly EXCLUDE**:
    - Common nouns (e.g., "man", "house", "table", "family", "wife", "police", "street").
@@ -120,30 +123,57 @@ class GlossaryEngine:
             + json.dumps(payload, ensure_ascii=False, indent=2)
         )
 
+    def _rescue_incomplete_json(self, text: str) -> list:
+        """
+        Hàm cứu hộ: Tìm các object { "source":... } hợp lệ trong chuỗi bị cắt ngang.
+        """
+        # Tìm các khối {...} có chứa source và target
+        pattern = r'\{[^{}]*"source"[^{}]*"target"[^{}]*\}'
+        matches = re.findall(pattern, text, re.DOTALL)
+
+        rescued = []
+        for m in matches:
+            try:
+                # Làm sạch ký tự lạ và parse thử từng object
+                clean_obj = re.sub(r'[\x00-\x1F\x7F]', '', m)
+                rescued.append(json.loads(clean_obj))
+            except:
+                continue
+        return rescued
+
     def parse_delta(self, ai_text: str) -> list[dict]:
         log("GLOSSARY_ENGINE: parse delta")
 
-        try:
-            # 1. Làm sạch text bằng cách loại bỏ dấu ```json và ```
-            clean_text = extract_json(ai_text)
+        # 1. Làm sạch text
+        clean_text = extract_json(ai_text)
+        data = []
 
-            # 2. Sau đó mới nạp vào json.loads
+        # 2. Thử parse bình thường
+        try:
             data = json.loads(clean_text)
         except Exception:
-            raise RuntimeError(
-                "GLOSSARY DELTA PARSE ERROR — invalid JSON:\n" + ai_text
-            )
+            # Nếu JSON lỗi, thực hiện cứu hộ
+            log("⚠️ JSON dở dang (do lặp từ hoặc tràn window). Đang cứu dữ liệu...")
+            data = self._rescue_incomplete_json(clean_text)
 
+            if not data:
+                log("❌ Không thể cứu được glossary từ AI output này.")
+                return []
+
+        # 3. Kiểm tra định dạng (Dòng này phải thẳng hàng với 'clean_text' ở trên)
         if not isinstance(data, list):
-            raise RuntimeError(
-                "GLOSSARY DELTA ERROR — expected JSON array"
-            )
+            log("⚠️ Expected JSON array nhưng nhận được định dạng khác. Trả về rỗng.")
+            return []
 
+        # 4. Lọc các entry hợp lệ và chống trùng lặp tại chỗ
+        final_data = []
+        seen = set()
         for e in data:
-            if "source" not in e or "target" not in e:
-                raise RuntimeError(
-                    f"GLOSSARY DELTA INVALID ENTRY: {e}"
-                )
+            if isinstance(e, dict) and "source" in e and "target" in e:
+                source_val = e["source"].strip()
+                if source_val and source_val not in seen:
+                    final_data.append(e)
+                    seen.add(source_val)
 
-        log(f"GLOSSARY_ENGINE: new terms={len(data)}")
-        return data
+        log(f"GLOSSARY_ENGINE: rescued/parsed terms={len(final_data)}")
+        return final_data

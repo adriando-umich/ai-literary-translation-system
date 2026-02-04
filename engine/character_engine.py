@@ -1,7 +1,16 @@
 # engine/character_engine.py
+# Responsibility:
+# - Track Characters & Pronouns
+# - Uses Google GenAI Native SDK (to bypass safety filters)
+
 from typing import List, Dict
 from utils.logger import log
 import time
+import os
+
+# === THAY ĐỔI: Dùng thư viện Google GenAI gốc ===
+from google import genai
+from google.genai import types
 
 # =========================================================
 # RETRY CONFIG (UNIFIED TEMPLATE)
@@ -10,7 +19,7 @@ CHARACTER_MAX_RETRIES = 4
 CHARACTER_BASE_DELAY = 2.0  # seconds (linear backoff)
 
 # =========================================================
-# PROMPTS (Tích hợp cột thứ 4: vi_pronoun)
+# PROMPTS (GIỮ NGUYÊN 100%)
 # =========================================================
 
 COMMON_RULES = """
@@ -49,8 +58,19 @@ CHARACTERS:
 # =========================================================
 
 class CharacterEngine:
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, client=None):
+        """
+        Khởi tạo Client Google Native nội bộ để kiểm soát Safety Settings.
+        """
+        self.model = "gemini-2.5-flash-lite"
+
+        # Tự lấy Key từ môi trường để đảm bảo tương thích
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            # Fallback nếu truyền client từ ngoài vào (ít khuyến khích hơn)
+            self.client = client
+        else:
+            self.client = genai.Client(api_key=api_key)
 
     def init_characters(self, chapter_text: str) -> List[Dict]:
         log("CHARACTER_ENGINE: INIT (First Narrative + Pronoun Inference)")
@@ -91,27 +111,47 @@ class CharacterEngine:
 
         return final
 
+    # =====================================================
+    # LLM CALL (ĐÃ SỬA SANG GOOGLE GENAI NATIVE)
+    # =====================================================
     def _call_llm(self, *, system_prompt: str, user_prompt: str) -> str:
+
+        # Cấu hình tắt bộ lọc (BLOCK_NONE) để tránh lỗi với nhân vật phản diện/bạo lực
+        safety_settings = [
+            types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+        ]
+
+        generate_config = types.GenerateContentConfig(
+            safety_settings=safety_settings,
+            temperature=0.1,  # Giữ thấp để output ổn định
+        )
+
+        # Google API thích nhận prompt gộp
+        full_prompt = f"{system_prompt}\n\nDATA:\n{user_prompt}"
+
         last_error = None
 
         for attempt in range(1, CHARACTER_MAX_RETRIES + 1):
             try:
                 log(f"CHARACTER_ENGINE: API call attempt {attempt}")
 
-                resp = self.client.chat.completions.create(
-                    model="gemini-2.5-flash-lite",
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
-                    temperature=0.1,
+                # Gọi API bằng thư viện mới
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=full_prompt,
+                    config=generate_config
                 )
 
-                text = resp.choices[0].message.content.strip()
-                if not text:
-                    raise RuntimeError("Empty LLM response")
+                if not response.text:
+                    reason = "Unknown"
+                    if response.candidates:
+                        reason = response.candidates[0].finish_reason
+                    raise RuntimeError(f"Empty LLM response. Reason: {reason}")
 
-                return text
+                return response.text.strip()
 
             except Exception as e:
                 last_error = e
@@ -126,8 +166,22 @@ class CharacterEngine:
 
     def _parse_character_text(self, text: str) -> List[Dict]:
         lines = [l.strip() for l in text.splitlines() if l.strip()]
-        if not lines or "CHARACTERS:" not in lines[0]:
-            raise RuntimeError("CHARACTER PARSE ERROR: missing header")
+
+        # Tìm dòng chứa Header để bắt đầu parse (tránh lỗi nếu AI nói nhảm ở đầu)
+        start_idx = 0
+        header_found = False
+        for i, line in enumerate(lines):
+            if "CHARACTERS" in line:
+                start_idx = i
+                header_found = True
+                break
+
+        if not header_found:
+            # Nếu quá nghiêm ngặt có thể raise error, hoặc thử parse luôn
+            raise RuntimeError("CHARACTER PARSE ERROR: missing header 'CHARACTERS:'")
+
+        # Cắt bỏ phần rác ở trên header
+        lines = lines[start_idx:]
 
         characters = []
         for line in lines:

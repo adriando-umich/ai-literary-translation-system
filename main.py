@@ -29,8 +29,8 @@ import json
 INPUT_EPUB = "input.epub"
 OUTPUT_EPUB = "output_bilingual.epub"
 
-MAX_BLOCKS_PER_CHUNK = 8
-INTRA_CONTEXT_CHUNKS = 2
+MAX_BLOCKS_PER_CHUNK = 30
+INTRA_CONTEXT_CHUNKS = 5
 
 
 def split_into_chunks(blocks: List[str], max_blocks: int) -> List[List[str]]:
@@ -108,6 +108,7 @@ async def run():
 
         # ---------- GLOSSARY DELTA ----------
         if is_narrative:
+            # 1. Gọi API (Lưu ý: Nếu file translation_engine.py dùng 'async def' thì thêm 'await' vào đầu dòng dưới)
             ai_text = engine._call_openai(
                 prompt=glossary_engine.build_delta_prompt(
                     current_glossary=glossary,
@@ -115,9 +116,25 @@ async def run():
                 ),
                 model=engine.model_glossary,
             )
-            in_state.add_glossary_terms(
-                glossary_engine.parse_delta(ai_text)
-            )
+
+            # 2. Parse kết quả (Engine mới sẽ tự cứu dữ liệu nếu lỗi)
+            raw_terms = glossary_engine.parse_delta(ai_text)
+
+            # 3. KHỬ TRÙNG HỆ THỐNG (Global Deduplication) - QUAN TRỌNG
+            # Tạo danh sách các từ đã có trong từ điển tổng (dùng set để tra cứu nhanh)
+            existing_sources = {e["source"].lower() for e in glossary.get("entries", [])}
+
+            # Chỉ lấy những từ mà source chưa từng xuất hiện
+            unique_terms = []
+            for term in raw_terms:
+                if term["source"].lower() not in existing_sources:
+                    unique_terms.append(term)
+
+            if len(raw_terms) > len(unique_terms):
+                log(f"⚠️ GLOSSARY: Đã lọc bỏ {len(raw_terms) - len(unique_terms)} từ trùng lặp với các chương trước.")
+
+            # 4. Nạp vào state
+            in_state.add_glossary_terms(unique_terms)
 
         glossary_rules = (
             build_glossary_rules(
@@ -169,9 +186,14 @@ async def run():
 
             # Merge từ mới của chương này vào bản copy của glossary tổng
             full_glossary_for_editor = glossary.copy()
-            for term in in_state.glossary_delta:
-                # Giả sử cấu trúc delta là [{'source': 'A', 'target': 'B'}, ...]
-                full_glossary_for_editor[term['source']] = term['target']
+
+            # Dùng .get() để an toàn hơn, tránh lỗi KeyError
+            if in_state.glossary_delta:
+                for term in in_state.glossary_delta:
+                    src = term.get('source')
+                    tgt = term.get('target')
+                    if src and tgt:
+                        full_glossary_for_editor[src] = tgt
 
             vi_blocks = await editor_engine.edit_chapter(
                 original_blocks=en_blocks,

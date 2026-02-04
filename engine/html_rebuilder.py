@@ -16,7 +16,7 @@ def rebuild_html_blocks(html_nodes: list, translated_blocks: list[str]) -> None:
             f"{len(html_nodes)} nodes vs {len(translated_blocks)} blocks"
         )
 
-    # --- REBUILD --- (Đã kéo khối for ra ngoài lề, ngang hàng với lệnh IF phía trên)
+    # --- REBUILD ---
     for idx, (en_tag, vi_text) in enumerate(
             zip(html_nodes, translated_blocks), start=1
     ):
@@ -25,18 +25,29 @@ def rebuild_html_blocks(html_nodes: list, translated_blocks: list[str]) -> None:
                 f"HTML_REBUILDER ERROR: empty VI block at index {idx}"
             )
 
-        soup = en_tag.soup
-        if soup is None:
+        # --- FIX QUAN TRỌNG: TÌM ROOT SOUP ---
+        # Thay vì dùng en_tag.soup (có thể bị None), ta leo ngược lên cây DOM
+        soup_root = en_tag
+        while soup_root.parent is not None:
+            soup_root = soup_root.parent
+
+        # Kiểm tra xem cái gốc tìm được có chức năng tạo thẻ không
+        if not hasattr(soup_root, 'new_tag'):
             raise RuntimeError(
-                "HTML_REBUILDER ERROR: en_tag is detached from soup"
+                f"HTML_REBUILDER ERROR: en_tag at index {idx} is detached from Soup tree."
             )
 
-        vi_div = soup.new_tag("div")
+        # Tạo thẻ div tiếng Việt
+        vi_div = soup_root.new_tag("div")
         vi_div["class"] = "bi-vi"
         vi_div.string = vi_text
 
         # ZERO-TOUCH: chỉ insert, KHÔNG đụng EN
-        en_tag.insert_after(vi_div)
+        if en_tag.parent is None:
+            raise RuntimeError(
+                f"HTML_REBUILDER ERROR: en_tag at index {idx} has no parent (cannot insert)."
+            )
 
+        en_tag.insert_after(vi_div)
 
     log("HTML_REBUILDER: done")

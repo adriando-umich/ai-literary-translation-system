@@ -2,13 +2,19 @@
 # Responsible for STORY SUMMARY memory (init + update)
 # Chapter-level, deterministic, TEXT → PARSE → JSON
 # Python 3.9 compatible
+# Updated to use Google GenAI Native SDK
 
-from utils.logger import log
+import os
+import time
 from typing import Dict, List
+from utils.logger import log
 
+# === THAY ĐỔI: Dùng thư viện Google GenAI gốc ===
+from google import genai
+from google.genai import types
 
 # =========================================================
-# PROMPTS (TEXT-ONLY, NO JSON)
+# PROMPTS (TEXT-ONLY, NO JSON) - GIỮ NGUYÊN 100%
 # =========================================================
 
 INIT_SUMMARY_PROMPT = """
@@ -47,7 +53,6 @@ OPEN_QUESTIONS:
 - question
 """
 
-
 UPDATE_SUMMARY_PROMPT = """
 You are updating an EXISTING STORY SUMMARY.
 
@@ -75,7 +80,7 @@ UPDATE GUIDELINES
 - OPEN_QUESTIONS:
   - Remove questions clearly answered
   - Add new unresolved questions
-  
+
 CRITICAL FORMAT RULE (ABSOLUTE):
 - You MUST output ALL sections below, even if there are NO changes.
 - If a section has no updates, REPEAT the content from CURRENT SUMMARY verbatim.
@@ -105,8 +110,22 @@ OPEN_QUESTIONS:
 # =========================================================
 
 class SummaryEngine:
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, client=None):
+        """
+        Modified init:
+        - client arg is kept for compatibility with main.py calls,
+          BUT we will prefer creating our own Google GenAI client internally
+          to ensure we can set BLOCK_NONE safety settings.
+        """
+        self.model = "gemini-2.5-flash-lite"  # hoặc model bạn muốn dùng
+
+        # Tự lấy Key và tạo Client Google Native để kiểm soát Safety Settings
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            # Fallback nếu main truyền client vào (dù ít an toàn hơn về mặt type check)
+            self.client = client
+        else:
+            self.client = genai.Client(api_key=api_key)
 
     # -----------------------------------------------------
     # INIT — FIRST NARRATIVE CHAPTER
@@ -125,9 +144,9 @@ class SummaryEngine:
     # UPDATE — SUBSEQUENT NARRATIVE CHAPTERS
     # -----------------------------------------------------
     def update_summary(
-        self,
-        current_summary: Dict,
-        chapter_text: str,
+            self,
+            current_summary: Dict,
+            chapter_text: str,
     ) -> Dict:
         log("SUMMARY_ENGINE: UPDATE")
 
@@ -148,26 +167,55 @@ class SummaryEngine:
         return self._parse_summary_text(text)
 
     # =====================================================
-    # LLM CALL (TEXT ONLY)
+    # LLM CALL (UPDATED FOR GOOGLE GENAI NATIVE)
     # =====================================================
     def _call_llm(self, *, system_prompt: str, user_prompt: str) -> str:
-        resp = self.client.chat.completions.create(
-            model="gemini-2.5-flash",  # <--- SỬA THÀNH ĐÚNG MODEL BẠN ĐANG DÙNG
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            temperature=0.2,
+
+        # Cấu hình tắt bộ lọc (BLOCK_NONE) để tránh lỗi 503/400 khi nội dung nhạy cảm
+        safety_settings = [
+            types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
+            types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+        ]
+
+        generate_config = types.GenerateContentConfig(
+            safety_settings=safety_settings,
+            temperature=0.2,  # Giữ thấp như cũ
         )
 
-        text = resp.choices[0].message.content.strip()
-        if not text:
-            raise RuntimeError("SUMMARY_ENGINE: empty AI response")
+        # Kết hợp System Prompt và User Prompt vì Google API ưu tiên content liền mạch
+        full_prompt = f"{system_prompt}\n\nUSER INPUT:\n{user_prompt}"
 
-        return text
+        # Logic Retry
+        max_retries = 3
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=full_prompt,
+                    config=generate_config
+                )
+
+                if not response.text:
+                    reason = "Unknown"
+                    if response.candidates:
+                        reason = response.candidates[0].finish_reason
+                    print(f"--- SUMMARY ERROR: Empty response. Reason: {reason} ---")
+                    raise RuntimeError(f"SUMMARY_ENGINE: empty AI response. Reason: {reason}")
+
+                return response.text.strip()
+
+            except Exception as e:
+                log(f"SUMMARY API ERROR (Attempt {attempt}): {e}")
+                if attempt == max_retries:
+                    raise
+                time.sleep(2 * attempt)
+
+        raise RuntimeError("SUMMARY_ENGINE: Failed after retries")
 
     # =====================================================
-    # PARSER (DETERMINISTIC, FAIL-LOUD)
+    # PARSER (DETERMINISTIC, FAIL-LOUD) - GIỮ NGUYÊN
     # =====================================================
     def _parse_summary_text(self, text: str) -> Dict:
         sections = {
@@ -212,6 +260,8 @@ class SummaryEngine:
         # HARD VALIDATION
         # ---------------------------
         if not sections["SETTING"]:
+            # Fallback nhẹ nếu AI quên output SETTING nhưng có nội dung khác
+            # (Tùy chọn, ở đây giữ nguyên logic fail-loud của bạn)
             raise RuntimeError("SUMMARY PARSE ERROR: missing SETTING")
 
         if not sections["INITIAL_PREMISE"]:
@@ -226,7 +276,7 @@ class SummaryEngine:
         }
 
     # =====================================================
-    # SERIALIZER (JSON → TEXT)
+    # SERIALIZER (JSON → TEXT) - GIỮ NGUYÊN
     # =====================================================
     def _summary_dict_to_text(self, summary: Dict) -> str:
         lines: List[str] = []
