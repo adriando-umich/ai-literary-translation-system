@@ -49,174 +49,174 @@ class EditorEngine:
     # =========================================================
     # PUBLIC API
     # =========================================================
-        async def edit_chapter(self, original_blocks: list[str], draft_vi_blocks: list[str], glossary: dict) -> list[
-            str]:
-            """
-            Nhuận sắc chương với cơ chế SMART RETRY (Tự động nối tiếp khi bị ngắt).
-            """
-            import asyncio  # Import local để đảm bảo không lỗi nếu file gốc thiếu
+    async def edit_chapter(self, original_blocks: list[str], draft_vi_blocks: list[str], glossary: dict) -> list[
+        str]:
+        """
+        Nhuận sắc chương với cơ chế SMART RETRY (Tự động nối tiếp khi bị ngắt).
+        """
+        import asyncio  # Import local để đảm bảo không lỗi nếu file gốc thiếu
 
-            log(f"EDITOR: start chapter edit | blocks={len(original_blocks)}")
+        log(f"EDITOR: start chapter edit | blocks={len(original_blocks)}")
 
-            # Danh sách chứa kết quả cuối cùng
-            collected_blocks = []
+        # Danh sách chứa kết quả cuối cùng
+        collected_blocks = []
 
-            # Biến đếm vị trí hiện tại
-            current_idx = 0
-            total_blocks = len(original_blocks)
+        # Biến đếm vị trí hiện tại
+        current_idx = 0
+        total_blocks = len(original_blocks)
 
-            # Giới hạn số lần thử vòng ngoài (tránh lặp vô tận do lỗi parse)
-            max_outer_retries = 10
-            outer_attempt_count = 0
+        # Giới hạn số lần thử vòng ngoài (tránh lặp vô tận do lỗi parse)
+        max_outer_retries = 10
+        outer_attempt_count = 0
 
-            while current_idx < total_blocks and outer_attempt_count < max_outer_retries:
-                outer_attempt_count += 1
+        while current_idx < total_blocks and outer_attempt_count < max_outer_retries:
+            outer_attempt_count += 1
 
-                # 1. Cắt phần dữ liệu CÒN THIẾU để gửi đi
-                batch_original = original_blocks[current_idx:]
-                batch_draft = draft_vi_blocks[current_idx:]
+            # 1. Cắt phần dữ liệu CÒN THIẾU để gửi đi
+            batch_original = original_blocks[current_idx:]
+            batch_draft = draft_vi_blocks[current_idx:]
 
-                # Chuẩn bị Glossary text
-                glossary_text = "\n".join([f"{k}: {v}" for k, v in glossary.items()])
+            # Chuẩn bị Glossary text
+            glossary_text = "\n".join([f"{k}: {v}" for k, v in glossary.items()])
 
-                # Tạo Prompt cho Batch hiện tại
-                start_block_num = current_idx + 1
+            # Tạo Prompt cho Batch hiện tại
+            start_block_num = current_idx + 1
 
-                system_prompt = (
-                    "You are a professional book editor. Your goal is to polish the Vietnamese translation (DRAFT) "
-                    "to make it sound natural, literary, and fluent, while ensuring it matches the ORIGINAL meaning.\n\n"
-                    "IMPORTANT RULES:\n"
-                    "1. Content inside each block MUST ONLY be the refined Vietnamese text.\n"
-                    "2. DO NOT include 'ORIGINAL:', 'DRAFT:', or any other labels inside the blocks.\n"
-                    "3. DO NOT output explanations or notes.\n"
-                    "4. Output format MUST strictly follow:\n"
-                    f"   <<<BLOCK:N>>>\n"
-                    "   [Your refined Vietnamese text here]\n"
-                    "   <<<END>>>\n"
-                    "5. Keep the exact block numbers provided."
+            system_prompt = (
+                "You are a professional book editor. Your goal is to polish the Vietnamese translation (DRAFT) "
+                "to make it sound natural, literary, and fluent, while ensuring it matches the ORIGINAL meaning.\n\n"
+                "IMPORTANT RULES:\n"
+                "1. Content inside each block MUST ONLY be the refined Vietnamese text.\n"
+                "2. DO NOT include 'ORIGINAL:', 'DRAFT:', or any other labels inside the blocks.\n"
+                "3. DO NOT output explanations or notes.\n"
+                "4. Output format MUST strictly follow:\n"
+                f"   <<<BLOCK:N>>>\n"
+                "   [Your refined Vietnamese text here]\n"
+                "   <<<END>>>\n"
+                "5. Keep the exact block numbers provided."
+            )
+
+            # Ghép nội dung batch
+            content_pairs = ""
+            for i, (orig, draft) in enumerate(zip(batch_original, batch_draft)):
+                real_block_num = start_block_num + i
+                content_pairs += (
+                    f"--- BLOCK {real_block_num} ---\n"
+                    f"ORIGINAL: {orig}\n"
+                    f"DRAFT: {draft}\n\n"
                 )
 
-                # Ghép nội dung batch
-                content_pairs = ""
-                for i, (orig, draft) in enumerate(zip(batch_original, batch_draft)):
-                    real_block_num = start_block_num + i
-                    content_pairs += (
-                        f"--- BLOCK {real_block_num} ---\n"
-                        f"ORIGINAL: {orig}\n"
-                        f"DRAFT: {draft}\n\n"
+            user_prompt = (
+                f"GLOSSARY:\n{glossary_text}\n\n"
+                f"INPUT DATA (Starting from Block {start_block_num}):\n"
+                "You are given pairs of ORIGINAL English and DRAFT Vietnamese.\n"
+                "CRITICAL GUIDELINE:\n"
+                "- Use the ORIGINAL English ONLY AS A REFERENCE to ensure the DRAFT hasn't missed or misinterpreted any meaning.\n"
+                "- Your primary task is to POLISH and REWRITE the DRAFT Vietnamese into professional, literary prose.\n"
+                "- DO NOT translate directly from English if the DRAFT is already accurate; focus on style, flow, and Vietnamese word choice.\n\n"
+                f"{content_pairs}\n\n"
+                "Output ONLY the refined Vietnamese blocks now:"
+            )
+
+            # =========================================================
+            # RETRY LOGIC (MỚI THÊM): Xử lý lỗi 503/429/Timeout
+            # =========================================================
+            response_text = None
+            max_api_retries = 5  # Thử lại tối đa 5 lần cho mỗi batch
+
+            for api_attempt in range(1, max_api_retries + 1):
+                try:
+                    log(f"EDITOR: processing batch starting at {start_block_num} (Attempt {api_attempt}/{max_api_retries})...")
+
+                    response = await self.client.chat.completions.create(
+                        model=self.model,
+                        messages=[
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt}
+                        ],
+                        temperature=0.3
                     )
 
-                user_prompt = (
-                    f"GLOSSARY:\n{glossary_text}\n\n"
-                    f"INPUT DATA (Starting from Block {start_block_num}):\n"
-                    "You are given pairs of ORIGINAL English and DRAFT Vietnamese.\n"
-                    "CRITICAL GUIDELINE:\n"
-                    "- Use the ORIGINAL English ONLY AS A REFERENCE to ensure the DRAFT hasn't missed or misinterpreted any meaning.\n"
-                    "- Your primary task is to POLISH and REWRITE the DRAFT Vietnamese into professional, literary prose.\n"
-                    "- DO NOT translate directly from English if the DRAFT is already accurate; focus on style, flow, and Vietnamese word choice.\n\n"
-                    f"{content_pairs}\n\n"
-                    "Output ONLY the refined Vietnamese blocks now:"
-                )
-
-                # =========================================================
-                # RETRY LOGIC (MỚI THÊM): Xử lý lỗi 503/429/Timeout
-                # =========================================================
-                response_text = None
-                max_api_retries = 5  # Thử lại tối đa 5 lần cho mỗi batch
-
-                for api_attempt in range(1, max_api_retries + 1):
-                    try:
-                        log(f"EDITOR: processing batch starting at {start_block_num} (Attempt {api_attempt}/{max_api_retries})...")
-
-                        response = await self.client.chat.completions.create(
-                            model=self.model,
-                            messages=[
-                                {"role": "system", "content": system_prompt},
-                                {"role": "user", "content": user_prompt}
-                            ],
-                            temperature=0.3
-                        )
-
-                        response_text = response.choices[0].message.content.strip()
-                        break  # Thành công -> Thoát vòng lặp retry
-
-                    except Exception as e:
-                        log(f"⚠️ Editor API Error (Attempt {api_attempt}): {e}")
-
-                        # Nếu chưa hết lượt thử -> Chờ (Backoff) rồi thử lại
-                        if api_attempt < max_api_retries:
-                            wait_time = 5 * api_attempt + 2  # 7s, 12s, 17s...
-                            log(f"⏳ Waiting {wait_time}s before retrying...")
-                            await asyncio.sleep(wait_time)
-                        else:
-                            log("❌ Max API retries exceeded for this batch.")
-
-                # Nếu sau 5 lần vẫn không có kết quả -> Break ra ngoài để dùng Draft bù vào
-                if not response_text:
-                    log("⚠️ Failed to get valid response from Editor API. Falling back to draft.")
-                    break
-
-                # =========================================================
-                # LOGIC PARSE (GIỮ NGUYÊN)
-                # =========================================================
-                try:
-                    # Parse cục bộ cho batch này
-                    new_blocks = []
-                    local_pos = 0
-
-                    # Quét tìm các block trả về trong batch này
-                    for i in range(len(batch_original)):
-                        target_num = start_block_num + i
-                        start_marker = f"<<<BLOCK:{target_num}>>>"
-                        end_marker = "<<<END>>>"
-
-                        s_idx = response_text.find(start_marker, local_pos)
-                        if s_idx == -1:
-                            break  # Hết dữ liệu trong response này
-
-                        content_start = s_idx + len(start_marker)
-                        e_idx = response_text.find(end_marker, content_start)
-
-                        if e_idx == -1:
-                            log(f"⚠️ Block {target_num} truncated. Stopping batch here.")
-                            break  # Block bị cắt cụt, bỏ qua
-
-                        content = response_text[content_start:e_idx].strip()
-                        new_blocks.append(content)
-                        local_pos = e_idx + len(end_marker)
-
-                    # --- CẬP NHẬT TIẾN ĐỘ ---
-                    if not new_blocks:
-                        log("⚠️ Batch trả về 0 block hợp lệ (Format error). Dừng thử lại batch này.")
-                        # Reset lại outer_attempt để không bị kẹt, hoặc break để dùng draft
-                        break
-
-                    collected_blocks.extend(new_blocks)
-                    current_idx += len(new_blocks)
-
-                    # Reset attempt vòng ngoài vì đã thành công 1 batch
-                    outer_attempt_count = 0
-
-                    log(f"EDITOR: Batch done. Got {len(new_blocks)} blocks. Progress: {current_idx}/{total_blocks}")
+                    response_text = response.choices[0].message.content.strip()
+                    break  # Thành công -> Thoát vòng lặp retry
 
                 except Exception as e:
-                    log(f"⚠️ Editor Parsing Error in batch: {e}")
-                    break  # Lỗi parse thì break ra, dùng draft bù vào phần còn lại
+                    log(f"⚠️ Editor API Error (Attempt {api_attempt}): {e}")
 
-            # --- KẾT THÚC VÒNG LẶP ---
+                    # Nếu chưa hết lượt thử -> Chờ (Backoff) rồi thử lại
+                    if api_attempt < max_api_retries:
+                        wait_time = 5 * api_attempt + 2  # 7s, 12s, 17s...
+                        log(f"⏳ Waiting {wait_time}s before retrying...")
+                        await asyncio.sleep(wait_time)
+                    else:
+                        log("❌ Max API retries exceeded for this batch.")
 
-            # Kiểm tra nếu vẫn thiếu (do hết retries hoặc lỗi)
-            if len(collected_blocks) < total_blocks:
-                missing = total_blocks - len(collected_blocks)
-                log(f"⚠️ Filling {missing} final missing blocks with DRAFT.")
-                collected_blocks.extend(draft_vi_blocks[len(collected_blocks):])
+            # Nếu sau 5 lần vẫn không có kết quả -> Break ra ngoài để dùng Draft bù vào
+            if not response_text:
+                log("⚠️ Failed to get valid response from Editor API. Falling back to draft.")
+                break
 
-            # Validate cuối cùng
-            if len(collected_blocks) != len(original_blocks):
-                raise RuntimeError(f"EDITOR ERROR: Block mismatch {len(collected_blocks)} vs {len(original_blocks)}")
+            # =========================================================
+            # LOGIC PARSE (GIỮ NGUYÊN)
+            # =========================================================
+            try:
+                # Parse cục bộ cho batch này
+                new_blocks = []
+                local_pos = 0
 
-            log("EDITOR DONE chapter")
-            return collected_blocks
+                # Quét tìm các block trả về trong batch này
+                for i in range(len(batch_original)):
+                    target_num = start_block_num + i
+                    start_marker = f"<<<BLOCK:{target_num}>>>"
+                    end_marker = "<<<END>>>"
+
+                    s_idx = response_text.find(start_marker, local_pos)
+                    if s_idx == -1:
+                        break  # Hết dữ liệu trong response này
+
+                    content_start = s_idx + len(start_marker)
+                    e_idx = response_text.find(end_marker, content_start)
+
+                    if e_idx == -1:
+                        log(f"⚠️ Block {target_num} truncated. Stopping batch here.")
+                        break  # Block bị cắt cụt, bỏ qua
+
+                    content = response_text[content_start:e_idx].strip()
+                    new_blocks.append(content)
+                    local_pos = e_idx + len(end_marker)
+
+                # --- CẬP NHẬT TIẾN ĐỘ ---
+                if not new_blocks:
+                    log("⚠️ Batch trả về 0 block hợp lệ (Format error). Dừng thử lại batch này.")
+                    # Reset lại outer_attempt để không bị kẹt, hoặc break để dùng draft
+                    break
+
+                collected_blocks.extend(new_blocks)
+                current_idx += len(new_blocks)
+
+                # Reset attempt vòng ngoài vì đã thành công 1 batch
+                outer_attempt_count = 0
+
+                log(f"EDITOR: Batch done. Got {len(new_blocks)} blocks. Progress: {current_idx}/{total_blocks}")
+
+            except Exception as e:
+                log(f"⚠️ Editor Parsing Error in batch: {e}")
+                break  # Lỗi parse thì break ra, dùng draft bù vào phần còn lại
+
+        # --- KẾT THÚC VÒNG LẶP ---
+
+        # Kiểm tra nếu vẫn thiếu (do hết retries hoặc lỗi)
+        if len(collected_blocks) < total_blocks:
+            missing = total_blocks - len(collected_blocks)
+            log(f"⚠️ Filling {missing} final missing blocks with DRAFT.")
+            collected_blocks.extend(draft_vi_blocks[len(collected_blocks):])
+
+        # Validate cuối cùng
+        if len(collected_blocks) != len(original_blocks):
+            raise RuntimeError(f"EDITOR ERROR: Block mismatch {len(collected_blocks)} vs {len(original_blocks)}")
+
+        log("EDITOR DONE chapter")
+        return collected_blocks
 
     # =========================================================
     # PROMPT BUILDER

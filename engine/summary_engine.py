@@ -117,7 +117,7 @@ class SummaryEngine:
           BUT we will prefer creating our own Google GenAI client internally
           to ensure we can set BLOCK_NONE safety settings.
         """
-        self.model = "gemini-2.5-flash-lite"  # hoặc model bạn muốn dùng
+        self.model = "gemini-2.0-flash"  # hoặc model bạn muốn dùng
 
         # Tự lấy Key và tạo Client Google Native để kiểm soát Safety Settings
         api_key = os.getenv("GOOGLE_API_KEY")
@@ -171,7 +171,7 @@ class SummaryEngine:
     # =====================================================
     def _call_llm(self, *, system_prompt: str, user_prompt: str) -> str:
 
-        # Cấu hình tắt bộ lọc (BLOCK_NONE) để tránh lỗi 503/400 khi nội dung nhạy cảm
+        # Cấu hình tắt bộ lọc (BLOCK_NONE) - GIỮ NGUYÊN 100%
         safety_settings = [
             types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
             types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
@@ -181,18 +181,30 @@ class SummaryEngine:
 
         generate_config = types.GenerateContentConfig(
             safety_settings=safety_settings,
-            temperature=0.2,  # Giữ thấp như cũ
+            temperature=0.2,
         )
 
-        # Kết hợp System Prompt và User Prompt vì Google API ưu tiên content liền mạch
+        # Kết hợp System Prompt và User Prompt
         full_prompt = f"{system_prompt}\n\nUSER INPUT:\n{user_prompt}"
 
-        # Logic Retry
-        max_retries = 3
+        # Logic Retry với Model Fallback
+        max_retries = 4
+        last_error = None
+
         for attempt in range(1, max_retries + 1):
+            # --- CHIẾN LƯỢC FALLBACK ---
+            # Attempt 1, 2: dùng gemini-2.0-flash (self.model)
+            # Attempt 3: dùng gemini-3-flash-preview
+            current_model = self.model
+            if attempt == max_retries:
+                current_model = "gemini-3-flash-preview"
+                log(f"⚠️ SUMMARY_ENGINE: Switching to FALLBACK MODEL: {current_model}")
+
             try:
+                log(f"SUMMARY_ENGINE: API call attempt {attempt} using [{current_model}]")
+
                 response = self.client.models.generate_content(
-                    model=self.model,
+                    model=current_model,  # Sử dụng model đã chọn
                     contents=full_prompt,
                     config=generate_config
                 )
@@ -201,18 +213,21 @@ class SummaryEngine:
                     reason = "Unknown"
                     if response.candidates:
                         reason = response.candidates[0].finish_reason
-                    print(f"--- SUMMARY ERROR: Empty response. Reason: {reason} ---")
                     raise RuntimeError(f"SUMMARY_ENGINE: empty AI response. Reason: {reason}")
 
                 return response.text.strip()
 
             except Exception as e:
-                log(f"SUMMARY API ERROR (Attempt {attempt}): {e}")
-                if attempt == max_retries:
-                    raise
-                time.sleep(2 * attempt)
+                last_error = e
+                log(f"⚠️ SUMMARY API ERROR (Attempt {attempt}) with [{current_model}]: {e}")
 
-        raise RuntimeError("SUMMARY_ENGINE: Failed after retries")
+                if attempt < max_retries:
+                    delay = 2 * attempt
+                    log(f"SUMMARY_ENGINE: retrying in {delay}s")
+                    time.sleep(delay)
+
+        raise RuntimeError(
+            f"SUMMARY_ENGINE FAILED after {max_retries} attempts (Primary & Fallback failed)") from last_error
 
     # =====================================================
     # PARSER (DETERMINISTIC, FAIL-LOUD) - GIỮ NGUYÊN

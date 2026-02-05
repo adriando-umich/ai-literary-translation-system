@@ -79,6 +79,17 @@ async def run():
         if idx > last_chapter_index:
             break
         if idx in done_chapters:
+            # SỬA TẠI ĐÂY: Thay vì chỉ continue, hãy nạp lại bản dịch cũ
+            log(f"CHECKPOINT: skip translation for chapter {idx}, loading previous version")
+
+            # Giả sử state_manager của bạn lưu file HTML tại 'state/chapters/chapter_{idx}.html'
+            # (Bạn cần kiểm tra đường dẫn chính xác trong state_manager.py của bạn)
+            cached_html = state_manager.get_chapter_html(idx)
+
+            if cached_html:
+                item.set_content(cached_html.encode("utf-8"))
+            else:
+                log(f"⚠️ Warning: Chapter {idx} marked done but no cache found. Keeping original.")
             continue
 
         soup = BeautifulSoup(
@@ -106,14 +117,38 @@ async def run():
 
         # ---------- GLOSSARY DELTA ----------
         if is_narrative:
-            # 1. Gọi API
-            ai_text = engine._call_openai(
-                prompt=glossary_engine.build_delta_prompt(
-                    current_glossary=glossary,
-                    chapter_text=chapter_text,
-                ),
-                model=engine.model_glossary,
-            )
+            # --- PHẦN SỬA ĐỔI: RETRY & FALLBACK CHO GLOSSARY ---
+            ai_text = ""
+            glossary_max_retries = 3
+            last_glossary_error = None
+
+            for g_attempt in range(1, glossary_max_retries + 1):
+                # Lần cuối cùng (lần 3) sẽ dùng fallback model
+                current_glossary_model = engine.model_glossary
+                if g_attempt == glossary_max_retries:
+                    current_glossary_model = "gemini-3-flash-preview"
+                    log(f"⚠️ GLOSSARY: Switching to FALLBACK MODEL: {current_glossary_model}")
+
+                try:
+                    log(f"GLOSSARY: API call attempt {g_attempt} using [{current_glossary_model}]")
+                    ai_text = engine._call_openai(
+                        prompt=glossary_engine.build_delta_prompt(
+                            current_glossary=glossary,
+                            chapter_text=chapter_text,
+                        ),
+                        model=current_glossary_model,  # Sử dụng model đã chọn
+                    )
+                    if ai_text: break  # Thành công thì thoát vòng lặp
+                except Exception as e:
+                    last_glossary_error = e
+                    log(f"⚠️ GLOSSARY API ERROR (Attempt {g_attempt}): {e}")
+                    if g_attempt < glossary_max_retries:
+                        await asyncio.sleep(2 * g_attempt)
+
+            if not ai_text:
+                log(f"❌ GLOSSARY FAILED sau {glossary_max_retries} lần thử. Bỏ qua delta chương này.")
+                # Nếu glossary lỗi hoàn toàn, ta để ai_text là mảng rỗng để không làm sập pipeline
+                ai_text = "[]"
 
             # 2. Parse kết quả
             raw_terms = glossary_engine.parse_delta(ai_text)
@@ -178,13 +213,13 @@ async def run():
             vi_chunk = engine.translate_chunk(
                 en_blocks=current_chunk,
                 glossary_rules=glossary_rules,
-                # Ghép char_rules vào summary để AI chú ý hơn
                 summary=f"CHARACTER PRONOUNS:\n{char_rules_str}\n\nSTORY SUMMARY:\n{summary_json_str}",
                 characters=chars_json_str,
                 intra_chapter_context=in_state.get_last_chunks(INTRA_CONTEXT_BLOCKS),
                 is_narrative=is_narrative,
                 chunk_index=chunk_counter,
-                total_chunks=999,  # Dynamic chunking nên không biết chính xác tổng số chunk, để 999
+                total_chunks=0,  # <--- Sửa thành 0 để hiển thị log là '1/?', '2/?'...
+                total_chapter_blocks=total_blocks_count,
             )
 
             vi_blocks.extend(vi_chunk)
@@ -230,8 +265,9 @@ async def run():
         item.set_content(str(soup).encode("utf-8"))
 
         # ---------- COMMIT ----------
+        state_manager.commit_chapter(idx, in_state, str(soup))
         if is_narrative:
-            state_manager.commit_chapter(in_state)
+
             glossary = state_manager.load_glossary()
             summary = state_manager.load_summary()
             characters = state_manager.load_characters()

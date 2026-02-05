@@ -25,7 +25,7 @@ from google.genai import errors
 # =========================================================
 EXPANSION_RATIO = 1.8  # Tiếng Việt dài hơn tiếng Anh ~1.8 lần
 SAFETY_BUFFER = 0.9  # Chỉ dùng 90% dung lượng Output cho phép
-HARD_LIMIT_BLOCKS = 40  # Không bao giờ gửi quá 40 đoạn/lần
+HARD_LIMIT_BLOCKS = 999  # Không bao giờ gửi quá 40 đoạn/lần
 CHARS_PER_TOKEN = 3.5  # Ước lượng bảo thủ (trung bình là 4)
 
 
@@ -214,7 +214,7 @@ class TranslationEngine:
         # Cấu hình sinh văn bản
         generate_config = types.GenerateContentConfig(
             safety_settings=safety_settings,
-            temperature=0.3,  # Giữ mức thấp để dịch chính xác
+            temperature=0.1,  # Giữ mức thấp để dịch chính xác
         )
 
         base_delay = 5  # Giây chờ cơ bản
@@ -312,6 +312,7 @@ class TranslationEngine:
             is_narrative: bool = False,
             chunk_index: Optional[int] = None,
             total_chunks: Optional[int] = None,
+            total_chapter_blocks: int = 0,  # <--- 1. THÊM THAM SỐ NÀY
     ) -> List[str]:
         """
         Translate a list of English blocks into Vietnamese.
@@ -321,15 +322,22 @@ class TranslationEngine:
         kind = "NARRATIVE" if is_narrative else "NON_NARRATIVE"
         N = len(en_blocks)
 
-        chunk_info = (
-            f"{chunk_index}/{total_chunks}"
-            if chunk_index and total_chunks
-            else "?"
-        )
+        # Logic hiển thị Chunk Index: 1/?, 2/?, hoặc 1/10 nếu biết tổng
+        if chunk_index and total_chunks and total_chunks > 0:
+            chunk_info = f"{chunk_index}/{total_chunks}"
+        elif chunk_index:
+            chunk_info = f"{chunk_index}/?"
+        else:
+            chunk_info = "?"
+
+        # 2. LOGIC HIỂN THỊ SỐ BLOCK (VD: 30/150)
+        blocks_info = f"{N}"
+        if total_chapter_blocks > 0:
+            blocks_info = f"{N}/{total_chapter_blocks}"
 
         log(
             f"AI TRANSLATE CHUNK | type={kind} | "
-            f"chunk={chunk_info} | blocks={N} | "
+            f"chunk={chunk_info} | blocks={blocks_info} | "  # <--- 3. CẬP NHẬT LOG Ở ĐÂY
             f"intra_ctx_blocks={len(intra_chapter_context or [])}"
         )
 
