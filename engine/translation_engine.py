@@ -74,7 +74,7 @@ class TranslationEngine:
         """
         # 1. Cấu hình Model (Logic Fallback)
         self.model_primary = "gemini-2.5-flash-lite"
-        self.model_fallback = "gemini-2.0-flash"
+        self.model_fallback = "gemini-3-flash-preview"
         self.model_glossary = "gemini-2.5-flash-lite"
 
         self.max_retries = 5
@@ -214,7 +214,7 @@ class TranslationEngine:
         # Cấu hình sinh văn bản
         generate_config = types.GenerateContentConfig(
             safety_settings=safety_settings,
-            temperature=0.1,  # Giữ mức thấp để dịch chính xác
+            temperature=0,  # Giữ mức thấp để dịch chính xác
         )
 
         base_delay = 5  # Giây chờ cơ bản

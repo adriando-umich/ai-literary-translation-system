@@ -8,6 +8,7 @@ import os
 import time
 from typing import Dict, List
 from utils.logger import log
+from utils.openai_fallback import call_openai_fallback
 
 # === THAY ĐỔI: Dùng thư viện Google GenAI gốc ===
 from google import genai
@@ -167,67 +168,111 @@ class SummaryEngine:
         return self._parse_summary_text(text)
 
     # =====================================================
-    # LLM CALL (UPDATED FOR GOOGLE GENAI NATIVE)
+    # LLM CALL (CUSTOM RETRY -> OPENAI -> SAFE MODE -> ERROR)
     # =====================================================
     def _call_llm(self, *, system_prompt: str, user_prompt: str) -> str:
+        """
+        Logic:
+        1. Google (6 attempts, switch models, Block None)
+        2. OpenAI Standard (High fidelity)
+        3. OpenAI Safe Mode (Sanitized/Abstract instruction)
+        4. Raise Error (If all fail -> Stop pipeline, do not return garbage)
+        """
 
-        # Cấu hình tắt bộ lọc (BLOCK_NONE) - GIỮ NGUYÊN 100%
+        # --- CẤU HÌNH ---
+        OPENAI_MODEL_NAME = "gpt-5-nano-2025-08-07"
+        OPENAI_RETRIES = 2
+        MAX_GOOGLE_ATTEMPTS = 6
+        # ----------------
+
+        # 1. Cấu hình Google Safety (Mở hết cỡ)
         safety_settings = [
-            types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
-            types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
-            types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
-            types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
         ]
-
         generate_config = types.GenerateContentConfig(
             safety_settings=safety_settings,
             temperature=0.2,
         )
-
-        # Kết hợp System Prompt và User Prompt
         full_prompt = f"{system_prompt}\n\nUSER INPUT:\n{user_prompt}"
 
-        # Logic Retry với Model Fallback
-        max_retries = 4
-        last_error = None
-
-        for attempt in range(1, max_retries + 1):
-            # --- CHIẾN LƯỢC FALLBACK ---
-            # Attempt 1, 2: dùng gemini-2.0-flash (self.model)
-            # Attempt 3: dùng gemini-3-flash-preview
-            current_model = self.model
-            if attempt == max_retries:
+        # 2. Vòng lặp Google
+        for attempt in range(1, MAX_GOOGLE_ATTEMPTS + 1):
+            if attempt <= 2:
+                current_model = "gemini-2.0-flash"
+            elif attempt <= 4:
+                current_model = "gemini-2.0-flash-lite"
+            else:
                 current_model = "gemini-3-flash-preview"
-                log(f"⚠️ SUMMARY_ENGINE: Switching to FALLBACK MODEL: {current_model}")
 
             try:
-                log(f"SUMMARY_ENGINE: API call attempt {attempt} using [{current_model}]")
+                log(f"SUMMARY_ENGINE: Google Attempt {attempt}/{MAX_GOOGLE_ATTEMPTS} using [{current_model}]")
 
                 response = self.client.models.generate_content(
-                    model=current_model,  # Sử dụng model đã chọn
+                    model=current_model,
                     contents=full_prompt,
                     config=generate_config
                 )
 
+                # Check lỗi Hard Block
+                if hasattr(response, 'prompt_feedback') and response.prompt_feedback:
+                    if "PROHIBITED_CONTENT" in str(response.prompt_feedback):
+                        log(f"⚠️ Google Hard Block: {response.prompt_feedback}")
+                        break  # Thoát ngay sang OpenAI
+
                 if not response.text:
-                    reason = "Unknown"
-                    if response.candidates:
-                        reason = response.candidates[0].finish_reason
-                    raise RuntimeError(f"SUMMARY_ENGINE: empty AI response. Reason: {reason}")
+                    if hasattr(response, 'prompt_feedback'):
+                        log(f"⚠️ Google Blocked Input: {response.prompt_feedback}")
+                        break
+                    raise RuntimeError("Google returned empty response.")
 
                 return response.text.strip()
 
             except Exception as e:
-                last_error = e
-                log(f"⚠️ SUMMARY API ERROR (Attempt {attempt}) with [{current_model}]: {e}")
+                log(f"⚠️ Google Error (Attempt {attempt}): {e}")
+                if attempt == MAX_GOOGLE_ATTEMPTS: break
+                time.sleep(2 if "429" not in str(e) else 10)
 
-                if attempt < max_retries:
-                    delay = 2 * attempt
-                    log(f"SUMMARY_ENGINE: retrying in {delay}s")
-                    time.sleep(delay)
+        # 3. FALLBACK: OPENAI STANDARD
+        log(f"🔄 SWITCHING TO OPENAI FALLBACK (Model: {OPENAI_MODEL_NAME})...")
 
-        raise RuntimeError(
-            f"SUMMARY_ENGINE FAILED after {max_retries} attempts (Primary & Fallback failed)") from last_error
+        try:
+            return call_openai_fallback(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                model=OPENAI_MODEL_NAME,
+                max_retries=OPENAI_RETRIES
+            )
+        except Exception as e:
+            log(f"❌ OpenAI Standard Failed: {e}")
+            log("🛡️ Attempting OPENAI SAFE MODE (Sanitized Summary)...")
+
+            # 4. FALLBACK: OPENAI SAFE MODE (Nói giảm nói tránh)
+            safe_system_prompt = (
+                    system_prompt +
+                    "\n\nCRITICAL INSTRUCTION: The previous summary was blocked by safety filters. "
+                    "You MUST rewrite this summary using ABSTRACT, CLINICAL, and EUPHEMISTIC language. "
+                    "Do NOT describe violence, gore, or sexual acts in detail. "
+                    "Focus ONLY on the plot progression and character emotions. "
+                    "Make it safe for work (SFW)."
+            )
+
+            try:
+                # Dùng gpt-4o-mini cho "hiền" hơn
+                return call_openai_fallback(
+                    system_prompt=safe_system_prompt,
+                    user_prompt=user_prompt,
+                    model="gpt-4o-mini",
+                    max_retries=1
+                )
+            except Exception as e2:
+                # 5. CÙNG ĐƯỜNG -> BÁO LỖI (Raise Error)
+                # Để chương trình dừng lại hoặc để hàm gọi xử lý, tuyệt đối không trả rác
+                log(f"❌ OpenAI Safe Mode Also Failed: {e2}")
+                raise RuntimeError(
+                    f"CRITICAL: All AI models (Google & OpenAI) refused content due to Safety/Policy. Last Error: {e2}")
 
     # =====================================================
     # PARSER (DETERMINISTIC, FAIL-LOUD) - GIỮ NGUYÊN

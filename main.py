@@ -21,6 +21,7 @@ from epub.epub_writer import write_epub
 from utils.logger import log
 from utils.inspect import print_chapter_list
 
+import uuid
 import ebooklib
 from bs4 import BeautifulSoup
 from typing import List
@@ -34,6 +35,44 @@ OUTPUT_EPUB = "output_bilingual.epub"
 # nhưng giữ lại hằng số INTRA_CONTEXT_BLOCKS để lấy ngữ cảnh.
 INTRA_CONTEXT_BLOCKS = 200
 
+def sanitize_book_structure(book):
+    """
+    Hàm này rà soát toàn bộ sách và gán ID giả cho bất kỳ thành phần nào bị thiếu ID.
+    Giúp tránh lỗi 'NoneType' khi ghi file.
+    """
+    log("🧹 BẮT ĐẦU RÀ SOÁT CẤU TRÚC SÁCH (SANITIZING)...")
+    count_fixed = 0
+
+    # 1. Rà soát danh sách file (Items)
+    for item in book.get_items():
+        if not item.id:  # Nếu ID bị None hoặc rỗng
+            new_id = f"fixed_item_{uuid.uuid4().hex[:8]}"
+            item.set_id(new_id)
+            log(f"   🔧 Đã sửa Item thiếu ID: {item.file_name} -> {new_id}")
+            count_fixed += 1
+
+    # 2. Rà soát Mục lục (TOC) - Đệ quy
+    def fix_toc_node(node):
+        nonlocal count_fixed
+        # Nếu node là một list/tuple (Section con), duyệt đệ quy
+        if isinstance(node, (list, tuple)):
+            for child in node:
+                fix_toc_node(child)
+        # Nếu node là một Link object (thường gặp trong ebooklib)
+        elif hasattr(node, 'uid'):
+            if not node.uid:
+                new_uid = f"fixed_toc_{uuid.uuid4().hex[:8]}"
+                node.uid = new_uid
+                title = getattr(node, 'title', 'No Title')
+                log(f"   🔧 Đã sửa TOC Node thiếu UID: '{title}' -> {new_uid}")
+                count_fixed += 1
+
+    fix_toc_node(book.toc)
+
+    if count_fixed > 0:
+        log(f"✅ ĐÃ SỬA XONG {count_fixed} LỖI CẤU TRÚC.")
+    else:
+        log("✅ CẤU TRÚC SÁCH ỔN ĐỊNH. KHÔNG CÓ LỖI ID.")
 
 def build_glossary_rules(*, base_glossary: dict, delta_terms: list) -> str:
     entries = []
@@ -274,6 +313,40 @@ async def run():
 
         mark_done(idx)
 
+        # === BẮT ĐẦU ĐOẠN DEBUG ===
+        print("\n[DEBUG] --- KIỂM TRA BOOK & TOC TRƯỚC KHI GHI ---")
+
+        # 1. Kiểm tra toàn bộ items trong sách
+        for item in book.get_items():
+            if item.get_id() is None:
+                print(f"❌ ITEM LỖI (No ID): Type={type(item)} Name={item.get_name()}")
+                # Fix tạm thời: Gán ID ngẫu nhiên nếu thiếu
+
+                new_id = f"fixed_{uuid.uuid4().hex[:8]}"
+                item.set_id(new_id)
+                print(f"   -> Đã auto-fix gán ID mới: {new_id}")
+
+        # 2. Kiểm tra cấu trúc TOC (Mục lục)
+        def check_toc(toc_list):
+            for node in toc_list:
+                if isinstance(node, (list, tuple)):
+                    check_toc(node)  # Đệ quy nếu là section con
+                elif hasattr(node, 'uid'):
+                    if node.uid is None:
+                        print(f"❌ TOC NODE LỖI (No UID): Title={getattr(node, 'title', 'N/A')}")
+                        # Nếu item này có trong book nhưng mất link, hãy gán lại
+                        if hasattr(node, 'set_id'):
+                            node.set_id(f"toc_fixed_{uuid.uuid4().hex[:8]}")
+                            print(f"   -> Đã auto-fix gán UID cho TOC node.")
+                else:
+                    print(f"⚠️ Cảnh báo: Node trong TOC không phải Link/Item chuẩn: {type(node)}")
+
+        check_toc(book.toc)
+        print("[DEBUG] --- KẾT THÚC KIỂM TRA ---\n")
+        # === KẾT THÚC ĐOẠN DEBUG ===
+
+    sanitize_book_structure(book)
+    log(f"WRITING TO: {OUTPUT_EPUB}")
     write_epub(OUTPUT_EPUB, book)
     log("PIPELINE DONE")
 
