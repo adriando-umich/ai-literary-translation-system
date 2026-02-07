@@ -5,6 +5,7 @@ __pycache__/
 *.epub
 # Runtime narrative state
 state/*.json
+state/chapters/
 
 # Optional: logs / outputs
 logs/

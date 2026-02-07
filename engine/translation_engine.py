@@ -288,14 +288,15 @@ class TranslationEngine:
     # =========================================================
     def _call_openai(self, *, prompt: str, model: str) -> str:
         """
-        Hàm tương thích ngược: main.py gọi hàm này để tạo Glossary.
-        Logic: Thử Primary (Lite) trước -> Lỗi -> Fallback (Flash 2.0).
+        main.py gọi hàm này để tạo Glossary.
+        Dùng đúng model được truyền vào (attempt 1–2: model_glossary, attempt 3: fallback).
+        Nếu model đó lỗi thì thử một lần với model_fallback rồi mới raise.
         """
         try:
-            return self._call_gemini_native(prompt=prompt, model=self.model_primary)
+            return self._call_gemini_native(prompt=prompt, model=model)
         except Exception as e:
-            log(f"⚠️ GLOSSARY PRIMARY FAILED: {e}")
-            log(f"🔄 SWITCHING GLOSSARY TO FALLBACK: {self.model_fallback}")
+            log(f"⚠️ GLOSSARY model [{model}] FAILED: {e}")
+            log(f"🔄 GLOSSARY retry with FALLBACK: {self.model_fallback}")
             return self._call_gemini_native(prompt=prompt, model=self.model_fallback)
 
     # =========================================================

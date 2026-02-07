@@ -284,13 +284,15 @@ async def run():
         if is_narrative:
             log(f"EDITOR START chapter {idx}")
 
-            full_glossary_for_editor = glossary.copy()
-            if in_state.glossary_delta:
-                for term in in_state.glossary_delta:
-                    src = term.get('source')
-                    tgt = term.get('target')
-                    if src and tgt:
-                        full_glossary_for_editor[src] = tgt
+            # Flat dict source -> target only (Editor expects this format)
+            full_glossary_for_editor = {}
+            for e in glossary.get("entries", []):
+                full_glossary_for_editor[e["source"]] = e["target"]
+            for term in in_state.glossary_delta:
+                src = term.get("source")
+                tgt = term.get("target")
+                if src and tgt:
+                    full_glossary_for_editor[src] = tgt
 
             vi_blocks = await editor_engine.edit_chapter(
                 original_blocks=en_blocks,
@@ -313,37 +315,30 @@ async def run():
 
         mark_done(idx)
 
-        # === BẮT ĐẦU ĐOẠN DEBUG ===
-        print("\n[DEBUG] --- KIỂM TRA BOOK & TOC TRƯỚC KHI GHI ---")
+    # === DEBUG: Kiểm tra book & TOC một lần sau khi xử lý xong tất cả chương ===
+    print("\n[DEBUG] --- KIỂM TRA BOOK & TOC TRƯỚC KHI GHI ---")
+    for item in book.get_items():
+        if item.get_id() is None:
+            print(f"❌ ITEM LỖI (No ID): Type={type(item)} Name={item.get_name()}")
+            new_id = f"fixed_{uuid.uuid4().hex[:8]}"
+            item.set_id(new_id)
+            print(f"   -> Đã auto-fix gán ID mới: {new_id}")
 
-        # 1. Kiểm tra toàn bộ items trong sách
-        for item in book.get_items():
-            if item.get_id() is None:
-                print(f"❌ ITEM LỖI (No ID): Type={type(item)} Name={item.get_name()}")
-                # Fix tạm thời: Gán ID ngẫu nhiên nếu thiếu
+    def check_toc(toc_list):
+        for node in toc_list:
+            if isinstance(node, (list, tuple)):
+                check_toc(node)
+            elif hasattr(node, 'uid'):
+                if node.uid is None:
+                    print(f"❌ TOC NODE LỖI (No UID): Title={getattr(node, 'title', 'N/A')}")
+                    if hasattr(node, 'set_id'):
+                        node.set_id(f"toc_fixed_{uuid.uuid4().hex[:8]}")
+                        print(f"   -> Đã auto-fix gán UID cho TOC node.")
+            else:
+                print(f"⚠️ Cảnh báo: Node trong TOC không phải Link/Item chuẩn: {type(node)}")
 
-                new_id = f"fixed_{uuid.uuid4().hex[:8]}"
-                item.set_id(new_id)
-                print(f"   -> Đã auto-fix gán ID mới: {new_id}")
-
-        # 2. Kiểm tra cấu trúc TOC (Mục lục)
-        def check_toc(toc_list):
-            for node in toc_list:
-                if isinstance(node, (list, tuple)):
-                    check_toc(node)  # Đệ quy nếu là section con
-                elif hasattr(node, 'uid'):
-                    if node.uid is None:
-                        print(f"❌ TOC NODE LỖI (No UID): Title={getattr(node, 'title', 'N/A')}")
-                        # Nếu item này có trong book nhưng mất link, hãy gán lại
-                        if hasattr(node, 'set_id'):
-                            node.set_id(f"toc_fixed_{uuid.uuid4().hex[:8]}")
-                            print(f"   -> Đã auto-fix gán UID cho TOC node.")
-                else:
-                    print(f"⚠️ Cảnh báo: Node trong TOC không phải Link/Item chuẩn: {type(node)}")
-
-        check_toc(book.toc)
-        print("[DEBUG] --- KẾT THÚC KIỂM TRA ---\n")
-        # === KẾT THÚC ĐOẠN DEBUG ===
+    check_toc(book.toc)
+    print("[DEBUG] --- KẾT THÚC KIỂM TRA ---\n")
 
     sanitize_book_structure(book)
     log(f"WRITING TO: {OUTPUT_EPUB}")
